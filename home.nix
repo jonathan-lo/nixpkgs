@@ -16,6 +16,9 @@
     homeDirectory  = "/home/jlo";
   };
 
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
 #
 #  settings = {
 #    git.email = "jchl027@gmail.com";
