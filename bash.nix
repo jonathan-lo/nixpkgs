@@ -27,7 +27,7 @@ in {
   #    PS1="\e[0;32m; \e[0m"
   #    set -o vi
   #  '';
-
+    profileExtra = ". /home/jlo/.nix-profile/etc/profile.d/nix.sh";
     shellAliases = aliases;
   };
 }
