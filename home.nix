@@ -17,7 +17,9 @@
   };
 
   imports = [
+    ./bash.nix
     ./git.nix
+    ./tmux.nix
   ];
 
   # Let Home Manager install and manage itself.
