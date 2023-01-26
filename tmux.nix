@@ -29,14 +29,14 @@ in {
     extraConfig = extraConfigText;
 
     plugins = with pkgs.tmuxPlugins; [
-    {
-      plugin = dracula;
-      extraConfig = ''
-        set -g @dracula-plugins "battery cpu-usage ram-usage time"
-        set -g @dracula-show-powerline true
-        set -g @dracula-refresh-rate 10
+      {
+        plugin = dracula;
+        extraConfig = ''
+          set -g @dracula-plugins "battery cpu-usage ram-usage time"
+          set -g @dracula-show-powerline true
+          set -g @dracula-refresh-rate 10
         '';
-    }
+      }
     ];
   };
 }
