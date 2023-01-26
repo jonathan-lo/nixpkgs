@@ -5,6 +5,7 @@
 
   home = {
     packages = with pkgs; [
+        du-dust
         fira-code
         jq
         tcpdump
