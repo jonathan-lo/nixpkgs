@@ -13,7 +13,7 @@
       nnoremap <C-L> <C-W><C-L>
       nnoremap <C-H> <C-W><C-H>
 
-      colorscheme gruvbox
+      colorscheme dracula
 
       set autoindent
       set autoread
@@ -31,7 +31,7 @@
     '';
 
     plugins = with pkgs.vimPlugins; [
-      gruvbox
+      dracula-nvim
 
       {
         config = ''
