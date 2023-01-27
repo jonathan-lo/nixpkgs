@@ -19,6 +19,7 @@
 
   imports = [
     ./bash.nix
+    ./fzf.nix
     ./git.nix
     ./nvim.nix
     ./tmux.nix
