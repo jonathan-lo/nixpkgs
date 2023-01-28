@@ -23,7 +23,7 @@ in {
     keyMode = "vi";
     prefix = "'C-\\'";
     sensibleOnTop = false;
-    shell = "${pkgs.bashInteractive}/bin/bash";
+    shell = "${pkgs.zsh}/bin/zsh";
     terminal = "tmux-256color";
 
     extraConfig = extraConfigText;

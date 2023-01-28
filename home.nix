@@ -23,6 +23,7 @@
     ./git.nix
     ./nvim.nix
     ./tmux.nix
+    ./zsh.nix
   ];
 
   # Let Home Manager install and manage itself.
