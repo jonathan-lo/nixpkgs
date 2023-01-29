@@ -22,9 +22,12 @@ in {
 
     profileExtra = ". /home/jlo/.nix-profile/etc/profile.d/nix.sh";
     shellAliases = aliases;
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = ["git"];
+      theme = "robbyrussell";
+    };
   };
 
-  config.programs.zsh.oh-my-zsh = {
-    enable = true;
-  };
 }
