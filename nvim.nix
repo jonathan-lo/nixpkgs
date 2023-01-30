@@ -34,7 +34,7 @@
       dracula-nvim
 
       {
-        config = ''
+			config = ''
           require'nvim-treesitter.configs'.setup {
             highlight = {
               enable = true,
@@ -52,9 +52,30 @@
           ]));
         type = "lua";
       }
+
+      {
+        config = ''
+          require('telescope').load_extension('fzy_native')
+        '';
+
+        plugin = telescope-fzy-native-nvim;
+        type = "lua";
+      }
+
+      {
+
+        config = ''
+          local builtin = require('telescope.builtin')
+          vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+          vim.keymap.set('n', 'rg', builtin.live_grep, opts)
+        '';
+
+        plugin = telescope-nvim;
+        type = "lua";
+      }
    ];
 
-    viAlias = true;
+	  viAlias = true;
     vimAlias = true;
   };
 }

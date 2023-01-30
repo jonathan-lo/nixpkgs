@@ -22,6 +22,7 @@
     ./fzf.nix
     ./git.nix
     ./nvim.nix
+    ./ripgrep.nix
     ./tmux.nix
     ./zsh.nix
   ];
