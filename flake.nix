@@ -25,12 +25,8 @@
 
           {
 
-#            home-manager.useGlobalPkgs = true;
-
- #           home-manager.useUserPackages = true;
-
-
-
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
             home-manager.users.jlo = import ./home-mac.nix;
 
           }
