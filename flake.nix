@@ -17,7 +17,7 @@
 #        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
     in {
-      darwinConfigurations."jlo" = darwin.lib.darwinSystem {
+      darwinConfigurations."C02XJ6XXJHD2" = darwin.lib.darwinSystem {
 
         system = "x86_64-darwin";
         modules = [
