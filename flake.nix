@@ -1,20 +1,45 @@
 {
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/release-22.11";
+        
+        darwin.url = "github:lnl7/nix-darwin/master";
+        darwin.inputs.nixpkgs.follows = "nixpkgs";
+
         home-manager = {
             url = "github:nix-community/home-manager/release-22.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, darwin, home-manager, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      overlay = final: prev: {
+#        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+      };
     in {
-      homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      darwinConfigurations."jlo" = darwin.lib.darwinSystem {
 
+        system = "x86_64-darwin";
+        modules = [
+
+
+          {
+
+#            home-manager.useGlobalPkgs = true;
+
+ #           home-manager.useUserPackages = true;
+
+
+
+            home-manager.users.jlo = import ./home-mac.nix;
+
+          }
+        ];
+      };
+
+
+      homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
