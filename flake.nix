@@ -21,8 +21,8 @@
 
         system = "x86_64-darwin";
         modules = [
-
-
+          ./defaults-darwin.nix
+          home-manager.darwinModules.home-manager
           {
 
             home-manager.useGlobalPkgs = true;

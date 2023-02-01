@@ -12,9 +12,13 @@
 
     stateVersion = "22.05";
     username = "jlo";
-    homeDirectory  = "/home/jlo";
+    homeDirectory  = "/Users/jlo";
   };
 
+# users.users.jlo = {
+#      name = "jlo";
+#     home = "/Users/jlo";
+# };
 #  imports = [
 #    ./bash.nix
 #    ./fzf.nix
@@ -26,7 +30,7 @@
 #  ];
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+#  programs.home-manager.enable = true;
 
 #  settings = {
 #    git.email = "jchl027@gmail.com";
