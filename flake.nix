@@ -17,19 +17,14 @@
 #        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
     in {
-      darwinConfigurations."C02XJ6XXJHD2" = darwin.lib.darwinSystem {
+      darwinConfigurations."jlo" = home-manager.lib.homeManagerConfiguration {
 
-        system = "x86_64-darwin";
+        pkgs = nixpkgs.legacyPackages."x86_64-darwin";
         modules = [
-          ./defaults-darwin.nix
-          home-manager.darwinModules.home-manager
-          {
+#./defaults-darwin.nix
 
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.jlo = import ./home-mac.nix;
+           ./home-mac.nix
 
-          }
         ];
       };
 

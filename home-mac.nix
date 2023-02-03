@@ -15,19 +15,15 @@
     homeDirectory  = "/Users/jlo";
   };
 
-# users.users.jlo = {
-#      name = "jlo";
-#     home = "/Users/jlo";
-# };
-#  imports = [
+  imports = [
 #    ./bash.nix
-#    ./fzf.nix
+    ./fzf.nix
 #    ./git.nix
 #    ./nvim.nix
-#    ./ripgrep.nix
+    ./ripgrep.nix
 #    ./tmux.nix
 #    ./zsh.nix
-#  ];
+  ];
 
   # Let Home Manager install and manage itself.
 #  programs.home-manager.enable = true;
