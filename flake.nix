@@ -17,7 +17,7 @@
 #        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
     in {
-      homeConfigurations."jlo@C02XJ6XXJHD2" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."C02XJ6XXJHD2" = home-manager.lib.homeManagerConfiguration {
 
         pkgs = nixpkgs.legacyPackages."x86_64-darwin";
         modules = [

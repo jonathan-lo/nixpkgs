@@ -21,12 +21,12 @@
 #    ./git.nix
 #    ./nvim.nix
     ./ripgrep.nix
-#    ./tmux.nix
-#    ./zsh.nix
+    ./tmux.nix
+    ./zsh-darwin.nix
   ];
 
   # Let Home Manager install and manage itself.
-#  programs.home-manager.enable = true;
+  programs.home-manager.enable = true;
 
 #  settings = {
 #    git.email = "jchl027@gmail.com";
