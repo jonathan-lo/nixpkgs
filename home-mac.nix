@@ -19,7 +19,7 @@
 #    ./bash.nix
     ./fzf.nix
 #    ./git.nix
-#    ./nvim.nix
+    ./nvim.nix
     ./ripgrep.nix
     ./tmux.nix
     ./zsh-darwin.nix
