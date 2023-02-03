@@ -20,7 +20,7 @@ in {
   config.programs.zsh = {
     enable = true;
 
-#    profileExtra = ". /home/jlo/.nix-profile/etc/profile.d/nix.sh";
+    profileExtra = ". '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'";
     shellAliases = aliases;
 
     oh-my-zsh = {
