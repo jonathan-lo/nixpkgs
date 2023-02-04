@@ -22,26 +22,74 @@ in {
           bright_foreground = "#ffffff";
         };
 
+        cursor = {
+          text = "CellBackground";
+          cursor = "CellForeground";
+        };
+
+        vi_mode_cursor = {
+          text = "CellBackground";
+          cursor = "CellForeground";
+        };
+
+        search = {
+          matches = {
+            foreground = "#44475a";
+            backgorund = "#50fa7b";
+          };
+
+          focused_match = {
+            foreground = "#44475a";
+            background = "#ffb86c";
+          };
+        };
+
+        footer_bar = {
+          foreground = "#f8f8f2";
+          background = "#282a36";
+        };
+
+        hints = {
+          start = {
+            foreground = "#282a36";
+            background = "#f1fa8c";
+          };
+          end = {
+            foreground = "#f1fa8c";
+            background = "#282a36";
+          };
+        };
+
+        line_indicator = {
+          foreground = "None";
+          background = "None";
+        };
+
+        selection  = {
+          text = "CellForeground";
+          background = "#44475a";
+        };
+
         normal = {
-          black = "#282828";
-          blue = "#458588";
-          cyan = "#689d6a";
-          green = "#98971a";
-          magenta = "#b16286";
-          red = "#cc241d";
-          white = "#a89984";
-          yellow = "#d79921";
+          black = "#21222c";
+          red = "#ff5555";
+          green =  "#50fa7b";
+          yellow =  "#f1fa8c";
+          blue =  "#bd93f9";
+          magenta =  "#ff79c6";
+          cyan =  "#8be9fd";
+          white =  "#f8f8f2";
         };
 
         bright = {
-          black = "#928374";
-          blue = "#83a598";
-          cyan = "#8ec07c";
-          green = "#b8bb26";
-          magenta = "#d3869b";
-          red = "#fb4934";
-          white = "#ebdbb2";
-          yellow = "#fabd2f";
+          black = "#6272a4";
+          red = "#ff6e6e";
+          green = "#69ff94";
+          yellow = "#ffffa5";
+          blue = "#d6acff";
+          magenta = "#ff92df";
+          cyan = "#a4ffff";
+          white = "#ffffff";
         };
       };
 
@@ -52,7 +100,7 @@ in {
           family = cfg.fontName;
           style = "Regular";
         };
-        size = 12;
+        size = 14;
       };
     };
   };

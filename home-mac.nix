@@ -16,7 +16,7 @@
   };
 
   imports = [
-#    ./bash.nix
+    ./alacritty.nix
     ./fzf.nix
 #    ./git.nix
     ./nvim.nix
@@ -28,7 +28,8 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-#  settings = {
+  settings = {
+     alacritty.fontName = "Fira Code";
 #    git.email = "jchl027@gmail.com";
-#  };
+  };
 }
