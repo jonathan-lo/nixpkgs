@@ -9,12 +9,14 @@
             url = "github:nix-community/home-manager/release-22.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     };
 
-  outputs = { self, nixpkgs, darwin, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
     let
       overlay = final: prev: {
-#        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
     in {
       homeConfigurations."C02XJ6XXJHD2" = home-manager.lib.homeManagerConfiguration {
@@ -22,7 +24,7 @@
         pkgs = nixpkgs.legacyPackages."x86_64-darwin";
         modules = [
 #./defaults-darwin.nix
-
+           ({ ... }: { nixpkgs.overlays = [ overlay ]; })
            ./home-mac.nix
 
         ];
@@ -34,6 +36,7 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
+          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
           ./home.nix
         ];
 

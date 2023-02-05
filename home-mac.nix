@@ -18,6 +18,7 @@
   imports = [
     ./alacritty.nix
     ./fzf.nix
+    ./go.nix
 #    ./git.nix
     ./nvim.nix
     ./ripgrep.nix
