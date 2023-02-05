@@ -155,6 +155,9 @@
         type = "lua";
       }
 
+      nvim-tree-lua
+      nvim-web-devicons
+
       {
         config = ''
           require('telescope').load_extension('fzy_native')
@@ -168,7 +171,7 @@
 
         config = ''
           local builtin = require('telescope.builtin')
-          vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+          vim.keymap.set('n', '<C-n>', builtin.find_files, {})
           vim.keymap.set('n', 'rg', builtin.live_grep, opts)
         '';
 
