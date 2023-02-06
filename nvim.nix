@@ -43,11 +43,16 @@
         '';
         plugin = (nvim-treesitter.withPlugins (plugins:
           with pkgs.tree-sitter-grammars; [
-					tree-sitter-bash
+            tree-sitter-bash
             tree-sitter-go
             tree-sitter-gomod
             tree-sitter-hcl
+            tree-sitter-java
+            tree-sitter-kotlin
+            tree-sitter-make
             tree-sitter-nix
+            tree-sitter-rust
+            tree-sitter-toml
             tree-sitter-yaml
           ]));
         type = "lua";
@@ -155,7 +160,15 @@
         type = "lua";
       }
 
-      nvim-tree-lua
+      {
+        config = ''
+          require("nvim-tree").setup()
+          '';
+
+        plugin = nvim-tree-lua;
+        type = "lua";
+      }
+
       nvim-web-devicons
 
       {
