@@ -9,8 +9,8 @@ in {
     sessionVariables = { RIPGREP_CONFIG_PATH = configPath; };
   };
 
-#  xdg.configFile."ripgrep/ripgreprc".text = ''
-#    --glob
-#    !*.tfstate
-#  '';
+  xdg.configFile."ripgrep/ripgreprc".text = ''
+    --glob
+    !*.tfstate
+  '';
 }
