@@ -9,6 +9,7 @@ let
     k = "kubectl";
     ka = "kubectl apply -f";
     kg = "kubectl get";
+    kgp = "kubectl get pod";
     klog = "kubectl logs";
     kn = "kubectl config set-context --current --namespace";
     kpf = "kubectl port-forward";

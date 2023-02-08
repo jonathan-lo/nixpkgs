@@ -43,7 +43,6 @@
         '';
         plugin = (nvim-treesitter.withPlugins (plugins:
           with pkgs.tree-sitter-grammars; [
-            tree-sitter-bash
             tree-sitter-go
             tree-sitter-gomod
             tree-sitter-hcl
