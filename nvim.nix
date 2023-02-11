@@ -79,6 +79,14 @@
 
       # required by cmp for snippets.
       luasnip
+      
+      {
+         config = ''
+           require('lualine').setup();
+         '';
+         plugin = lualine-nvim;
+         type = "lua";
+      }
 
       {
         config = ''
