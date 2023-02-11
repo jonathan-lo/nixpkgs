@@ -23,6 +23,7 @@
     ./git.nix
     ./kubernetes.nix
     ./nvim.nix
+    ./platform.nix
     ./ripgrep.nix
     ./tmux.nix
     ./zsh.nix
