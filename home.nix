@@ -18,7 +18,6 @@
   };
 
   imports = [
-    ./bash.nix
     ./fzf.nix
     ./go.nix
     ./git.nix
