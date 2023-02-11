@@ -21,6 +21,7 @@
     ./fzf.nix
     ./go.nix
     ./git.nix
+    ./kubernetes.nix
     ./nvim.nix
     ./ripgrep.nix
     ./tmux.nix
