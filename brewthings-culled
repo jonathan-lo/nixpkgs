@@ -6,7 +6,6 @@ docker
 docker-compose
 docker-credential-helper-ecr
 dust
-eksctl
 findutils
 gh
 git
@@ -15,34 +14,15 @@ httpie
 hugo
 istioctl
 jq
-jsonnet
 k9s
-kind
-kops
-kubebuilder
-kubecfg
-kubectx
-kubernetes-cli
-kubernetes-cli@1.22
-kubernetes-helm
-kustomize
-nvm
 opa
 operator-sdk
-p11-kit
 pipenv
-prometheus
-python@3.9
-qemu
-rbac-lookup
 siege
-sqlite
 step
-stern
 terraform
 terraform@0.13
 tilt
-vault
 wget
 
 # casks
