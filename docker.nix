@@ -5,7 +5,7 @@ with lib;
     (if (builtins.hasAttr "homebrew" options) then {
       homebrew = {
         brews = [
-           "lima"
+          "lima"
         ];
 
         casks = [ "docker" ];
@@ -13,9 +13,7 @@ with lib;
 
       # Make the Lima VM Docker (Moby) socket available to the host.
       env.DOCKER_HOST = "unix://$HOME/.docker/docker.sock";
-    } else {
-
-    }
+    } else { }
     )
   ]);
 
