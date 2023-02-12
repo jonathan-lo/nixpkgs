@@ -15,6 +15,7 @@ let
     l = "ls";
     ll = "ls -l";
     ls = "ls --color=tty";
+    tf = "terraform";
   };
 in {
   config.programs.zsh = {
