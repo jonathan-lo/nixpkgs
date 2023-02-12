@@ -5,10 +5,5 @@ docker
 docker-compose
 docker-credential-helper-ecr
 findutils
-gh
-pipenv
 step
-terraform
-terraform@0.13
-# casks
 
