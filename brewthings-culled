@@ -1,8 +1,6 @@
 awscli
 coreutils
 dive
-docker
-docker-compose
 docker-credential-helper-ecr
 findutils
 
