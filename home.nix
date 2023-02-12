@@ -9,6 +9,7 @@
         fira-code
         unstable.gh
         jq
+        nixpkgs-fmt
         step-cli
         tcpdump
         yq-go
