@@ -5,5 +5,4 @@ docker
 docker-compose
 docker-credential-helper-ecr
 findutils
-step
 
