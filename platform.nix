@@ -6,5 +6,6 @@
     unstable.kubebuilder
     open-policy-agent
     operator-sdk
+    tilt
   ];
 }
