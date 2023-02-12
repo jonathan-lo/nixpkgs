@@ -2,11 +2,11 @@
 
 {
   users = {
-      users = {
-          jlo = {
-              home = "/Users/jlo";
-          };
+    users = {
+      jlo = {
+        home = "/Users/jlo";
       };
+    };
   };
 
 }

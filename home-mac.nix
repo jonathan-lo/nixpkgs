@@ -5,25 +5,25 @@
 
   home = {
     packages = with pkgs; [
-        du-dust
-        fira-code
-        unstable.gh
-        jq
-        step-cli
-        tcpdump
-        yq-go
+      du-dust
+      fira-code
+      unstable.gh
+      jq
+      step-cli
+      tcpdump
+      yq-go
     ];
 
     stateVersion = "22.05";
     username = "jlo";
-    homeDirectory  = "/Users/jlo";
+    homeDirectory = "/Users/jlo";
   };
 
   imports = [
     ./alacritty.nix
     ./fzf.nix
     ./go.nix
-#    ./git.nix
+    #    ./git.nix
     ./homebrew.nix
     ./kubernetes.nix
     ./nvim.nix
@@ -38,7 +38,7 @@
   programs.home-manager.enable = true;
 
   settings = {
-     alacritty.fontName = "Fira Code";
-#    git.email = "jchl027@gmail.com";
+    alacritty.fontName = "Fira Code";
+    #    git.email = "jchl027@gmail.com";
   };
 }

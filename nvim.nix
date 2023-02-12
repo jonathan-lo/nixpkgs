@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  
+
   home.packages = with pkgs; [ rnix-lsp yaml-language-server ];
 
   programs.neovim = {
@@ -34,7 +34,7 @@
       dracula-nvim
 
       {
-			config = ''
+        config = ''
           require'nvim-treesitter.configs'.setup {
             highlight = {
               enable = true,
@@ -57,7 +57,7 @@
         type = "lua";
       }
 
-    {
+      {
         config = ''
           require'nvim-treesitter.configs'.setup {
             textobjects = {
@@ -79,13 +79,13 @@
 
       # required by cmp for snippets.
       luasnip
-      
+
       {
-         config = ''
-           require('lualine').setup();
-         '';
-         plugin = lualine-nvim;
-         type = "lua";
+        config = ''
+          require('lualine').setup();
+        '';
+        plugin = lualine-nvim;
+        type = "lua";
       }
 
       {
@@ -172,7 +172,7 @@
           local api = require("nvim-tree.api")
           require("nvim-tree").setup()
           vim.keymap.set('n', '<A-1>', api.tree.toggle, opts)
-          '';
+        '';
 
         plugin = nvim-tree-lua;
         type = "lua";
@@ -205,9 +205,9 @@
       vim-go
       vim-fugitive
       vim-surround
-   ];
+    ];
 
-	  viAlias = true;
+    viAlias = true;
     vimAlias = true;
   };
 }

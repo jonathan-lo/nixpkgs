@@ -1,31 +1,32 @@
 {
-    inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/release-22.11";
-        
-        darwin.url = "github:lnl7/nix-darwin/master";
-        darwin.inputs.nixpkgs.follows = "nixpkgs";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/release-22.11";
 
-        home-manager = {
-            url = "github:nix-community/home-manager/release-22.11";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-        nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-22.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+  };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
     let
       overlay = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
-    in {
+    in
+    {
       homeConfigurations."C02XJ6XXJHD2" = home-manager.lib.homeManagerConfiguration {
 
         pkgs = nixpkgs.legacyPackages."x86_64-darwin";
         modules = [
-#./defaults-darwin.nix
-           ({ ... }: { nixpkgs.overlays = [ overlay ]; })
-           ./home-mac.nix
+          #./defaults-darwin.nix
+          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
+          ./home-mac.nix
 
         ];
       };

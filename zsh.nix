@@ -17,7 +17,8 @@ let
     ls = "ls --color=tty";
     tf = "terraform";
   };
-in {
+in
+{
   config.programs.zsh = {
     enable = true;
 
@@ -26,7 +27,7 @@ in {
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["git"];
+      plugins = [ "git" ];
       theme = "robbyrussell";
     };
   };

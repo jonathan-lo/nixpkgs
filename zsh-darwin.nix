@@ -17,7 +17,8 @@ let
     ll = "ls -l";
     ls = "ls --color=tty";
   };
-in {
+in
+{
   config.programs.zsh = {
     enable = true;
 
@@ -26,7 +27,7 @@ in {
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["git"];
+      plugins = [ "git" ];
       theme = "robbyrussell";
     };
   };

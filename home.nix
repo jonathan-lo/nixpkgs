@@ -5,19 +5,19 @@
 
   home = {
     packages = with pkgs; [
-        du-dust
-        fira-code
-        unstable.gh
-        jq
-        nixpkgs-fmt
-        step-cli
-        tcpdump
-        yq-go
+      du-dust
+      fira-code
+      unstable.gh
+      jq
+      nixpkgs-fmt
+      step-cli
+      tcpdump
+      yq-go
     ];
 
     stateVersion = "22.05";
     username = "jlo";
-    homeDirectory  = "/home/jlo";
+    homeDirectory = "/home/jlo";
   };
 
   imports = [

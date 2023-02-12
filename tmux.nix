@@ -12,7 +12,8 @@ let
     set -ga terminal-overrides ",xterm-256color:Tc"
     set-option -g status-position top
   '';
-in {
+in
+{
   config.programs.tmux = {
     enable = true;
 
