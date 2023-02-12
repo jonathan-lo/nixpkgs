@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     unstable.istioctl
     unstable.kubebuilder
-    opa
+    open-policy-agent
     operator-sdk
   ];
 }
