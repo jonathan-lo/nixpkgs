@@ -9,6 +9,7 @@
         fira-code
         unstable.gh
         jq
+        step-cli
         tcpdump
         yq-go
     ];
