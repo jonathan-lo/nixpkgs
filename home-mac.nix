@@ -7,7 +7,10 @@
     packages = with pkgs; [
         du-dust
         fira-code
+        unstable.gh
         jq
+        tcpdump
+        yq-go
     ];
 
     stateVersion = "22.05";
