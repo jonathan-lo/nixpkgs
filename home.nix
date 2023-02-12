@@ -21,6 +21,7 @@
   };
 
   imports = [
+    ./docker.nix
     ./fzf.nix
     ./go.nix
     ./git.nix
