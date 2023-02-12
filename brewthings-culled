@@ -1,35 +1,14 @@
-aws-iam-authenticator
 awscli
 coreutils
 dive
 docker
 docker-compose
 docker-credential-helper-ecr
-dust
 findutils
 gh
-git
-htop
-httpie
-hugo
-istioctl
-jq
-k9s
-opa
-operator-sdk
 pipenv
-siege
 step
 terraform
 terraform@0.13
-tilt
-wget
-
 # casks
 
-docker
-firefox
-google-chrome
-postman
-slack
-visual-studio-code
