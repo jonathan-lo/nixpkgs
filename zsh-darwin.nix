@@ -22,7 +22,15 @@ in
   config.programs.zsh = {
     enable = true;
 
-    profileExtra = ". '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'";
+    profileExtra = ''
+      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      export NIX_SSL_CERT_FILE=/Library/Certificates/allcerts.pem
+      export GPG_TTY="$(tty)"
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+      gpgconf --launch pg-agent
+      gpg-connect-agent updatestartuptty /bye > /dev/null
+    '';
     shellAliases = aliases;
 
     oh-my-zsh = {
