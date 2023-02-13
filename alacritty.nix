@@ -100,6 +100,15 @@ in {
           family = cfg.fontName;
           style = "Regular";
         };
+        scale_with_dpi = "true";
+        offset = {
+          x = 0;
+          y = 1;
+        };
+        glyph_offset = {
+          x = 0;
+          y = 1;
+        };
         size = 14;
       };
     };
