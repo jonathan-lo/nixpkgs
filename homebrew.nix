@@ -1,3 +1,4 @@
+# this seems to be only available through nix-darwin and not home-manager.
 { ... }: {
 
   homebrew = {
@@ -33,5 +34,5 @@
   };
 
   # No thanks.
-  env.HOMEBREW_NO_ANALYTICS = "1";
+#  env.HOMEBREW_NO_ANALYTICS = "1";
 }

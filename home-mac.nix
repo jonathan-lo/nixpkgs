@@ -26,7 +26,6 @@
     ./fzf.nix
     ./go.nix
     #    ./git.nix
-    ./homebrew.nix
     ./kubernetes.nix
     ./nvim.nix
     ./ops.nix
