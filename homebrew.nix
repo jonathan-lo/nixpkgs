@@ -34,5 +34,5 @@
   };
 
   # No thanks.
-#  env.HOMEBREW_NO_ANALYTICS = "1";
+  #  env.HOMEBREW_NO_ANALYTICS = "1";
 }
