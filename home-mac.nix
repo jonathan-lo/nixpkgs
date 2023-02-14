@@ -22,6 +22,7 @@
 
   imports = [
     ./alacritty.nix
+    ./aws.nix
     ./docker.nix
     ./fzf.nix
     ./go.nix
