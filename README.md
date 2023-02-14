@@ -4,10 +4,15 @@
 
 ### mac
 
-- [ ] fix tmux?
+- [x] fix tmux?
 - [ ] port brew installed tools to config
-- [ ] finish setting up nvim
+- [x] finish setting up nvim
 - [ ] fix ugly duplication between os
+- [ ] laptop keymaps
+
+### generic
+
+- [ ] zsh functions / aliases
 
 
 ## setup notes
