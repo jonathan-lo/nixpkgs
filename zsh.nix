@@ -9,6 +9,7 @@ let
     k = "kubectl";
     ka = "kubectl apply -f";
     kg = "kubectl get";
+    kgp = "kubectl get pod";
     klog = "kubectl logs";
     kn = "kubectl config set-context --current --namespace";
     kpf = "kubectl port-forward";
@@ -19,10 +20,16 @@ let
   };
 in
 {
+  options.settings.zsh = {
+    profileExtra = mkOption {
+      description = "extra lines in .zshprofile";
+      type = types.lines;
+    };
+  };
   config.programs.zsh = {
     enable = true;
 
-    profileExtra = ". /home/jlo/.nix-profile/etc/profile.d/nix.sh";
+    profileExtra = cfg.profileExtra; #". /home/jlo/.nix-profile/etc/profile.d/nix.sh";
     shellAliases = aliases;
 
     oh-my-zsh = {

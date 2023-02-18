@@ -33,7 +33,7 @@
     ./platform.nix
     ./ripgrep.nix
     ./tmux.nix
-    ./zsh-darwin.nix
+    ./zsh.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -42,5 +42,15 @@
   settings = {
     alacritty.fontName = "Fira Code";
     #    git.email = "jchl027@gmail.com";
+
+    zsh.profileExtra = ''
+      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      export NIX_SSL_CERT_FILE=/Library/Certificates/allcerts.pem
+      export GPG_TTY="$(tty)"
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+      gpgconf --launch pg-agent
+      gpg-connect-agent updatestartuptty /bye > /dev/null
+    '';
   };
 }
