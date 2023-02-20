@@ -20,6 +20,11 @@
 ### darwin
 
 - install nix multi-user
-- change to single-user mode
+- change to single-user mode https://zzamboni.org/post/using-nixs-single-user-mode-on-macos/
 - install home manager
+- apply home config
+- setup fonts?
+- setup terminfo for alacritty https://github.com/alacritty/alacritty/blob/master/INSTALL.md#terminfo
+- ???
+- profit
 
