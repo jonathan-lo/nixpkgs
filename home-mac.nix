@@ -12,6 +12,7 @@
       nixpkgs-fmt
       step-cli
       tcpdump
+      tree
       yq-go
     ];
 
