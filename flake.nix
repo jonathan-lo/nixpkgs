@@ -30,6 +30,17 @@
 
         ];
       };
+      homeConfigurations."C02GW0T4Q05N" = home-manager.lib.homeManagerConfiguration {
+
+        pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+        modules = [
+          #./defaults-darwin.nix
+          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
+          ./home-mac.nix
+
+        ];
+      };
+
 
 
       homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
