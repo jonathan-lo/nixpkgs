@@ -27,7 +27,7 @@
     ./fzf.nix
     ./go.nix
     ./gpg.nix
-    #    ./git.nix
+    ./git.nix
     ./kubernetes.nix
     ./nvim.nix
     ./ops.nix
@@ -42,8 +42,6 @@
 
   settings = {
     alacritty.fontName = "Fira Code";
-    #    git.email = "jchl027@gmail.com";
-
     zsh.profileExtra = ''
       . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       export NIX_SSL_CERT_FILE=/Library/Certificates/allcerts.pem
@@ -53,5 +51,6 @@
       gpgconf --launch pg-agent
       gpg-connect-agent updatestartuptty /bye > /dev/null
     '';
+    git.email = "jlo@tyro.com";
   };
 }
