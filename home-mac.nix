@@ -26,6 +26,7 @@
     ./docker.nix
     ./fzf.nix
     ./go.nix
+    ./gpg.nix
     #    ./git.nix
     ./kubernetes.nix
     ./nvim.nix
