@@ -9,6 +9,6 @@
 #   ./result/sw/bin/darwin-rebuild switch --flake .
 # else
 
-  home-manager switch --flake .#$(hostname)
+  home-manager switch --flake .#$(hostname) --impure
 
 #fi
