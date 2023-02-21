@@ -28,7 +28,10 @@ in
   };
   config.programs.zsh = {
     enable = true;
+    initExtraFirst = ''
+       export PATH=$PATH:$HOME/bin
 
+    '';
     profileExtra = cfg.profileExtra; #". /home/jlo/.nix-profile/etc/profile.d/nix.sh";
     shellAliases = aliases;
 
