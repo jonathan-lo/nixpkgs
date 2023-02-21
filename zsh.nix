@@ -30,6 +30,7 @@ in
     enable = true;
     initExtraFirst = ''
       export PATH=$PATH:$HOME/bin
+      export PATH=$PATH:/opt/homebrew/bin
       export REQUESTS_CA_BUNDLE="/Library/Certificates/allcerts.pem"
     '';
     profileExtra = cfg.profileExtra; #". /home/jlo/.nix-profile/etc/profile.d/nix.sh";
