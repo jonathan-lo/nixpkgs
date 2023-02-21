@@ -44,7 +44,7 @@
   programs.home-manager.enable = true;
 
   settings = {
-    alacritty.fontName = "Fira Code";
+    alacritty.fontName = "FuraMono Nerd Font Mono";
     zsh.profileExtra = ''
       . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
     '';
