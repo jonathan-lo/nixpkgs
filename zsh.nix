@@ -8,11 +8,13 @@ let
     dk = "docker";
     k = "kubectl";
     ka = "kubectl apply -f";
+    kd = "kubectl describe";
     kg = "kubectl get";
     kgp = "kubectl get pod";
     klog = "kubectl logs";
     kn = "kubectl config set-context --current --namespace";
     kpf = "kubectl port-forward";
+    krm = "kubectl delete";
     l = "ls";
     ll = "ls -l";
     ls = "ls --color=tty";
