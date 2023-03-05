@@ -23,6 +23,7 @@
 
   imports = [
     ./aws.nix
+    ./direnv.nix
     ./docker.nix
     ./fzf.nix
     ./go.nix
