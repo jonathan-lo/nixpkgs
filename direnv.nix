@@ -8,4 +8,3 @@
     nix-direnv.enable = true;
   };
 }
-
