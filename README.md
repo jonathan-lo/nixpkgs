@@ -28,3 +28,8 @@
 - ???
 - profit
 
+### darwin manually installed stuff via brew
+
+* coreutils
+* obsidian
+* qemu / lima via internal script
