@@ -13,11 +13,25 @@
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
     let
+      inherit (lib.my) mapModules mapModulesRec mapHosts;
+
       overlay = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
+
+
+      mkPkgs = pkgs: extraOverlays: system: import pkgs {
+        inherit system;
+        config.allowUnfree = true; # forgive me Stallman senpai
+        overlays = extraOverlays ++ (lib.attrValues self.overlays);
+      };
+
+      pkgs = mkPkgs nixpkgs [ self.overlay ];
+      lib = nixpkgs.lib.extend
+
+        (self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
     in
     {
       homeConfigurations."C02XJ6XXJHD2" = home-manager.lib.homeManagerConfiguration {
