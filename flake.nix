@@ -18,9 +18,9 @@
       inherit (lib.my) mapModules mapModulesRec mapHosts mapConfigurations;
 
       supportedSystems = rec {
-        darwin = [ "x86_64-darwin" "aarch64-darwin" ];
-        linux = [ "x86_64-linux" "aarch64-linux" ];
-        all = darwin ++ linux;
+        darwin = [ "aarch64-darwin" ];
+        #linux = [ "x86_64-linux" ];
+        all = darwin; #++ linux;
       };
 
       overlay = final: prev: {
@@ -44,27 +44,11 @@
     in
     {
       lib = lib.my;
-      homeConfigurations."C02XJ6XXJHD2" = home-manager.lib.homeManagerConfiguration {
 
-        pkgs = nixpkgs.legacyPackages."x86_64-darwin";
-        modules = [
-          #./defaults-darwin.nix
-          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
-          ./home-mac.nix
-
-        ];
-      };
-      homeConfigurations."C02GW0T4Q05N" = home-manager.lib.homeManagerConfiguration {
-
-        pkgs = nixpkgs.legacyPackages."aarch64-darwin";
-        modules = [
-          #./defaults-darwin.nix
-          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
-          ./home-mac.nix
-
-        ];
-      };
-
+      # Nix Darwin host configurations.
+      darwinConfigurations =
+        mapConfigurations supportedSystems.darwin ./hosts/darwin;
+      
       darwinModules = mapModulesRec ./modules import;
 
       homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
@@ -81,8 +65,5 @@
       };
 
 
-      # Nix Darwin host configurations.
-      darwinConfigurations =
-        mapConfigurations supportedSystems.darwin ./hosts/darwin;
     };
 }
