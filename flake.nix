@@ -15,7 +15,13 @@
 
   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
     let
-      inherit (lib.my) mapModules mapModulesRec mapHosts;
+      inherit (lib.my) mapModules mapModulesRec mapHosts mapConfigurations;
+
+      supportedSystems = rec {
+        darwin = [ "x86_64-darwin" "aarch64-darwin" ];
+        linux = [ "x86_64-linux" "aarch64-linux" ];
+        all = darwin ++ linux;
+      };
 
       overlay = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
@@ -29,11 +35,15 @@
       };
 
       pkgs = mkPkgs nixpkgs [ self.overlay ];
-      lib = nixpkgs.lib.extend
-
-        (self: super: { my = import ./lib { inherit pkgs inputs; lib = self; }; });
+      lib = nixpkgs.lib.extend (self: super: {
+        my = import ./lib {
+          inherit pkgs inputs darwin;
+          lib = self;
+        };
+      });
     in
     {
+      lib = lib.my;
       homeConfigurations."C02XJ6XXJHD2" = home-manager.lib.homeManagerConfiguration {
 
         pkgs = nixpkgs.legacyPackages."x86_64-darwin";
@@ -55,7 +65,7 @@
         ];
       };
 
-
+      darwinModules = mapModulesRec ./modules import;
 
       homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
@@ -69,5 +79,10 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
       };
+
+
+      # Nix Darwin host configurations.
+      darwinConfigurations =
+        mapConfigurations supportedSystems.darwin ./hosts/darwin;
     };
 }
