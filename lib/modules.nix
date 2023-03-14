@@ -7,7 +7,8 @@ let
     id mapAttrsToList filterAttrs hasPrefix hasSuffix nameValuePair removeSuffix
     toLower systems;
   inherit (systems.elaborate { system = builtins.currentSystem; }) uname;
-  os = toLower uname.system;
+  #os = toLower uname.system;
+  os = "darwin";
 in
 rec {
   mapModules = dir: fn:
