@@ -94,8 +94,8 @@ in
     env.PATH = [ "$PATH" ];
 
     # Merge Nix environment variables declared by modules.
-#    environment.extraInit = concatStringsSep "\n"
-      #(mapAttrsToList (n: v: ''export ${n}="${v}"'') config.env);
+    #    environment.extraInit = concatStringsSep "\n"
+    #(mapAttrsToList (n: v: ''export ${n}="${v}"'') config.env);
 
     # Private expressions and secrets.
     #private = import "${config.dotfiles.privateDir}/private.nix";

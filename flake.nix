@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-22.11";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -10,11 +10,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "nixpkgs/master";
   };
 
   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
     let
+      inherit (lib) genAttrs;
       inherit (lib.my) mapModules mapModulesRec mapHosts mapConfigurations;
 
       supportedSystems = rec {
@@ -27,14 +28,16 @@
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
 
-
       mkPkgs = pkgs: extraOverlays: system: import pkgs {
         inherit system;
         config.allowUnfree = true; # forgive me Stallman senpai
         overlays = extraOverlays ++ (lib.attrValues self.overlays);
       };
 
-      pkgs = mkPkgs nixpkgs [ self.overlay ];
+      pkgs = genAttrs supportedSystems.all
+        (mkPkgs nixpkgs [ self.overlay ]);
+      pkgsUnstable =
+        genAttrs supportedSystems.all (mkPkgs nixpkgs-unstable [ ]);
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib {
           inherit pkgs inputs darwin;
@@ -44,25 +47,27 @@
     in
     {
       lib = lib.my;
-
       # Nix Darwin host configurations.
+
+      darwinModules = {
+        dotfiles = import ./.;
+      } // mapModulesRec ./modules import;
+
       darwinConfigurations =
         mapConfigurations supportedSystems.darwin ./hosts/darwin;
-      
-      darwinModules = mapModulesRec ./modules import;
 
-      homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [
-          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
-          ./home.nix
-        ];
+      #      homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
+      #pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      # Specify your home configuration modules here, for example,
+      # the path to your home.nix.
+      #modules = [
+      #          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
+      #          ./home.nix
+      #        ];
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
+      # Optionally use extraSpecialArgs
+      # to pass through arguments to home.nix
+      #      };
 
 
     };

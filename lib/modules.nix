@@ -6,7 +6,7 @@ let
   inherit (lib)
     id mapAttrsToList filterAttrs hasPrefix hasSuffix nameValuePair removeSuffix
     toLower systems;
-  inherit (systems.elaborate { system = builtins.currentSystem; }) uname;
+#  inherit (systems.elaborate { system = builtins.currentSystem; }) uname;
   #os = toLower uname.system;
   os = "darwin";
 in
