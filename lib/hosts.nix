@@ -34,23 +34,25 @@ with builtins;
         pkgs = pkgs.${system};
       };
     in
-    if isNixOS then
-      makeOverridable nixosSystem
-        {
-          inherit specialArgs;
-          modules = [
-            ({ config, pkgs, ... }: {
-              imports = [
-                inputs.home-manager.nixosModules.home-manager
+#    if isNixOS then
+#      makeOverridable nixosSystem
+#        {
+#          inherit specialArgs;
+#          modules = [
+#            ({ config, pkgs, ... }: {
+#              imports = [
+#                inputs.home-manager.nixosModules.home-manager
                 #inputs.bad-hosts.nixosModule
                 #inputs.sops-nix.nixosModules.sops
-              ];
-            })
-          ] ++ (optional (pathExists hardware) (hardware)) ++ commonModules;
-        }
-    else
+#              ];
+#            })
+#          ] ++ (optional (pathExists hardware) (hardware)) ++ commonModules;
+#        }
+#    else
       makeOverridable darwinSystem {
-        inherit specialArgs system;
+        inherit specialArgs system; 
+        #system = "aarch64-darwin";
+        
         modules = [
           ({ config, pkgs, ... }: {
             imports = [

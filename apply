@@ -4,7 +4,7 @@
 # if [ "$(uname)" == "Darwin" ]; then
 # 
    nix build \
-   --debug    --extra-experimental-features 'nix-command flakes' \
+   --show-trace --debug    --extra-experimental-features 'nix-command flakes' \
      .#darwinConfigurations.$(hostname).system
    ./result/sw/bin/darwin-rebuild switch --flake .
 # else
