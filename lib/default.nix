@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, darwin, ... }:
+{ inputs, lib, pkgs, ... }:
 
 let
   inherit (lib) makeExtensible attrValues foldr;
@@ -11,7 +11,7 @@ let
 
   mylib = makeExtensible (self:
     with self; mapModules ./.
-      (file: import file { inherit self lib pkgs inputs darwin; }));
+      (file: import file { inherit self lib pkgs inputs; }));
 in
 mylib.extend
   (self: super:

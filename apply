@@ -3,12 +3,12 @@
 # don't use nix-darwin for now
 # if [ "$(uname)" == "Darwin" ]; then
 # 
-   nix build \
-   --debug    --extra-experimental-features 'nix-command flakes' \
-     .#darwinConfigurations.$(hostname).system
-   ./result/sw/bin/darwin-rebuild switch --flake .
+#   nix build \
+#     --extra-experimental-features 'nix-command flakes' \
+#     .#darwinConfigurations.$(hostname).system
+#   ./result/sw/bin/darwin-rebuild switch --flake .
 # else
-#jexport NIXPKGS_ALLOW_UNFREE=1
- # home-manager switch --flake .#$(hostname) --impure
+export NIXPKGS_ALLOW_UNFREE=1
+  home-manager switch --flake .#$(hostname) --impure
 
 #fi
