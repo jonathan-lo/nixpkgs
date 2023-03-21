@@ -52,24 +52,9 @@
       darwinModules = {
         dotfiles = import ./.;
       } // mapModulesRec ./modules import;
-     # Default overlays usable in dependant flakes.
-      overlay = _:
-        { system, ... }: {
-          unstable = pkgsUnstable.${system};
-          my = self.packages.${system};
-        };
-      overlays = mapModules ./overlays import;
 
-      packages =
-        let
-          mkPackages = system:
-            mapModules ./packages (p: pkgs.${system}.callPackage p { });
-        in
-        genAttrs supportedSystems.all mkPackages;
-
-
-      #darwinConfigurations =
-       # mapConfigurations supportedSystems.darwin ./hosts/darwin;
+      darwinConfigurations =
+        mapConfigurations supportedSystems.darwin ./hosts/darwin;
 
       #      homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
       #pkgs = nixpkgs.legacyPackages."x86_64-linux";
