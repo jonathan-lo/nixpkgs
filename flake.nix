@@ -20,16 +20,6 @@
       };
     in
     {
-      homeConfigurations."C02XJ6XXJHD2" = home-manager.lib.homeManagerConfiguration {
-
-        pkgs = nixpkgs.legacyPackages."x86_64-darwin";
-        modules = [
-          #./defaults-darwin.nix
-          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
-          ./home-mac.nix
-
-        ];
-      };
       homeConfigurations."C02GW0T4Q05N" = home-manager.lib.homeManagerConfiguration {
 
         pkgs = nixpkgs.legacyPackages."aarch64-darwin";
@@ -40,8 +30,6 @@
 
         ];
       };
-
-
 
       homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
