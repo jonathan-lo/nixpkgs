@@ -24,20 +24,20 @@
   };
 
   imports = [
-    ./alacritty.nix
-    ./aws.nix
-    ./direnv.nix
-    ./docker.nix
-    ./fzf.nix
-    ./go.nix
-    ./git.nix
-    ./kubernetes.nix
-    ./nvim.nix
-    ./ops.nix
-    ./platform.nix
-    ./ripgrep.nix
-    ./tmux.nix
-    ./zsh.nix
+    ./modules/alacritty.nix
+    ./modules/aws.nix
+    ./modules/direnv.nix
+    ./modules/docker.nix
+    ./modules/fzf.nix
+    ./modules/go.nix
+    ./modules/git.nix
+    ./modules/kubernetes.nix
+    ./modules/nvim.nix
+    ./modules/ops.nix
+    ./modules/platform.nix
+    ./modules/ripgrep.nix
+    ./modules/tmux.nix
+    ./modules/zsh.nix
   ];
 
   # Let Home Manager install and manage itself.
