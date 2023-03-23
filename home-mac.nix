@@ -26,12 +26,10 @@
   imports = [
     ./alacritty.nix
     ./aws.nix
-    ./bash.nix
     ./direnv.nix
     ./docker.nix
     ./fzf.nix
     ./go.nix
-    ./gpg.nix
     ./git.nix
     ./kubernetes.nix
     ./nvim.nix
