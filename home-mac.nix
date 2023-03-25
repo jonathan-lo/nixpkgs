@@ -8,6 +8,7 @@
   home = {
     packages = with pkgs; [
       du-dust
+      fd
       fira-code
       unstable.gh
       jq

@@ -13,6 +13,7 @@
       nixpkgs-fmt
       step-cli
       tcpdump
+      tree
       yq-go
     ];
 
@@ -22,6 +23,7 @@
   };
 
   imports = [
+    ./modules/alacritty.nix
     ./modules/aws.nix
     ./modules/direnv.nix
     ./modules/docker.nix
@@ -41,6 +43,7 @@
   programs.home-manager.enable = true;
 
   settings = {
+    alacritty.fontName = "FuraMono Nerd Font Mono";
     zsh.profileExtra = ". /home/jlo/.nix-profile/etc/profile.d/nix.sh";
     git.email = "jchl027@gmail.com";
   };
