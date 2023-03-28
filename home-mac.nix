@@ -8,7 +8,8 @@
       du-dust
       fd
       fira-code
-      unstable.gh
+      #unstable.gh
+      gh
       jq
       nixpkgs-fmt
       step-cli
