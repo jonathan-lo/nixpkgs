@@ -5,8 +5,14 @@
 
   homebrew = {
     enable = true;
-
-    casks = [ "alacritty" ];
+    brews = [
+      "coreutils"
+      "findutils"
+      ];
+    casks = [ 
+    "alacritty"
+    "obsidian"
+    ];
 
     extraConfig = ''
       cask_args require_sha: true
