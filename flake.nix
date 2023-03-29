@@ -20,7 +20,8 @@
       };
     in
     {
-      homeConfigurations."C02GW0T4Q05N" = home-manager.lib.homeManagerConfiguration {
+      #homeConfigurations."C02GW0T4Q05N" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."jlo" = home-manager.lib.homeManagerConfiguration {
 
         pkgs = nixpkgs.legacyPackages."aarch64-darwin";
         modules = [
