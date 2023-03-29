@@ -27,13 +27,9 @@
           ({ ... }: { nixpkgs.overlays = [ overlay ]; })
           home-manager.darwinModules.home-manager
           {
-#            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
             home-manager.users.jlo = import ./home-mac.nix;
           }
           ./homebrew.nix
-
           ./services.nix
         ];
       };
@@ -46,9 +42,6 @@
           ({ ... }: { nixpkgs.overlays = [ overlay ]; })
           ./home.nix
         ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
       };
     };
 }
