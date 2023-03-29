@@ -8,10 +8,10 @@
     brews = [
       "coreutils"
       "findutils"
-      ];
-    casks = [ 
-    "alacritty"
-    "obsidian"
+    ];
+    casks = [
+      "alacritty"
+      "obsidian"
     ];
 
     extraConfig = ''
