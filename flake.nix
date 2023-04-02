@@ -20,15 +20,16 @@
       };
     in
     {
-      #homeConfigurations."C02GW0T4Q05N" = home-manager.lib.homeManagerConfiguration {
-      homeConfigurations."jlo" = home-manager.lib.homeManagerConfiguration {
-
-        pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+      darwinConfigurations."C02GW0T4Q05N" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
         modules = [
-          #./defaults-darwin.nix
           ({ ... }: { nixpkgs.overlays = [ overlay ]; })
-          ./home-mac.nix
-
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.users.jlo = import ./home-mac.nix;
+          }
+          ./homebrew.nix
+          ./services.nix
         ];
       };
 
@@ -40,9 +41,6 @@
           ({ ... }: { nixpkgs.overlays = [ overlay ]; })
           ./home.nix
         ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
       };
     };
 }
