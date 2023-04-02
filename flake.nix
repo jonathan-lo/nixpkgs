@@ -20,7 +20,6 @@
       };
     in
     {
-
       darwinConfigurations."C02GW0T4Q05N" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
