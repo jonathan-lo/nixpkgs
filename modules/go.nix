@@ -2,14 +2,12 @@
 
 {
   home.packages = with pkgs; [
-    #    unstable.gofumpt
-    #    unstable.gopls
-    gofumpt
-    gopls
+    unstable.gofumpt
+    unstable.gopls
   ];
 
   programs.go = {
     enable = true;
-    #    package = pkgs.unstable.go;
+    package = pkgs.unstable.go;
   };
 }
