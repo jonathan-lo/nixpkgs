@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
-
   fonts.fontconfig.enable = true;
 
   home = {
@@ -12,6 +10,7 @@
       fira-code
       unstable.gh
       jq
+      mktemp
       nixpkgs-fmt
       step-cli
       tcpdump
