@@ -32,6 +32,7 @@ in
     enable = true;
     initExtraFirst = ''
       export PATH=$PATH:$HOME/bin
+      export PATH=$PATH:$HOME/go/bin
       export PATH=/opt/homebrew/bin:$PATH
       export DOCKER_HOST=unix://$HOME/.docker/docker.sock
       export REQUESTS_CA_BUNDLE="/Library/Certificates/allcerts.pem"

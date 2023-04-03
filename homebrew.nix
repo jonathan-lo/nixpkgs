@@ -6,6 +6,7 @@
   homebrew = {
     enable = true;
     brews = [
+      "bash"
       "coreutils"
       "findutils"
     ];

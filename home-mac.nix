@@ -10,6 +10,7 @@
       fira-code
       unstable.gh
       jq
+      mktemp
       nixpkgs-fmt
       step-cli
       tcpdump
