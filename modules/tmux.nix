@@ -5,13 +5,16 @@ let
   cfg = config.settings.tmux;
 
   extraConfigText = ''
-            bind | split-window -h -c '#{pane_current_path}'
-            bind - split-window -v -c '#{pane_current_path}'
-            bind -T copy-mode-vi v send -X begin-selection
-            bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
-            set-option -g status-position top
-            set -ga terminal-overrides ",xterm-256color:Tc"
+    bind | split-window -h -c '#{pane_current_path}'
+    bind - split-window -v -c '#{pane_current_path}'
+    bind -T copy-mode-vi v send -X begin-selection
+    bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+    set-option -g status-position top
+    set -ga terminal-overrides ",xterm-256color:Tc"
     set -ga terminal-overrides ",alacritty:RGB"
+    set-option -g status-interval 5
+    set-option -g automatic-rename on
+    set-option -g automatic-rename-format '#{b:pane_current_path}'
   '';
 in
 {
