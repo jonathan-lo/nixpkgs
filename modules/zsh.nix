@@ -18,6 +18,7 @@ let
     l = "ls";
     ll = "ls -l";
     ls = "ls --color=tty";
+    ssh = "TERM=xterm-256color ssh";
     tf = "terraform";
   };
 in
