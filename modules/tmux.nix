@@ -27,7 +27,7 @@ in
     escapeTime = 0;
     historyLimit = 1000000;
     keyMode = "vi";
-    prefix = "'C-\\'";
+    prefix = "C-Space";
     sensibleOnTop = false;
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "alacritty";
