@@ -26,7 +26,7 @@
 
     onActivation = {
       autoUpdate = false;
-      cleanup = "zap";
+      cleanup = "none"; # move this back to zap once lima situation is sorted.
       upgrade = false;
     };
 
