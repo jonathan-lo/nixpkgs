@@ -19,7 +19,7 @@ in {
 
   config.programs.git = {
     enable = true;
-
+    package= pkgs.unstable.git;
     aliases = {
       ci = "commit";
       co = "checkout";

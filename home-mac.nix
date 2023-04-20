@@ -5,6 +5,7 @@
 
   home = {
     packages = with pkgs; [
+      curl 
       du-dust
       fd
       fira-code
@@ -12,6 +13,7 @@
       jq
       mktemp
       nixpkgs-fmt
+      openssl
       step-cli
       tcpdump
       tree
