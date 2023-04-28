@@ -13,7 +13,6 @@
       jq
       mktemp
       nixpkgs-fmt
-      openssl
       step-cli
       tcpdump
       tree
