@@ -5,7 +5,6 @@
 
   home = {
     packages = with pkgs; [
-      curl 
       du-dust
       fd
       fira-code
