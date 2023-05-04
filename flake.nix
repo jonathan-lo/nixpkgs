@@ -42,6 +42,7 @@
         modules = [
           ({ ... }: { nixpkgs.overlays = [ overlay ]; })
           ./home.nix
+          ./settings-linux.nix
         ];
       };
     };
