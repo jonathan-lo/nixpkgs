@@ -35,6 +35,13 @@
 
       {
         config = ''
+          require('gitsigns').setup();
+        '';
+        plugin = gitsigns-nvim;
+        type = "lua";
+      }
+      {
+        config = ''
           require'nvim-treesitter.configs'.setup {
             highlight = {
               enable = true,
@@ -96,7 +103,7 @@
             mapping = cmp.mapping.preset.insert({
               ['<C-b>'] = cmp.mapping.scroll_docs(-4),
               ['<C-f>'] = cmp.mapping.scroll_docs(4),
-              ['<C-Space>'] = cmp.mapping.complete(),
+              ['<Shift-Space>'] = cmp.mapping.complete(),
               ['<C-e>'] = cmp.mapping.abort(),
               ['<CR>'] = cmp.mapping.confirm({ select = true }),
             }),
@@ -177,7 +184,6 @@
         plugin = nvim-tree-lua;
         type = "lua";
       }
-
       nvim-web-devicons
 
       {
@@ -203,7 +209,6 @@
 
       vim-commentary
       vim-go
-      vim-fugitive
       vim-surround
     ];
 
