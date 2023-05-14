@@ -8,6 +8,7 @@
     enable = true;
 
     extraConfig = ''
+      map <leader> "\<Space>"
       nnoremap <C-J> <C-W><C-J>
       nnoremap <C-K> <C-W><C-K>
       nnoremap <C-L> <C-W><C-L>
@@ -33,6 +34,25 @@
     plugins = with pkgs.vimPlugins; [
       dracula-nvim
 
+      vim-oscyank
+      {
+        config = ''
+
+          require('gitlinker').setup {
+						opts = {
+							action_callback = function(url)
+								-- yank to unnamed register
+								vim.api.nvim_command('let @" = \''' .. url .. '\''')
+								-- copy to the system clipboard using OSC52
+								vim.fn.OSCYankString(url)
+							end,
+						},
+						mappings = "gy"
+					}
+        '';
+        plugin = gitlinker-nvim;
+        type = "lua";
+      }
       {
         config = ''
           require('gitsigns').setup();
@@ -207,6 +227,7 @@
         type = "lua";
       }
 
+      plenary-nvim
       vim-commentary
       vim-go
       vim-surround
