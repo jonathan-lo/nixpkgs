@@ -9,6 +9,7 @@ let
     bind - split-window -v -c '#{pane_current_path}'
     bind -T copy-mode-vi v send -X begin-selection
     bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+    set -s set-clipboard on
     set-option -g status-position top
     set -ga terminal-overrides ",xterm-256color:Tc"
     set -ga terminal-overrides ",alacritty:RGB"
