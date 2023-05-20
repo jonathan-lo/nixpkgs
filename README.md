@@ -4,10 +4,7 @@
 
 ### mac
 
-- [x] fix tmux?
-- [ ] port brew installed tools to config (requires getting nix-darwin working)
-- [x] finish setting up nvim
-- [ ] fix ugly duplication between os
+- [ ] port brew installed tools to config 
 - [ ] laptop keymaps (karabiner)
 
 ### generic
@@ -20,7 +17,7 @@
 ### darwin
 
 - install nix multi-user
-- change to single-user mode https://zzamboni.org/post/using-nixs-single-user-mode-on-macos/
+- change to single-user mode https://zzamboni.org/post/using-nixs-single-user-mode-on-macos/ (only required as workaround for DLP proxy)
 - install home manager
 - apply home config
 - setup fonts? (manually)
