@@ -48,6 +48,5 @@
     zsh.profileExtra = ''
       . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
     '';
-    git.email = "jlo@tyro.com";
   };
 }

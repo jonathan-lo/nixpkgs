@@ -12,6 +12,7 @@ in {
     };
     email = mkOption {
       description = "the email address to use for <user.email> in git config";
+      default = "3763897+jonathan-lo@users.noreply.github.com";
       example = "reginald@google.com";
       type = types.str;
     };
