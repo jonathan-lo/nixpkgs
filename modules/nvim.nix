@@ -47,7 +47,7 @@
 								vim.fn.OSCYankString(url)
 							end,
 						},
-						mappings = "gy"
+						mappings = "<leader>gy"
 					}
         '';
         plugin = gitlinker-nvim;

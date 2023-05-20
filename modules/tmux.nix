@@ -9,11 +9,12 @@ let
     bind - split-window -v -c '#{pane_current_path}'
     bind -T copy-mode-vi v send -X begin-selection
     bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
-    set -s set-clipboard on
+    set -s set-clipboard on 
     set-option -g status-position top
-    set -ga terminal-overrides ",xterm-256color:Tc"
+    set -ga terminal-overrides ",xterm-256color:Tc:clipboard"
     set -ga terminal-overrides ",alacritty:RGB"
     set-option -g status-interval 5
+    set-option -g allow-passthrough on
     set-option -g automatic-rename on
     set-option -g automatic-rename-format '#{b:pane_current_path}'
   '';
