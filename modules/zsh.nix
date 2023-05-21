@@ -2,21 +2,10 @@
 
 with lib;
 let
-  cfg = config.settings.zsh;
+  cfg = config.modules.shell.zsh;
 
   aliases = {
     dk = "docker";
-    k = "kubectl";
-    ka = "kubectl apply -f";
-    kd = "kubectl describe";
-    ke = "kubectl edit";
-    kg = "kubectl get";
-    kgp = "kubectl get pod";
-    klog = "kubectl logs";
-    kn = "kubectl config set-context --current --namespace";
-    kpf = "kubectl port-forward";
-    krm = "kubectl delete";
-    krr = "kubectl rollout restart";
     l = "ls";
     ll = "ls -l";
     ls = "ls --color=tty";
@@ -25,13 +14,17 @@ let
   };
 in
 {
-  options.settings.zsh = {
+  options.modules.shell.zsh = {
+    aliases = mkOption {
+      description = "additional shell aliases";
+      type = types.attrs;
+    };
     profileExtra = mkOption {
-      description = "extra lines in .zshprofile";
+      description = "extra profile commands";
       type = types.lines;
     };
   };
-  config.programs.zsh = {
+  config.programs.zsh = mkMerge [{
     enable = true;
     initExtraFirst = ''
       export PATH=$PATH:$HOME/bin
@@ -40,14 +33,13 @@ in
       export DOCKER_HOST=unix://$HOME/.docker/docker.sock
       export REQUESTS_CA_BUNDLE="/Library/Certificates/allcerts.pem"
     '';
-    profileExtra = cfg.profileExtra; #". /home/jlo/.nix-profile/etc/profile.d/nix.sh";
-    shellAliases = aliases;
+    profileExtra = cfg.profileExtra;
+    shellAliases = aliases // cfg.aliases;
 
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
       theme = "robbyrussell";
     };
-  };
-
+  }];
 }

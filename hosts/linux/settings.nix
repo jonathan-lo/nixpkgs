@@ -8,6 +8,10 @@
 
   settings = {
     alacritty.fontName = "FuraMono Nerd Font Mono";
-    zsh.profileExtra = ". /home/jlo/.nix-profile/etc/profile.d/nix.sh";
+  };
+
+
+  modules.shell.zsh = {
+    profileExtra = ". /home/jlo/.nix-profile/etc/profile.d/nix.sh";
   };
 }

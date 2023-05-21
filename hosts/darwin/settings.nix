@@ -8,6 +8,10 @@
 
   settings = {
     alacritty.fontName = "FuraMono Nerd Font Mono";
-    zsh.profileExtra = ". /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh";
+  };
+
+
+  modules.shell.zsh = {
+    profileExtra = ". /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh";
   };
 }
