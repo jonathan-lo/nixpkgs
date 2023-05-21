@@ -37,8 +37,6 @@
 
       homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
         modules = [
           ({ ... }: { nixpkgs.overlays = [ overlay ]; })
           ./home.nix
