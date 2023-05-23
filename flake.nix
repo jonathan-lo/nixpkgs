@@ -35,6 +35,20 @@
         ];
       };
 
+      darwinConfigurations."JMW24PH3JT" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.jlo = import ./home.nix; 
+          }
+          ./hosts/darwin/homebrew.nix
+          ./hosts/darwin/services.nix
+        ];
+      };
+
       homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [
