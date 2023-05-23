@@ -28,7 +28,7 @@
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
-            home-manager.users.jlo = import ./home-mac.nix // ./hosts/darwin/settings.nix;
+            home-manager.users.jlo = import ./home.nix; 
           }
           ./hosts/darwin/homebrew.nix
           ./hosts/darwin/services.nix
