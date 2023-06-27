@@ -24,7 +24,7 @@
   };
 
   settings = {
-    alacritty.fontName = "FuraMono Nerd Font Mono";
+    alacritty.fontName = "FiraMono Nerd Font Mono";
   };
 
 
