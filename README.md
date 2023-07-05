@@ -30,3 +30,10 @@
 * coreutils
 * obsidian
 * qemu / lima via internal script
+
+### mac post setup
+
+#### keyboard settings
+
+* shortcuts -> mission control -> move space / switch desktop off
+* bind capslock to control
