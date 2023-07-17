@@ -32,6 +32,7 @@
     '';
 
     plugins = with pkgs.vimPlugins; [
+      copilot-vim
       dracula-nvim
 
       vim-oscyank
