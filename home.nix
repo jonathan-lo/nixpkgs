@@ -21,11 +21,6 @@
 
     stateVersion = "22.05";
     username = "jlo";
-    homeDirectory = "/Users/jlo";
-  };
-
-  settings = {
-    alacritty.fontName = "FiraMono Nerd Font Mono";
   };
 
 
