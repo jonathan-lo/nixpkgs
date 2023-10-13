@@ -8,7 +8,7 @@ if [ "$(uname)" == "Darwin" ]; then
     .#darwinConfigurations.$(hostname).system
   ./result/sw/bin/darwin-rebuild switch --flake .
 else
-export NIXPKGS_ALLOW_UNFREE=1
-  home-manager switch --flake .#$(hostname) --impure
-
+  home-manager switch --flake .#$(hostname) \
+      --extra-experimental-features nix-command \
+      --extra-experimental-features flakes
 fi
