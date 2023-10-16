@@ -14,9 +14,6 @@
     };
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "nodejs-slim-16.20.1"
-  ];
   nixpkgs.config.allowUnfree = true;
   users.users.jlo = {
     home = "/Users/jlo";

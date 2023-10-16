@@ -12,7 +12,6 @@
       jq
       mktemp
       nixpkgs-fmt
-#      nodejs-slim_16
       step-cli
       tcpdump
       tree
