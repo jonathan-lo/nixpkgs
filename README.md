@@ -9,7 +9,7 @@
 
 ### generic
 
-- [ ] zsh functions / aliases should be modularised
+- [ ] zsh profile should be modularised
 
 
 ## setup notes
@@ -36,4 +36,11 @@
 #### keyboard settings
 
 * shortcuts -> mission control -> move space / switch desktop off
+* bind capslock to control
+
+### WLS post setup
+
+* install alacritty
+* copy alacritty config to `%APPDATA%\alacritty`
+* install terminfo
 * bind capslock to control
