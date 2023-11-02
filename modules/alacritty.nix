@@ -8,6 +8,7 @@ in {
     fontName = mkOption {
       description = "the font family that will be used by alacritty";
       example = "wingdings";
+      default = "FiraMono Nerd Font Mono";
       type = types.str;
     };
   };
