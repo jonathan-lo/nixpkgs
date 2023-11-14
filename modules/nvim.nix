@@ -66,6 +66,9 @@
               enable = true,
             },
           }
+
+          -- Use HCL parser for terraform files as there isn't a standalone terraform parser.
+          vim.treesitter.language.register('hcl', {'terraform', 'terraform-vars'})
         '';
         plugin = (nvim-treesitter.withPlugins (plugins:
           with pkgs.tree-sitter-grammars; [
