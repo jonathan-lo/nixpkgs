@@ -14,7 +14,6 @@
     };
   };
 
-
   nixpkgs.config.allowUnfree = true;
   users.users.jlo = {
     home = "/Users/jlo";

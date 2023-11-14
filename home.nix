@@ -20,7 +20,11 @@
 
     stateVersion = "22.05";
     username = "jlo";
-    homeDirectory = "/home/jlo";
+  };
+
+
+  modules.shell.zsh = {
+    profileExtra = ". /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh";
   };
 
   imports = [

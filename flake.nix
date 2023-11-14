@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-23.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     darwin = {
@@ -9,7 +9,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -28,7 +28,21 @@
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
-            home-manager.users.jlo = import ./home-mac.nix // ./hosts/darwin/settings.nix;
+            home-manager.users.jlo = import ./home.nix;
+          }
+          ./hosts/darwin/homebrew.nix
+          ./hosts/darwin/services.nix
+        ];
+      };
+
+      darwinConfigurations."JMW24PH3JT" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.jlo = import ./home.nix;
           }
           ./hosts/darwin/homebrew.nix
           ./hosts/darwin/services.nix
@@ -36,6 +50,14 @@
       };
 
       homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = [
+          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
+          ./home.nix
+          ./hosts/linux/settings.nix
+        ];
+      };
+      homeConfigurations."LAPTOP-GIVRN79I" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [
           ({ ... }: { nixpkgs.overlays = [ overlay ]; })

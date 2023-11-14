@@ -45,6 +45,9 @@ in
           set -g @dracula-refresh-rate 10
         '';
       }
+      {
+        plugin = tmux-thumbs;
+      }
     ];
   };
 }
