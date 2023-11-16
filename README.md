@@ -4,7 +4,6 @@
 
 ### mac
 
-- [ ] port brew installed tools to config 
 - [ ] laptop keymaps (karabiner)
 
 ### generic
@@ -17,19 +16,12 @@
 ### darwin
 
 - install nix multi-user
-- change to single-user mode https://zzamboni.org/post/using-nixs-single-user-mode-on-macos/ (only required as workaround for DLP proxy)
-- install home manager
-- apply home config
+- change to single-user mode https://zzamboni.org/post/using-nixs-single-user-mode-on-macos/ (work laptop only)
 - setup fonts? (manually)
 - setup terminfo for alacritty https://github.com/alacritty/alacritty/blob/master/INSTALL.md#terminfo
+- `./apply`
 - ???
 - profit
-
-### darwin manually installed stuff via brew
-
-* coreutils
-* obsidian
-* qemu / lima via internal script
 
 ### mac post setup
 
