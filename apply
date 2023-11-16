@@ -9,6 +9,5 @@ if [ "$(uname)" == "Darwin" ]; then
   ./result/sw/bin/darwin-rebuild switch --flake .
 else
   home-manager switch --flake .#$(hostname) \
-      --extra-experimental-features nix-command \
-      --extra-experimental-features flakes
+      --extra-experimental-features 'nix-command flakes'
 fi
