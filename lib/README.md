@@ -1,5 +1,0 @@
-# Library functions
-
-## References
-
-@hlissner
