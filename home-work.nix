@@ -3,6 +3,6 @@
 {
   imports = [
     ./home.nix
-    ./.private/darwin/default.nix
+    ./private/darwin/default.nix
   ];
 }
