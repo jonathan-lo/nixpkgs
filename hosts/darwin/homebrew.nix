@@ -31,7 +31,6 @@
     };
 
     taps = [
-      "homebrew/cask"
       "homebrew/cask-fonts"
       "homebrew/core"
       "homebrew/services"
