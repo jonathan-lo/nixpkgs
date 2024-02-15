@@ -231,6 +231,7 @@
 
       plenary-nvim
       vim-commentary
+      vim-fugitive
       vim-go
       vim-surround
     ];
