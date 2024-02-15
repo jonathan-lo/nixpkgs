@@ -2,7 +2,11 @@
 
 {
 
-  home.packages = with pkgs; [ rnix-lsp yaml-language-server ];
+  home.packages = with pkgs; [
+    unstable.helm-ls
+    rnix-lsp
+    yaml-language-server
+  ];
 
   programs.neovim = {
     enable = true;
@@ -178,6 +182,16 @@
             },
           }
 
+          require'lspconfig'.helm_ls.setup{
+            settings = {
+              ["helm-ls"] = {
+                yamlls = {
+                  path = "yaml-language-server",
+                },
+              },
+            },
+          }
+
           local opts = {buffer=bufnr, noremap=true, silent=true}
           vim.keymap.set('n', '<C-]>', vim.lsp.buf.definition, opts)
           vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
@@ -233,7 +247,11 @@
       vim-commentary
       vim-fugitive
       vim-go
+      vim-helm
       vim-surround
+
+
+
     ];
 
     viAlias = true;
