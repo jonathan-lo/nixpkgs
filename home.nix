@@ -11,6 +11,7 @@
       unstable.gh
       jq
       mktemp
+      neofetch
       nixpkgs-fmt
       step-cli
       tcpdump
