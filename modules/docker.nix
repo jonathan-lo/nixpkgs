@@ -2,7 +2,7 @@
 with lib;
 {
   home.packages = with pkgs; [
-    dive
+    unstable.dive
     docker-client
   ];
 
