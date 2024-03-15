@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+let unstablePlugins = pkgs.unstable.vimPlugins; in
 {
 
   home.packages = with pkgs; [
@@ -246,7 +247,7 @@
       plenary-nvim
       vim-commentary
       vim-fugitive
-      vim-go
+      unstablePlugins.vim-go
       vim-helm
       vim-surround
 
