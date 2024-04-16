@@ -245,6 +245,15 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       }
 
       plenary-nvim
+
+
+      {
+        config = ''
+          require('refactoring').setup({});
+        '';
+        plugin = refactoring-nvim;
+        type = "lua";
+      }
       vim-commentary
       vim-fugitive
       unstablePlugins.vim-go
