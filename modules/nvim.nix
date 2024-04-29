@@ -259,7 +259,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       unstablePlugins.vim-go
       vim-helm
       vim-surround
-
+      vim-tmux-navigator
 
 
     ];
