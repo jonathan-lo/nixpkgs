@@ -5,6 +5,7 @@
 
   home = {
     packages = with pkgs; [
+      act
       bat
       du-dust
       fd
