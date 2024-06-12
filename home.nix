@@ -15,6 +15,7 @@
       mktemp
       neofetch
       nixpkgs-fmt
+      unstable.sesh
       step-cli
       tcpdump
       tree
