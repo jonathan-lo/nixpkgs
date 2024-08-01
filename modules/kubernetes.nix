@@ -6,6 +6,7 @@
     kubectx
     kubectl
     kubernetes-helm
+    kubespy
     kubeswitch
     kustomize
     k9s
