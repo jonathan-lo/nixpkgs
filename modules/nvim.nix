@@ -5,7 +5,6 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
 
   home.packages = with pkgs; [
     unstable.helm-ls
-    rnix-lsp
     yaml-language-server
   ];
 
