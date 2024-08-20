@@ -2,9 +2,9 @@
 
 {
   home.packages = with pkgs; [
-    kind
+    unstable.kind
     kubectx
-    kubectl
+    unstable.kubectl
     kubernetes-helm
     kubespy
     kubeswitch
