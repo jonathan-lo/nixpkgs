@@ -76,15 +76,18 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
         '';
         plugin = (nvim-treesitter.withPlugins (plugins:
           with plugins; [
+            tree-sitter-c
             tree-sitter-go
             tree-sitter-gomod
             tree-sitter-hcl
             tree-sitter-java
             tree-sitter-kotlin
+            tree-sitter-lua
             tree-sitter-make
             tree-sitter-nix
             tree-sitter-rust
             tree-sitter-toml
+            tree-sitter-vim
             tree-sitter-yaml
           ]));
         type = "lua";
