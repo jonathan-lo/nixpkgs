@@ -5,7 +5,6 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
 
   home.packages = with pkgs; [
     unstable.helm-ls
-    rnix-lsp
     yaml-language-server
   ];
 
@@ -76,16 +75,19 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           vim.treesitter.language.register('hcl', {'terraform', 'terraform-vars'})
         '';
         plugin = (nvim-treesitter.withPlugins (plugins:
-          with pkgs.tree-sitter-grammars; [
+          with plugins; [
+            tree-sitter-c
             tree-sitter-go
             tree-sitter-gomod
             tree-sitter-hcl
             tree-sitter-java
             tree-sitter-kotlin
+            tree-sitter-lua
             tree-sitter-make
             tree-sitter-nix
             tree-sitter-rust
             tree-sitter-toml
+            tree-sitter-vim
             tree-sitter-yaml
           ]));
         type = "lua";

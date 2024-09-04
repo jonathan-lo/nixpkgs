@@ -36,6 +36,7 @@
     ./modules/aws.nix
     ./modules/direnv.nix
     ./modules/docker.nix
+    ./modules/editor.nix
     ./modules/fzf.nix
     ./modules/go.nix
     ./modules/git.nix
