@@ -76,7 +76,6 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
         '';
         plugin = (nvim-treesitter.withPlugins (plugins:
           with plugins; [
-            tree-sitter-c
             tree-sitter-go
             tree-sitter-gomod
             tree-sitter-hcl
