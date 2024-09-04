@@ -76,7 +76,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           vim.treesitter.language.register('hcl', {'terraform', 'terraform-vars'})
         '';
         plugin = (nvim-treesitter.withPlugins (plugins:
-          with pkgs.tree-sitter-grammars; [
+          with plugins; [
             tree-sitter-go
             tree-sitter-gomod
             tree-sitter-hcl
