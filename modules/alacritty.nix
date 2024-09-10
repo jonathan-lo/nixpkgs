@@ -36,7 +36,7 @@ in {
         search = {
           matches = {
             foreground = "#44475a";
-            backgorund = "#50fa7b";
+            background = "#50fa7b";
           };
 
           focused_match = {
@@ -101,7 +101,6 @@ in {
           family = cfg.fontName;
           style = "Regular";
         };
-        scale_with_dpi = "true";
         offset = {
           x = 0;
           y = 1;
