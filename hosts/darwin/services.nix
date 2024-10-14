@@ -18,4 +18,6 @@
   users.users.jlo = {
     home = "/Users/jlo";
   };
+
+  system.stateVersion = 4;
 }
