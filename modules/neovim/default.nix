@@ -248,13 +248,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       plenary-nvim
 
 
-      {
-        config = ''
-          require('refactoring').setup({});
-        '';
-        plugin = refactoring-nvim;
-        type = "lua";
-      }
+      refactoring-nvim
       vim-commentary
       vim-fugitive
       unstablePlugins.vim-go
@@ -267,5 +261,10 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
 
     viAlias = true;
     vimAlias = true;
+  };
+
+  xdg.configFile."nvim/lua" = {
+    recursive = true;
+    source = ./lua;
   };
 }
