@@ -41,7 +41,7 @@
     ./modules/go.nix
     ./modules/git.nix
     ./modules/kubernetes.nix
-    ./modules/nvim.nix
+    ./modules/neovim
     ./modules/ops.nix
     ./modules/platform.nix
     ./modules/ripgrep.nix
