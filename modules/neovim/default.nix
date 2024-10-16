@@ -235,12 +235,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
 
       {
 
-        config = ''
-          local builtin = require('telescope.builtin')
-          vim.keymap.set('n', '<C-n>', builtin.find_files, {})
-          vim.keymap.set('n', 'rg', builtin.live_grep, opts)
-        '';
-
+        config = builtins.readFile ./lua/plugins/telescope-nvim.lua; 
         plugin = telescope-nvim;
         type = "lua";
       }
