@@ -36,3 +36,8 @@
 * copy alacritty config to `%APPDATA%\alacritty`
 * install terminfo
 * bind capslock to control
+
+
+### nvim notes
+
+* https://nixalted.com/

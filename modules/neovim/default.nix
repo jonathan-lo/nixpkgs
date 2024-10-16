@@ -32,11 +32,35 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       set splitright
       set tabstop=2 shiftwidth=2 expandtab
       set termguicolors
-      set wildignore+=**/.git/*
+    '';
+
+    extraLuaConfig = ''
+
+       require("lazy").setup({
+          spec = {
+            -- Import plugins from lua/plugins
+            { import = "plugins" },
+          },
+          performance = {
+            reset_packpath = false,
+            rtp = {
+                reset = false,
+              }
+            },
+          install = {
+            -- Safeguard in case we forget to install a plugin with Nix
+            missing = false,
+          },
+        })     
+
     '';
 
     plugins = with pkgs.vimPlugins; [
+      lazy-nvim
+
       dracula-nvim
+
+
       nvim-osc52
       {
         config = ''
@@ -235,9 +259,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
 
       {
 
-        config = builtins.readFile ./lua/plugins/telescope-nvim.lua; 
         plugin = telescope-nvim;
-        type = "lua";
       }
 
       plenary-nvim
