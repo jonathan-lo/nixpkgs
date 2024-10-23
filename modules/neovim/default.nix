@@ -37,29 +37,16 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
 
     plugins = with pkgs.vimPlugins; [
       dracula-nvim
+
+      # github clipboard link
       nvim-osc52
       {
-        config = ''
-
-          require('gitlinker').setup {
-						opts = {
-							action_callback = function(url)
-								-- yank to unnamed register
-								vim.api.nvim_command('let @" = \''' .. url .. '\''')
-								-- copy to the system clipboard using OSC52
-                require('osc52').copy(url)
-							end,
-						},
-						mappings = "<leader>gy"
-					}
-        '';
+        config = builtins.readFile ./lua/plugins/gitlinker-nvim.lua;
         plugin = gitlinker-nvim;
         type = "lua";
       }
       {
-        config = ''
-          require('gitsigns').setup();
-        '';
+        config = builtins.readFile ./lua/plugins/gitsigns-nvim.lua;
         plugin = gitsigns-nvim;
         type = "lua";
       }
