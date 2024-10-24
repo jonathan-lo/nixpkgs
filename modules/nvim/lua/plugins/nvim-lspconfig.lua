@@ -10,10 +10,6 @@ require'lspconfig'.gopls.setup{
   },
 }
 
-require'lspconfig'.rnix.setup{
-  capabilities = cmp_caps,
-}
-
 require'lspconfig'.yamlls.setup{
   capabilities = cmp_caps,
   settings = {
