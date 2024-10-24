@@ -71,21 +71,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       }
 
       {
-        config = ''
-          require'nvim-treesitter.configs'.setup {
-            textobjects = {
-              select = {
-                enable = true,
-                lookahead = true,
-                keymaps = {
-                  ["af"] = "@function.outer",
-                  ["if"] = "@function.inner",
-                },
-              },
-            },
-          }
-        '';
-
+        config = builtins.readFile ./lua/plugins/nvim-treesitter-textobjects.lua;
         plugin = nvim-treesitter-textobjects;
         type = "lua";
       }
@@ -94,38 +80,14 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       luasnip
 
       {
-        config = ''
-          require('lualine').setup();
-        '';
+        config = builtins.readFile ./lua/plugins/lualine-nvim.lua;
         plugin = lualine-nvim;
         type = "lua";
       }
 
       {
-        config = ''
-          local cmp = require'cmp'
 
-          cmp.setup({
-            mapping = cmp.mapping.preset.insert({
-              ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-              ['<C-f>'] = cmp.mapping.scroll_docs(4),
-              ['<Shift-Space>'] = cmp.mapping.complete(),
-              ['<C-e>'] = cmp.mapping.abort(),
-              ['<CR>'] = cmp.mapping.confirm({ select = true }),
-            }),
-
-            snippet = {
-              expand = function(args)
-                require'luasnip'.lsp_expand(args.body)
-              end,
-            },
-
-            sources = cmp.config.sources({
-              { name = 'nvim_lsp' },
-            })
-          })
-        '';
-
+        config = builtins.readFile ./lua/plugins/nvim-cmp.lua;
         plugin = nvim-cmp;
         type = "lua";
       }
