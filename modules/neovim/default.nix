@@ -102,28 +102,19 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       }
 
       {
-        config = ''
-          local api = require("nvim-tree.api")
-          require("nvim-tree").setup()
-          vim.keymap.set('n', '<A-1>', api.tree.toggle, opts)
-        '';
-
+        config = builtins.readFile ./lua/plugins/nvim-tree-lua.lua;
         plugin = nvim-tree-lua;
         type = "lua";
       }
       nvim-web-devicons
 
       {
-        config = ''
-          require('telescope').load_extension('fzy_native')
-        '';
-
+        config = builtins.readFile ./lua/plugins/telescope-fzy-native-nvim.lua; 
         plugin = telescope-fzy-native-nvim;
         type = "lua";
       }
 
       {
-
         config = builtins.readFile ./lua/plugins/telescope-nvim.lua; 
         plugin = telescope-nvim;
         type = "lua";
