@@ -130,8 +130,6 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       vim-helm
       vim-surround
       vim-tmux-navigator
-
-
     ];
 
     viAlias = true;
