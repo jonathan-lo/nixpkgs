@@ -51,16 +51,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
         type = "lua";
       }
       {
-        config = ''
-          require'nvim-treesitter.configs'.setup {
-            highlight = {
-              enable = true,
-            },
-          }
-
-          -- Use HCL parser for terraform files as there isn't a standalone terraform parser.
-          vim.treesitter.language.register('hcl', {'terraform', 'terraform-vars'})
-        '';
+        config = builtins.readFile ./lua/plugins/nvim-treesitter.lua;
         plugin = (nvim-treesitter.withPlugins (plugins:
           with plugins; [
             tree-sitter-go
