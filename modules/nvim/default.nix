@@ -147,17 +147,6 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       }
       nvim-web-devicons
 
-      {
-        config = builtins.readFile ./lua/plugins/telescope-fzy-native-nvim.lua; 
-        plugin = telescope-fzy-native-nvim;
-        type = "lua";
-      }
-
-      {
-        config = builtins.readFile ./lua/plugins/telescope-nvim.lua; 
-        plugin = telescope-nvim;
-        type = "lua";
-      }
 
       plenary-nvim
 
