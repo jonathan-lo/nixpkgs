@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let unstablePlugins = pkgs.unstable.vimPlugins; in
 {
@@ -35,13 +35,52 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       set wildignore+=**/.git/*
     '';
 
+    extraLuaConfig =
+      let
+        plugins = with pkgs.vimPlugins; [
+          telescope-fzf-native-nvim
+          telescope-nvim
+        ];
+        mkEntryFromDrv = drv:
+          if lib.isDerivation drv then
+            { name = "${lib.getName drv}"; path = drv; }
+          else
+            drv;
+        lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
+      in
+    ''
+       require("lazy").setup({
+           dev = {
+            -- reuse files from pkgs.vimPlugins.*
+            path = "${lazyPath}",
+            patterns = { "." },
+            fallback = false,
+          },
+          spec = {
+            -- Import plugins from lua/plugins
+            { import = "plugins" },
+          },
+          performance = {
+            reset_packpath = false,
+            rtp = {
+                reset = false,
+              }
+            },
+          install = {
+            -- Safeguard in case we forget to install a plugin with Nix
+            missing = false,
+          },
+        })
+
+     '';
+
     plugins = with pkgs.vimPlugins; [
       dracula-nvim
+      lazy-nvim
 
       # github clipboard link
       nvim-osc52
       {
-        config = builtins.readFile ./lua/plugins/gitlinker-nvim.lua;
         plugin = gitlinker-nvim;
         type = "lua";
       }

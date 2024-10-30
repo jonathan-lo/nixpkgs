@@ -1,3 +1,15 @@
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<C-n>', builtin.find_files, {})
-vim.keymap.set('n', 'rg', builtin.live_grep, opts)
+return {
+
+{
+  "nvim-telescope/telescope.nvim",
+  dependencies = {
+    {
+      "nvim-telescope/telescope-fzf-native.nvim"
+    },
+  },
+  keys = {
+    { "rg", "<cmd>Telescope live_grep<cr>", desc = "Grep (Root Dir)" },
+    { "<C-n>", "<cmd>Telescope find_files<cr>", desc = "Find files (Root Dir)" }
+  }
+}
+}
