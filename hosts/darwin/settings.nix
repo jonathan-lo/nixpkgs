@@ -1,13 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  home = {
-    username = "jlo";
-    homeDirectory = "/Users/jlo";
-  };
-
-
-  modules.shell.zsh = {
-    profileExtra = ". /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh";
+  environment.variables = {
+    EDITOR = "vi";
+    REQUESTS_CA_BUNDLE = "/Library/Certificates/allcerts.pem";
+    NIX_SSL_CERT_FILE = "/Library/Certificates/allcerts.pem";
+    NODE_EXTRA_CA_CERTS = "/Library/Certificates/allcerts.pem";
   };
 }
