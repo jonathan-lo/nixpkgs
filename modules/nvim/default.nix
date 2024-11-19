@@ -17,6 +17,8 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       nnoremap <C-K> <C-W><C-K>
       nnoremap <C-L> <C-W><C-L>
       nnoremap <C-H> <C-W><C-H>
+      nnoremap <C-d> <C-d>zz
+      nnoremap <C-H> <C-u>zz
 
       colorscheme dracula
 
