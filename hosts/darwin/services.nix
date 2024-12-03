@@ -14,6 +14,10 @@
     };
   };
 
+  services = {
+    nix-daemon.enable = true;
+  };
+
   nixpkgs.config.allowUnfree = true;
   users.users.jlo = {
     home = "/Users/jlo";
