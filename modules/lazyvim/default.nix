@@ -79,19 +79,22 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           telescope-fzf-native-nvim
           telescope-nvim
           todo-comments-nvim
-          tokyonight-nvim
           trouble-nvim
           vim-illuminate
           vim-startuptime
           which-key-nvim
           { name = "LuaSnip"; path = luasnip; }
-          { name = "catppuccin"; path = catppuccin-nvim; }
           { name = "mini.ai"; path = mini-nvim; }
           { name = "mini.bufremove"; path = mini-nvim; }
           { name = "mini.comment"; path = mini-nvim; }
           { name = "mini.indentscope"; path = mini-nvim; }
           { name = "mini.pairs"; path = mini-nvim; }
           { name = "mini.surround"; path = mini-nvim; }
+
+          # themes
+          { name = "catppuccin"; path = catppuccin-nvim; }
+          tokyonight-nvim
+          dracula-nvim
         ];
         mkEntryFromDrv = drv:
           if lib.isDerivation drv then
@@ -145,4 +148,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       };
     in
     "${parsers}/parser";
+
+  # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
+  xdg.configFile."nvim/lua".source = ./lua;
 }
