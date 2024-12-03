@@ -68,7 +68,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           nvim-lspconfig
           nvim-notify
           nvim-spectre
-          nvim-treesitter
+          nvim-treesitter.withAllGrammars # TODO trim
           nvim-treesitter-context
           nvim-treesitter-textobjects
           nvim-ts-autotag
@@ -143,7 +143,17 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
         name = "treesitter-parsers";
         paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
           go
+          gomod
+          hcl
+          java
+          kotlin
           lua
+          make
+          nix
+          rust
+          toml
+          vim
+          yaml
         ])).dependencies;
       };
     in
