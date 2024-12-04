@@ -7,6 +7,4 @@ return {
       colorscheme = "dracula",
     },
   },
-
-
 }
