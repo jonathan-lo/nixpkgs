@@ -11,6 +11,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
 
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
 
     extraConfig = ''
       let mapleader = "\<Space>"
@@ -114,7 +115,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
             path = "${lazyPath}",
             patterns = { "" },
             -- fallback to download
-            fallback = true,
+            fallback = false,
           },
           spec = {
             { "LazyVim/LazyVim", import = "lazyvim.plugins" },

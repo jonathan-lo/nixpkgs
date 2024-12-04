@@ -1,6 +1,14 @@
 return {
   { "Mofiqul/dracula.nvim" },
-    -- Configure LazyVim to load gruvbox
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    enabled = false,
+  },
+  {
+    "folke/tokyonight.nvim",
+    enabled = false,
+  },
   {
     "LazyVim/LazyVim",
     opts = {
