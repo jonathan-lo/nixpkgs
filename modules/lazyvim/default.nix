@@ -125,6 +125,8 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
             -- disable mason.nvim, use programs.neovim.extraPackages
             { "williamboman/mason-lspconfig.nvim", enabled = false },
             { "williamboman/mason.nvim", enabled = false },
+            { import = "lazyvim.plugins.extras.dap.core" },
+            { import = "lazyvim.plugins.extras.lang.go" },
             -- import/override with your plugins
             { import = "plugins" },
             -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
