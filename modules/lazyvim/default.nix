@@ -6,6 +6,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
   home.packages = with pkgs; [
     unstable.helm-ls
     lua-language-server
+    terraform-ls
     yaml-language-server
   ];
 
@@ -126,7 +127,11 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
             { "williamboman/mason-lspconfig.nvim", enabled = false },
             { "williamboman/mason.nvim", enabled = false },
             { import = "lazyvim.plugins.extras.dap.core" },
+            { import = "lazyvim.plugins.extras.lang.docker" },
             { import = "lazyvim.plugins.extras.lang.go" },
+            { import = "lazyvim.plugins.extras.lang.helm" },
+            { import = "lazyvim.plugins.extras.lang.json" },
+            { import = "lazyvim.plugins.extras.lang.yaml" },
             -- import/override with your plugins
             { import = "plugins" },
             -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
