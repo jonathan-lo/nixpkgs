@@ -24,4 +24,6 @@
   };
 
   system.stateVersion = 4;
+
+  environment.systemPackages = [ pkgs.rectangle ];
 }

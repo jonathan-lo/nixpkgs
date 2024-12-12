@@ -151,6 +151,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
       parsers = pkgs.symlinkJoin {
         name = "treesitter-parsers";
         paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
+          bash
           go
           gomod
           hcl
@@ -158,6 +159,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           kotlin
           lua
           make
+          markdown
           nix
           rust
           toml

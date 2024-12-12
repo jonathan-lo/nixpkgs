@@ -13,6 +13,7 @@
     casks = [
       "alacritty"
       "obsidian"
+      "rectangle"
     ];
 
     extraConfig = ''
