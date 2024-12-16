@@ -83,6 +83,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           telescope-nvim
           todo-comments-nvim
           trouble-nvim
+          vim-helm
           vim-illuminate
           vim-startuptime
           which-key-nvim
@@ -154,6 +155,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           bash
           go
           gomod
+          helm
           hcl
           java
           kotlin
