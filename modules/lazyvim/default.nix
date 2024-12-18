@@ -95,6 +95,9 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           { name = "mini.pairs"; path = mini-nvim; }
           { name = "mini.surround"; path = mini-nvim; }
 
+          # java
+          nvim-jdtls
+
           # themes
           { name = "catppuccin"; path = catppuccin-nvim; }
           tokyonight-nvim
@@ -131,6 +134,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
             { import = "lazyvim.plugins.extras.lang.docker" },
             { import = "lazyvim.plugins.extras.lang.go" },
             { import = "lazyvim.plugins.extras.lang.helm" },
+            { import = "lazyvim.plugins.extras.lang.java" },
             { import = "lazyvim.plugins.extras.lang.json" },
             { import = "lazyvim.plugins.extras.lang.yaml" },
             -- import/override with your plugins
