@@ -59,6 +59,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           flash-nvim
           friendly-snippets
           gitsigns-nvim
+          grug-far-nvim
           indent-blankline-nvim
           lualine-nvim
           neo-tree-nvim
@@ -79,6 +80,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           nvim-web-devicons
           persistence-nvim
           plenary-nvim
+          snacks-nvim
           telescope-fzf-native-nvim
           telescope-nvim
           todo-comments-nvim
@@ -120,7 +122,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
             path = "${lazyPath}",
             patterns = { "" },
             -- fallback to download
-            fallback = false,
+            fallback = true,
           },
           spec = {
             { "LazyVim/LazyVim", import = "lazyvim.plugins" },
