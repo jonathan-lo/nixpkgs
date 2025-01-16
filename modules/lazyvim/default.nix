@@ -65,6 +65,9 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           neo-tree-nvim
           neoconf-nvim
           neodev-nvim
+          neotest
+          neotest-golang
+          neotest-plenary
           noice-nvim
           nui-nvim
           nvim-cmp
@@ -139,6 +142,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
             { import = "lazyvim.plugins.extras.lang.java" },
             { import = "lazyvim.plugins.extras.lang.json" },
             { import = "lazyvim.plugins.extras.lang.yaml" },
+            { import = "lazyvim.plugins.extras.test.core" },
             -- import/override with your plugins
             { import = "plugins" },
             -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
