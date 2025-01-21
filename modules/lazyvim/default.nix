@@ -69,12 +69,15 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           neotest
           neotest-golang
           neotest-java
+          neotest-python
           neotest-plenary
           noice-nvim
           nui-nvim
           nvim-cmp
           nvim-dap
           nvim-jdtls
+          nvim-dap-go
+          nvim-dap-python
           nvim-lint
           nvim-lspconfig
           nvim-notify
@@ -146,6 +149,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
             { import = "lazyvim.plugins.extras.lang.java" },
             { import = "lazyvim.plugins.extras.lang.json" },
             { import = "lazyvim.plugins.extras.lang.kotlin" },
+            { import = "lazyvim.plugins.extras.lang.python" },
             { import = "lazyvim.plugins.extras.lang.yaml" },
             { import = "lazyvim.plugins.extras.test.core" },
             -- import/override with your plugins
