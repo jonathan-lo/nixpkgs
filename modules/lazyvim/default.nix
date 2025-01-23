@@ -8,6 +8,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
     lua-language-server
     terraform-ls
     yaml-language-server
+    ktlint
   ];
 
   programs.neovim = {
@@ -141,6 +142,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
             { import = "lazyvim.plugins.extras.lang.helm" },
             { import = "lazyvim.plugins.extras.lang.java" },
             { import = "lazyvim.plugins.extras.lang.json" },
+            { import = "lazyvim.plugins.extras.lang.kotlin" },
             { import = "lazyvim.plugins.extras.lang.yaml" },
             { import = "lazyvim.plugins.extras.test.core" },
             -- import/override with your plugins
