@@ -40,6 +40,7 @@
     ./modules/fzf.nix
     ./modules/go.nix
     ./modules/git.nix
+    ./modules/java.nix
     ./modules/kubernetes.nix
     ./modules/lazyvim
     ./modules/ops.nix

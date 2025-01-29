@@ -68,10 +68,13 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           neodev-nvim
           neotest
           neotest-golang
+          neotest-java
           neotest-plenary
           noice-nvim
           nui-nvim
           nvim-cmp
+          nvim-dap
+          nvim-jdtls
           nvim-lint
           nvim-lspconfig
           nvim-notify
