@@ -72,11 +72,8 @@ in
 
     plugins = with pkgs.tmuxPlugins; [
       {
-        plugin = dracula;
+        plugin = catppuccin;
         extraConfig = ''
-          set -g @dracula-plugins "battery cpu-usage ram-usage time"
-          set -g @dracula-show-powerline true
-          set -g @dracula-refresh-rate 10
         '';
       }
       {
