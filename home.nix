@@ -47,6 +47,7 @@
     ./modules/platform.nix
     ./modules/ripgrep.nix
     ./modules/tmux.nix
+    ./modules/wezterm.nix
     ./modules/zsh.nix
   ];
 
