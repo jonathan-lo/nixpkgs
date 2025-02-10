@@ -9,6 +9,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
     terraform-ls
     yaml-language-server
     ktlint
+    tflint
   ];
 
   programs.neovim = {
@@ -183,6 +184,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           markdown
           nix
           rust
+          terraform
           toml
           vim
           yaml
