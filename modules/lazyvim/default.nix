@@ -1,6 +1,17 @@
 { config, lib, pkgs, ... }:
 
-let unstablePlugins = pkgs.unstable.vimPlugins; in
+let 
+  unstablePlugins = pkgs.unstable.vimPlugins;
+  gitlinker = pkgs.vimUtils.buildVimPlugin {
+    name = "gitlinker";
+    src = pkgs.fetchFromGitHub {
+      owner = "linrongbin16";
+      repo = "gitlinker.nvim";
+      rev = "296ad98061ca31706a7d890a0f13baed6e137c79";
+      hash = "sha256-Hn2nwUevo8ecikv7fNLlzRRDP99i1Jx5UrJe/rnUe3c=";
+    };
+  };
+in
 {
 
   home.packages = with pkgs; [
@@ -60,6 +71,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           dressing-nvim
           flash-nvim
           friendly-snippets
+          gitlinker
           gitsigns-nvim
           grug-far-nvim
           indent-blankline-nvim
