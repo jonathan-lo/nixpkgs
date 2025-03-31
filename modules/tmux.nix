@@ -66,7 +66,6 @@ in
     prefix = "C-Space";
     sensibleOnTop = false;
     shell = "${pkgs.zsh}/bin/zsh";
-    terminal = "alacritty";
 
     extraConfig = extraConfigText;
 
