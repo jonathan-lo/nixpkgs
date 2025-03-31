@@ -14,6 +14,7 @@
       "alacritty"
       "obsidian"
       "rectangle"
+      "wezterm"
     ];
 
     extraConfig = ''
@@ -32,8 +33,6 @@
     };
 
     taps = [
-      "homebrew/cask-fonts"
-      "homebrew/services"
     ];
   };
 }
