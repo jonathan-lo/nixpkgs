@@ -4,11 +4,11 @@
 if [ "$(uname)" == "Darwin" ]; then
 
   nix build \
-      --extra-experimental-features 'nix-command flakes' \
-    .#darwinConfigurations.$(hostname).system
+    --extra-experimental-features 'nix-command flakes' \
+    .#darwinConfigurations."Jonathans-MacBook-Pro".system
   ./result/sw/bin/darwin-rebuild switch --flake .
 else
   export NIXPKGS_ALLOW_BROKEN=1
   home-manager switch --flake .#$(hostname) \
-      --extra-experimental-features 'nix-command flakes'
+    --extra-experimental-features 'nix-command flakes'
 fi
