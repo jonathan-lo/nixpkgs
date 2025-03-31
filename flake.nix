@@ -21,7 +21,7 @@
       };
     in
     {
-      darwinConfigurations."JMW24PH3JT" = darwin.lib.darwinSystem {
+      darwinConfigurations."Jonathans-MacBook-Pro" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
           ({ ... }: { nixpkgs.overlays = [ overlay ]; })
