@@ -30,6 +30,7 @@ in
       export PATH=$PATH:$HOME/bin
       export PATH=$PATH:$HOME/go/bin
       export PATH=/opt/homebrew/bin:$PATH
+      source $HOME/.sdkman/bin/sdkman-init.sh
     '';
     profileExtra = cfg.profileExtra;
     shellAliases = aliases // cfg.aliases;
