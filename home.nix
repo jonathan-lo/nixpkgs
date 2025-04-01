@@ -39,6 +39,7 @@
     ./modules/editor.nix
     ./modules/fzf.nix
     ./modules/go.nix
+    ./modules/google.nix
     ./modules/git.nix
     ./modules/java.nix
     ./modules/kubernetes.nix
