@@ -11,7 +11,8 @@
       "findutils"
     ];
     casks = [
-      "alacritty"
+      "google-chrome"
+      "logseq"
       "obsidian"
       "rectangle"
       "wezterm"

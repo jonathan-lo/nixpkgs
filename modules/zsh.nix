@@ -6,6 +6,7 @@ let
 
   aliases = {
     dk = "docker";
+    i = "idea . &";
     l = "ls";
     ll = "ls -l";
     ls = "ls --color=tty";
@@ -30,6 +31,7 @@ in
       export PATH=$PATH:$HOME/bin
       export PATH=$PATH:$HOME/go/bin
       export PATH=/opt/homebrew/bin:$PATH
+      export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS:$PATH"
       source $HOME/.sdkman/bin/sdkman-init.sh
     '';
     profileExtra = cfg.profileExtra;
