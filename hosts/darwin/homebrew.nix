@@ -16,6 +16,7 @@
       "obsidian"
       "rectangle"
       "wezterm"
+      "ghostty"
     ];
 
     extraConfig = ''
