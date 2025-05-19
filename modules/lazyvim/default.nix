@@ -209,6 +209,5 @@ in
   xdg.configFile."nvim/lua".source = ./lua;
   
   # fork for externally managed lazyvim config
-  xdg.configFile."lazyvim-new/lua".source = ./lazyvim-new/lua;
-  xdg.configFile."lazyvim-new/init.lua".source = ./lazyvim-new/init.lua;
+  xdg.configFile."lazyvim-new/".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/lazyvim/lazyvim-new";
 }
