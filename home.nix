@@ -43,6 +43,7 @@
     ./modules/git.nix
     ./modules/java.nix
     ./modules/kubernetes.nix
+    ./modules/node.nix
     ./modules/lazyvim
     ./modules/ops.nix
     ./modules/platform.nix
