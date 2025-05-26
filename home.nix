@@ -39,13 +39,17 @@
     ./modules/editor.nix
     ./modules/fzf.nix
     ./modules/go.nix
+    ./modules/google.nix
     ./modules/git.nix
+    ./modules/java.nix
     ./modules/kubernetes.nix
+    ./modules/node.nix
     ./modules/lazyvim
     ./modules/ops.nix
     ./modules/platform.nix
     ./modules/ripgrep.nix
     ./modules/tmux.nix
+    ./modules/wezterm.nix
     ./modules/zsh.nix
   ];
 

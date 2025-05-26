@@ -2,7 +2,10 @@
 
 {
   home.packages = with pkgs; [
-    exercism
-    helix
+    maven
   ];
+
+  programs.java = {
+    enable = false;
+  };
 }

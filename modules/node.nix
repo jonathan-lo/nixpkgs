@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    exercism
-    helix
+    nodejs_22
+    #unstable.claude-code
   ];
 }

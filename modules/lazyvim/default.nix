@@ -1,6 +1,17 @@
 { config, lib, pkgs, ... }:
 
-let unstablePlugins = pkgs.unstable.vimPlugins; in
+let 
+  unstablePlugins = pkgs.unstable.vimPlugins;
+  gitlinker = pkgs.vimUtils.buildVimPlugin {
+    name = "gitlinker";
+    src = pkgs.fetchFromGitHub {
+      owner = "linrongbin16";
+      repo = "gitlinker.nvim";
+      rev = "296ad98061ca31706a7d890a0f13baed6e137c79";
+      hash = "sha256-Hn2nwUevo8ecikv7fNLlzRRDP99i1Jx5UrJe/rnUe3c=";
+    };
+  };
+in
 {
 
   home.packages = with pkgs; [
@@ -8,6 +19,8 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
     lua-language-server
     terraform-ls
     yaml-language-server
+    ktlint
+    tflint
   ];
 
   programs.neovim = {
@@ -58,15 +71,26 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           dressing-nvim
           flash-nvim
           friendly-snippets
+          gitlinker
           gitsigns-nvim
+          grug-far-nvim
           indent-blankline-nvim
           lualine-nvim
           neo-tree-nvim
           neoconf-nvim
           neodev-nvim
+          neotest
+          neotest-golang
+          neotest-java
+          neotest-python
+          neotest-plenary
           noice-nvim
           nui-nvim
           nvim-cmp
+          nvim-dap
+          nvim-jdtls
+          nvim-dap-go
+          nvim-dap-python
           nvim-lint
           nvim-lspconfig
           nvim-notify
@@ -79,6 +103,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           nvim-web-devicons
           persistence-nvim
           plenary-nvim
+          snacks-nvim
           telescope-fzf-native-nvim
           telescope-nvim
           todo-comments-nvim
@@ -120,7 +145,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
             path = "${lazyPath}",
             patterns = { "" },
             -- fallback to download
-            fallback = false,
+            fallback = true,
           },
           spec = {
             { "LazyVim/LazyVim", import = "lazyvim.plugins" },
@@ -136,7 +161,10 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
             { import = "lazyvim.plugins.extras.lang.helm" },
             { import = "lazyvim.plugins.extras.lang.java" },
             { import = "lazyvim.plugins.extras.lang.json" },
+            { import = "lazyvim.plugins.extras.lang.kotlin" },
+            { import = "lazyvim.plugins.extras.lang.python" },
             { import = "lazyvim.plugins.extras.lang.yaml" },
+            { import = "lazyvim.plugins.extras.test.core" },
             -- import/override with your plugins
             { import = "plugins" },
             -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
@@ -168,6 +196,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
           markdown
           nix
           rust
+          terraform
           toml
           vim
           yaml
@@ -178,4 +207,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
 
   # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
   xdg.configFile."nvim/lua".source = ./lua;
+  
+  # fork for externally managed lazyvim config
+  xdg.configFile."lazyvim-new/".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/lazyvim/lazyvim-new";
 }

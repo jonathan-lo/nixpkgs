@@ -1,13 +1,13 @@
 #!/bin/bash -eu
 
-# don't use nix-darwin for now
 if [ "$(uname)" == "Darwin" ]; then
-
+  # impure for symlinking lazyvim config from dotfiles directory to XDG config
   nix build \
-    .#darwinConfigurations.$(hostname).system
-  ./result/sw/bin/darwin-rebuild switch --flake .
+    --extra-experimental-features 'nix-command flakes' \
+    .#darwinConfigurations."Jonathans-MacBook-Pro".system
+  ./result/sw/bin/darwin-rebuild switch --impure --flake .
 else
   export NIXPKGS_ALLOW_BROKEN=1
   home-manager switch --flake .#$(hostname) \
-      --extra-experimental-features 'nix-command flakes'
+    --extra-experimental-features 'nix-command flakes'
 fi

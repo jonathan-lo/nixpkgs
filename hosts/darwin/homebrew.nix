@@ -11,9 +11,12 @@
       "findutils"
     ];
     casks = [
-      "alacritty"
+      "google-chrome"
+      "logseq"
       "obsidian"
       "rectangle"
+      "wezterm"
+      "ghostty"
     ];
 
     extraConfig = ''
@@ -32,8 +35,6 @@
     };
 
     taps = [
-      "homebrew/cask-fonts"
-      "homebrew/services"
     ];
   };
 }
