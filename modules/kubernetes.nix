@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     unstable.kind
+    kn
     kubectx
     unstable.kubectl
     kubernetes-helm
@@ -22,7 +23,6 @@
     kg = "kubectl get";
     kgp = "kubectl get pod";
     klog = "kubectl logs";
-    kn = "kubectl config set-context --current --namespace";
     kpf = "kubectl port-forward";
     krm = "kubectl delete";
     krr = "kubectl rollout restart";

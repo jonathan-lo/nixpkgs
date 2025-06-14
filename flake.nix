@@ -19,12 +19,19 @@
       overlay = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
+      nixPkgsConfig = {
+          allowUnfree = true;
+          allowUnfreePredicate = (_: true);
+        };
     in
     {
       darwinConfigurations."Jonathans-MacBook-Pro" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
+          ({ ... }: { 
+            nixpkgs.overlays = [ overlay ];
+            nixpkgs.config.allowUnfree = true;
+          })
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
