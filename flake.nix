@@ -17,26 +17,35 @@
   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
     let
       overlay = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+        unstable =  import inputs.nixpkgs-unstable {
+            system = prev.system;
+            config.allowUnfree = true;
+          };
+
       };
 
       system = "aarch64-darwin";
       overlays = [ overlay ];
 
-      pkgs = import nixpkgs { inherit system overlays; };
+      pkgs = import nixpkgs { 
+        inherit system overlays;
+        config = {
+          allowUnfree = true;
+         # allowUnfreePredicate = (_: true);
+        };
+      };
 
       nixPkgsConfig = {
         inherit overlays;
-        config.allowUnfree = true;
       };
     in
     {
-      packages = pkgs;
 
       darwinConfigurations."Jonathans-MacBook-Pro" = darwin.lib.darwinSystem {
+        pkgs = pkgs;
         system = "aarch64-darwin";
 
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; } ;
 
         modules = [
           home-manager.darwinModules.home-manager
