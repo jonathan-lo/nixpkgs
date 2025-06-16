@@ -14,26 +14,34 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
     let
       overlay = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
+
+      system = "aarch64-darwin";
+      overlays = [ overlay ];
+
+      pkgs = import nixpkgs { inherit system overlays; };
+
       nixPkgsConfig = {
-          allowUnfree = true;
-          allowUnfreePredicate = (_: true);
-        };
+        inherit overlays;
+        config.allowUnfree = true;
+      };
     in
     {
+      packages = pkgs;
+
       darwinConfigurations."Jonathans-MacBook-Pro" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+
+        specialArgs = { inherit inputs; };
+
         modules = [
-          ({ ... }: { 
-            nixpkgs.overlays = [ overlay ];
-            nixpkgs.config.allowUnfree = true;
-          })
           home-manager.darwinModules.home-manager
           {
+            nixpkgs = nixPkgsConfig;
             home-manager.useGlobalPkgs = true;
             home-manager.users.jlo = import ./home-work.nix;
           }
@@ -46,7 +54,6 @@
       homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [
-          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
           ./home.nix
           ./hosts/linux/settings.nix
         ];
@@ -54,7 +61,6 @@
       homeConfigurations."LAPTOP-GIVRN79I" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [
-          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
           ./home.nix
           ./hosts/linux/settings.nix
         ];
