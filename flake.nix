@@ -21,7 +21,6 @@
             system = prev.system;
             config.allowUnfree = true;
           };
-
       };
 
       system = "aarch64-darwin";
