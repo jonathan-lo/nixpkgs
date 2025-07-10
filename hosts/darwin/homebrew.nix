@@ -9,6 +9,7 @@
       "bash"
       "coreutils"
       "findutils"
+      "node"
     ];
     casks = [
       "ghostty"
