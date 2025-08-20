@@ -31,10 +31,18 @@ in {
     };
 
     extraConfig = {
-      core = { editor = "nvim"; };
+      core = { 
+        editor = "nvim";
+      };
       init = { defaultBranch = cfg.defaultBranch; };
       push = { autoSetupRemote = "true"; };
+
     };
+
+    ignores = [
+      "**/.claude/settings.local.json"
+      "kls_database.db"
+    ];
 
     userEmail = cfg.email;
     userName = "Jonathan Lo";
