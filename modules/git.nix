@@ -42,6 +42,7 @@ in {
     ignores = [
       "**/.claude/settings.local.json"
       "kls_database.db"
+      ".idea/GitLink.xml"
     ];
 
     userEmail = cfg.email;
