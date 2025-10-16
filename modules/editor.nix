@@ -5,5 +5,6 @@
     exercism
     gitbutler
     helix
+    vscode
   ];
 }
