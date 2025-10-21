@@ -6,6 +6,8 @@
 let mapleader=" "
 let maplocalleader="\\"
 
+" case insensitive search
+set ignorecase
 " Confirm to save changes before exiting modified buffer
 set formatoptions=jcroqlnt
 " Print line number
