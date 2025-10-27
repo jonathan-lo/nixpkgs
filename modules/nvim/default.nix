@@ -5,6 +5,7 @@ let unstablePlugins = pkgs.unstable.vimPlugins; in
 
   home.packages = with pkgs; [
     unstable.helm-ls
+    kotlin-language-server
     lua-language-server
     yaml-language-server
   ];
