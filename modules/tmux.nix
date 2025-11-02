@@ -12,7 +12,6 @@ let
     set -s set-clipboard on 
     set-option -g status-position top
     set -ga terminal-overrides ",xterm-256color:Tc:clipboard"
-    set -ga terminal-overrides ",alacritty:RGB"
     set-option -g status-interval 5
     set-option -g allow-passthrough on
     set-option -g automatic-rename on

@@ -33,7 +33,6 @@
 
   imports = [
     ./modules/ai.nix
-    ./modules/alacritty.nix
     ./modules/aws.nix
     ./modules/direnv.nix
     ./modules/docker.nix
