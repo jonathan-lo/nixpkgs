@@ -12,6 +12,7 @@
     kustomize
     k9s
     stern
+    tlsx
   ];
 
   modules.shell.zsh.aliases = {
