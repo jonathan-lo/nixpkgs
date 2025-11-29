@@ -23,6 +23,9 @@
       yq-go
     ];
 
+    sessionVariables = {
+      NVIM_APPNAME = "lazyvim-new";
+    };
     stateVersion = "22.05";
     username = "jlo";
   };
