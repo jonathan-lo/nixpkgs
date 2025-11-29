@@ -10,14 +10,12 @@
 
 - [ ] zsh profile should be modularised
 
-
 ## setup notes
 
 ### darwin
 
 - install nix multi-user
 - setup fonts? (manually)
-- setup terminfo for alacritty https://github.com/alacritty/alacritty/blob/master/INSTALL.md#terminfo
 - `./apply`
 - ???
 - profit
@@ -26,12 +24,9 @@
 
 #### keyboard settings
 
-* shortcuts -> mission control -> move space / switch desktop off
-* bind capslock to control
+- shortcuts -> mission control -> move space / switch desktop off
+- bind capslock to control
 
 ### WLS post setup
 
-* install alacritty
-* copy alacritty config to `%APPDATA%\alacritty`
-* install terminfo
-* bind capslock to control
+- bind capslock to control

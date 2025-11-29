@@ -12,7 +12,6 @@ let
     set -s set-clipboard on 
     set-option -g status-position top
     set -ga terminal-overrides ",xterm-256color:Tc:clipboard"
-    set -ga terminal-overrides ",alacritty:RGB"
     set-option -g status-interval 5
     set-option -g allow-passthrough on
     set-option -g automatic-rename on
@@ -37,6 +36,13 @@ let
     bind-key -T copy-mode-vi 'C-k' select-pane -U
     bind-key -T copy-mode-vi 'C-l' select-pane -R
     bind-key -T copy-mode-vi 'C-\' select-pane -l
+
+    # Make the status line pretty and add some modules
+    set -g status-right-length 100
+    set -g status-left-length 100
+    set -g status-left ""
+    set -g status-right "#{E:@catppuccin_status_application}"
+    set -ag status-right "#{E:@catppuccin_status_session}"
 
     # session managment via sesh
     bind-key j run-shell "sesh connect \"$(
@@ -73,6 +79,8 @@ in
       {
         plugin = catppuccin;
         extraConfig = ''
+          set -g @catppuccin_flavor "mocha"
+          set -g @catppuccin_window_status_style "rounded"
         '';
       }
       {

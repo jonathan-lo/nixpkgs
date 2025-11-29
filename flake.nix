@@ -1,32 +1,55 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-24.11";
+      url = "github:lnl7/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
     let
       overlay = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+        unstable =  import inputs.nixpkgs-unstable {
+            system = prev.system;
+            config.allowUnfree = true;
+          };
+      };
+
+      system = "aarch64-darwin";
+      overlays = [ overlay ];
+
+      pkgs = import nixpkgs { 
+        inherit system overlays;
+        config = {
+          allowUnfree = true;
+         # allowUnfreePredicate = (_: true);
+        };
+      };
+
+      nixPkgsConfig = {
+        inherit overlays;
       };
     in
     {
+
       darwinConfigurations."Jonathans-MacBook-Pro" = darwin.lib.darwinSystem {
+        pkgs = pkgs;
         system = "aarch64-darwin";
+
+        specialArgs = { inherit inputs; } ;
+
         modules = [
-          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
           home-manager.darwinModules.home-manager
           {
+            nixpkgs = nixPkgsConfig;
             home-manager.useGlobalPkgs = true;
             home-manager.users.jlo = import ./home-work.nix;
           }
@@ -39,7 +62,6 @@
       homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [
-          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
           ./home.nix
           ./hosts/linux/settings.nix
         ];
@@ -47,7 +69,6 @@
       homeConfigurations."LAPTOP-GIVRN79I" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         modules = [
-          ({ ... }: { nixpkgs.overlays = [ overlay ]; })
           ./home.nix
           ./hosts/linux/settings.nix
         ];

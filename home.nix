@@ -32,7 +32,7 @@
   };
 
   imports = [
-    ./modules/alacritty.nix
+    ./modules/ai.nix
     ./modules/aws.nix
     ./modules/direnv.nix
     ./modules/docker.nix

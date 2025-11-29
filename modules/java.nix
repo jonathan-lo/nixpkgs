@@ -7,5 +7,7 @@
 
   programs.java = {
     enable = false;
+    
   };
+  home.file.".ideavimrc".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/java/.ideavimrc";
 }

@@ -9,14 +9,16 @@
       "bash"
       "coreutils"
       "findutils"
+      "node"
     ];
     casks = [
+      "ghostty"
       "google-chrome"
       "logseq"
       "obsidian"
       "rectangle"
       "wezterm"
-      "ghostty"
+      "zed"
     ];
 
     extraConfig = ''
