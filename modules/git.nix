@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.settings.git;
-in {
+let
+  cfg = config.settings.git;
+in
+{
   options.settings.git = {
     defaultBranch = mkOption {
       description = "the name of the default branch";
@@ -24,18 +31,21 @@ in {
       ci = "commit";
       co = "checkout";
       l = "lg -n 10";
-      lg =
-        "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+      lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       purr = "pull --rebase";
       st = "status";
     };
 
     extraConfig = {
-      core = { 
+      core = {
         editor = "nvim";
       };
-      init = { defaultBranch = cfg.defaultBranch; };
-      push = { autoSetupRemote = "true"; };
+      init = {
+        defaultBranch = cfg.defaultBranch;
+      };
+      push = {
+        autoSetupRemote = "true";
+      };
 
     };
 

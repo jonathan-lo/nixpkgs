@@ -14,23 +14,31 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, darwin, home-manager, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      darwin,
+      home-manager,
+      ...
+    }:
     let
       overlay = final: prev: {
-        unstable =  import inputs.nixpkgs-unstable {
-            system = prev.system;
-            config.allowUnfree = true;
-          };
+        unstable = import inputs.nixpkgs-unstable {
+          system = prev.system;
+          config.allowUnfree = true;
+        };
       };
 
       system = "aarch64-darwin";
       overlays = [ overlay ];
 
-      pkgs = import nixpkgs { 
+      pkgs = import nixpkgs {
         inherit system overlays;
         config = {
           allowUnfree = true;
-         # allowUnfreePredicate = (_: true);
+          # allowUnfreePredicate = (_: true);
         };
       };
 
@@ -44,7 +52,7 @@
         pkgs = pkgs;
         system = "aarch64-darwin";
 
-        specialArgs = { inherit inputs; } ;
+        specialArgs = { inherit inputs; };
 
         modules = [
           home-manager.darwinModules.home-manager

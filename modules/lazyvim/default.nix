@@ -1,6 +1,11 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let 
+let
   unstablePlugins = pkgs.unstable.vimPlugins;
   gitlinker = pkgs.vimUtils.buildVimPlugin {
     name = "gitlinker";
@@ -50,7 +55,6 @@ in
       set termguicolors
       set wildignore+=**/.git/*
     '';
-
 
     plugins = with pkgs.vimPlugins; [
       lazy-nvim
@@ -112,25 +116,53 @@ in
           vim-illuminate
           vim-startuptime
           which-key-nvim
-          { name = "LuaSnip"; path = luasnip; }
-          { name = "mini.ai"; path = mini-nvim; }
-          { name = "mini.bufremove"; path = mini-nvim; }
-          { name = "mini.comment"; path = mini-nvim; }
-          { name = "mini.indentscope"; path = mini-nvim; }
-          { name = "mini.pairs"; path = mini-nvim; }
-          { name = "mini.surround"; path = mini-nvim; }
+          {
+            name = "LuaSnip";
+            path = luasnip;
+          }
+          {
+            name = "mini.ai";
+            path = mini-nvim;
+          }
+          {
+            name = "mini.bufremove";
+            path = mini-nvim;
+          }
+          {
+            name = "mini.comment";
+            path = mini-nvim;
+          }
+          {
+            name = "mini.indentscope";
+            path = mini-nvim;
+          }
+          {
+            name = "mini.pairs";
+            path = mini-nvim;
+          }
+          {
+            name = "mini.surround";
+            path = mini-nvim;
+          }
 
           # java
           nvim-jdtls
 
           # themes
-          { name = "catppuccin"; path = catppuccin-nvim; }
+          {
+            name = "catppuccin";
+            path = catppuccin-nvim;
+          }
           tokyonight-nvim
           dracula-nvim
         ];
-        mkEntryFromDrv = drv:
+        mkEntryFromDrv =
+          drv:
           if lib.isDerivation drv then
-            { name = "${lib.getName drv}"; path = drv; }
+            {
+              name = "${lib.getName drv}";
+              path = drv;
+            }
           else
             drv;
         lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
@@ -177,37 +209,40 @@ in
     vimAlias = true;
   };
 
-
   # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
   xdg.configFile."nvim/parser".source =
     let
       parsers = pkgs.symlinkJoin {
         name = "treesitter-parsers";
-        paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
-          bash
-          go
-          gomod
-          helm
-          hcl
-          java
-          kotlin
-          lua
-          make
-          markdown
-          nix
-          rust
-          terraform
-          toml
-          vim
-          yaml
-        ])).dependencies;
+        paths =
+          (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+            plugins: with plugins; [
+              bash
+              go
+              gomod
+              helm
+              hcl
+              java
+              kotlin
+              lua
+              make
+              markdown
+              nix
+              rust
+              terraform
+              toml
+              vim
+              yaml
+            ]
+          )).dependencies;
       };
     in
     "${parsers}/parser";
 
   # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
   xdg.configFile."nvim/lua".source = ./lua;
-  
+
   # fork for externally managed lazyvim config
-  xdg.configFile."lazyvim-new/".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/lazyvim/lazyvim-new";
+  xdg.configFile."lazyvim-new/".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/lazyvim/lazyvim-new";
 }

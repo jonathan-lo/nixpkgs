@@ -1,12 +1,16 @@
 { config, pkgs, ... }:
 
-let configPath = config.home.homeDirectory + "/.config/ripgrep/ripgreprc";
+let
+  configPath = config.home.homeDirectory + "/.config/ripgrep/ripgreprc";
 
-in {
+in
+{
 
   home = {
     packages = with pkgs; [ ripgrep ];
-    sessionVariables = { RIPGREP_CONFIG_PATH = configPath; };
+    sessionVariables = {
+      RIPGREP_CONFIG_PATH = configPath;
+    };
   };
 
   xdg.configFile."ripgrep/ripgreprc".text = ''

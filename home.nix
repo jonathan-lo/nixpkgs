@@ -14,6 +14,7 @@
       jq
       mktemp
       neofetch
+      nixfmt-rfc-style
       nixpkgs-fmt
       unstable.sesh
       step-cli
@@ -25,7 +26,6 @@
     stateVersion = "22.05";
     username = "jlo";
   };
-
 
   modules.shell.zsh = {
     profileExtra = ". /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh";

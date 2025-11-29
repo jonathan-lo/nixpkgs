@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
@@ -25,22 +30,24 @@ in
       type = types.lines;
     };
   };
-  config.programs.zsh = mkMerge [{
-    enable = true;
-    initContent = lib.mkBefore ''
-      export PATH=$PATH:$HOME/bin
-      export PATH=$PATH:$HOME/go/bin
-      export PATH=/opt/homebrew/bin:$PATH
-      export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS:$PATH"
-      source $HOME/.sdkman/bin/sdkman-init.sh
-    '';
-    profileExtra = cfg.profileExtra;
-    shellAliases = aliases // cfg.aliases;
-
-    oh-my-zsh = {
+  config.programs.zsh = mkMerge [
+    {
       enable = true;
-      plugins = [ "git" ];
-      theme = "robbyrussell";
-    };
-  }];
+      initContent = lib.mkBefore ''
+        export PATH=$PATH:$HOME/bin
+        export PATH=$PATH:$HOME/go/bin
+        export PATH=/opt/homebrew/bin:$PATH
+        export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS:$PATH"
+        source $HOME/.sdkman/bin/sdkman-init.sh
+      '';
+      profileExtra = cfg.profileExtra;
+      shellAliases = aliases // cfg.aliases;
+
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" ];
+        theme = "robbyrussell";
+      };
+    }
+  ];
 }
