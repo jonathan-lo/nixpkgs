@@ -15,7 +15,6 @@
       mktemp
       neofetch
       nixfmt-rfc-style
-      nixpkgs-fmt
       unstable.sesh
       step-cli
       tcpdump
