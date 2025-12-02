@@ -7,7 +7,7 @@
     packages = with pkgs; [
       act
       bat
-      du-dust
+      dust
       fd
       fira-code
       unstable.gh
