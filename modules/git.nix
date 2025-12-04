@@ -27,16 +27,16 @@ in
 
   config.programs.git = {
     enable = true;
-    aliases = {
-      ci = "commit";
-      co = "checkout";
-      l = "lg -n 10";
-      lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-      purr = "pull --rebase";
-      st = "status";
-    };
 
-    extraConfig = {
+    settings = {
+      alias = {
+        ci = "commit";
+        co = "checkout";
+        l = "lg -n 10";
+        lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+        purr = "pull --rebase";
+        st = "status";
+      };
       core = {
         editor = "nvim";
       };
@@ -46,7 +46,10 @@ in
       push = {
         autoSetupRemote = "true";
       };
-
+      user = {
+        email = cfg.email;
+        name = "Jonathan Lo";
+      };
     };
 
     ignores = [
@@ -54,8 +57,5 @@ in
       "kls_database.db"
       ".idea/GitLink.xml"
     ];
-
-    userEmail = cfg.email;
-    userName = "Jonathan Lo";
   };
 }
