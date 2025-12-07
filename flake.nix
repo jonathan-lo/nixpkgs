@@ -31,35 +31,27 @@
         };
       };
 
-      system = "aarch64-darwin";
+#      system = stdnev.hostPlatform.system;
       overlays = [ overlay ];
-
-      pkgs = import nixpkgs {
-        inherit system overlays;
-        config = {
-          allowUnfree = true;
-          # allowUnfreePredicate = (_: true);
-        };
-      };
 
       nixPkgsConfig = {
         inherit overlays;
+        config.allowUnfree = true;
       };
     in
     {
       nixosConfigurations = {
-        "budu" = nixpkgs.lib.nixosSystem {
-
-          pkgs = pkgs;
+        "nixos" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
 
           specialArgs = { inherit inputs; };
 
           modules = [
-            home-manager
+            home-manager.nixosModules.home-manager
             {
               nixpkgs = nixPkgsConfig;
               home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
               home-manager.users.jlo = import ./home.nix;
             }
             ./hosts/linux/budu/configuration.nix
@@ -69,7 +61,6 @@
       };
 
       darwinConfigurations."Jonathans-MacBook-Pro" = darwin.lib.darwinSystem {
-        pkgs = pkgs;
         system = "aarch64-darwin";
 
         specialArgs = { inherit inputs; };

@@ -11,6 +11,7 @@
       fd
       fira-code
       unstable.gh
+      ghostty
       jq
       mktemp
       neofetch
