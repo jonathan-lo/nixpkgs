@@ -47,6 +47,26 @@
       };
     in
     {
+      nixosConfigurations = {
+        "budu" = nixpkgs.lib.nixosSystem {
+
+          pkgs = pkgs;
+          system = "x86_64-linux";
+
+          specialArgs = { inherit inputs; };
+
+          modules = [
+            home-manager
+            {
+              nixpkgs = nixPkgsConfig;
+              home-manager.useGlobalPkgs = true;
+              home-manager.users.jlo = import ./home.nix;
+            }
+            ./hosts/linux/budu/configuration.nix
+            ./hosts/linux/budu/hardware-configuration.nix
+          ];
+        };
+      };
 
       darwinConfigurations."Jonathans-MacBook-Pro" = darwin.lib.darwinSystem {
         pkgs = pkgs;
