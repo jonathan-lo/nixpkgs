@@ -31,7 +31,7 @@
         };
       };
 
-#      system = stdnev.hostPlatform.system;
+      #      system = stdnev.hostPlatform.system;
       overlays = [ overlay ];
 
       nixPkgsConfig = {
@@ -41,7 +41,7 @@
     in
     {
       nixosConfigurations = {
-        "nixos" = nixpkgs.lib.nixosSystem {
+        "budu" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
 
           specialArgs = { inherit inputs; };

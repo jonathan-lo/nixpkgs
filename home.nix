@@ -20,6 +20,8 @@
       step-cli
       tcpdump
       tree
+      ungoogled-chromium
+      google-chrome
       yq-go
     ];
 
@@ -60,4 +62,7 @@
   programs.home-manager.enable = true;
 
   programs.zoxide.enable = true;
+  xdg.configFile.".config/ghostty".text = ''
+    theme=catppucin-mocha
+  '';
 }

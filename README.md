@@ -30,3 +30,9 @@
 ### WLS post setup
 
 - bind capslock to control
+
+## nixos setup
+
+```
+sudo nixos-rebuild switch --flake ".#nixos"
+```
