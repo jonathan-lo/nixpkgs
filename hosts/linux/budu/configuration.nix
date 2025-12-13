@@ -23,7 +23,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
+  # for vpn compat
+  networking.firewall.checkReversePath = false;
   # Set your time zone.
   time.timeZone = "Australia/Sydney";
 
@@ -95,6 +96,23 @@
     };
   };
 
+  # disable power button
+  # see all options in /etc/systemd/logind.conf
+  services.logind.settings = {
+    Login = {
+      HandlePowerKey = "ignore";
+    };
+  };
+
+  # hardware accel
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+  # linux amdgpu controller
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = [ "multi-user.target" ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jlo = {
     isNormalUser = true;
@@ -119,6 +137,9 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
+    # linux amdgpu controller
+    lact
+    protonvpn-gui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
