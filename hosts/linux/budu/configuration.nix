@@ -141,6 +141,10 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs.steam = {
+    enable = true;
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -152,6 +156,7 @@
     # linux amdgpu controller
     lact
     protonvpn-gui
+    unixtools.ifconfig
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
