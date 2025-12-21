@@ -13,6 +13,7 @@
       unstable.gh
       ghostty
       jq
+      just
       mktemp
       neofetch
       nixfmt-rfc-style
