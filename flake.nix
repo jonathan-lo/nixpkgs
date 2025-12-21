@@ -31,7 +31,6 @@
         };
       };
 
-      #      system = stdnev.hostPlatform.system;
       overlays = [ overlay ];
 
       nixPkgsConfig = {
@@ -55,7 +54,6 @@
               home-manager.users.jlo = import ./home.nix;
             }
             ./hosts/linux/budu/configuration.nix
-            ./hosts/linux/budu/hardware-configuration.nix
           ];
         };
       };
