@@ -51,7 +51,7 @@
               nixpkgs = nixPkgsConfig;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jlo = import ./home.nix;
+              home-manager.users.jlo = import ./hosts/linux/budu/home.nix;
             }
             ./hosts/linux/budu/configuration.nix
           ];
