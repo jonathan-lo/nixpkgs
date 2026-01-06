@@ -11,7 +11,6 @@
       fd
       fira-code
       unstable.gh
-      ghostty
       jq
       just
       mktemp
@@ -21,8 +20,6 @@
       step-cli
       tcpdump
       tree
-      ungoogled-chromium
-      google-chrome
       yq-go
     ];
 
