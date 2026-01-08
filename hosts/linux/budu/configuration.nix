@@ -155,6 +155,7 @@
     #  wget
     # linux amdgpu controller
     lact
+    libreoffice
     protonvpn-gui
     unixtools.ifconfig
   ];
