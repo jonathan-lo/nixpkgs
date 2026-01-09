@@ -1,13 +1,21 @@
-#!/bin/bash -eu
+# apply nix configuration based on OS
+[linux]
+apply:
+  sudo nixos-rebuild switch --flake
 
-if [ "$(uname)" == "Darwin" ]; then
-  # impure for symlinking lazyvim config from dotfiles directory to XDG config
+[macos]
+apply:
   nix build \
     --extra-experimental-features 'nix-command flakes' \
     .#darwinConfigurations."Jonathans-MacBook-Pro".system
   sudo ./result/sw/bin/darwin-rebuild switch --impure --flake .
-else
+
+[windows]
+apply:
   export NIXPKGS_ALLOW_BROKEN=1
   home-manager switch --flake .#$(hostname) \
     --extra-experimental-features 'nix-command flakes'
-fi
+
+# print system os 
+system-info:
+  @echo "{{os()}}
