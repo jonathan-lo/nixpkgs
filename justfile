@@ -6,7 +6,6 @@ apply:
 [macos]
 apply:
   nix build \
-    --extra-experimental-features 'nix-command flakes' \
     .#darwinConfigurations."Jonathans-MacBook-Pro".system
   sudo ./result/sw/bin/darwin-rebuild switch --impure --flake .
 
@@ -18,4 +17,4 @@ apply:
 
 # print system os 
 system-info:
-  @echo "{{os()}}
+  @echo "{{os()}}"
