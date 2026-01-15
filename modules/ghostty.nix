@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  # no nix package available for darwin, use brew :(
+  # https://github.com/ghostty-org/ghostty/discussions/2824
   programs.ghostty = {
-    enable = true;
-    enableZshIntegration = true;
-    systemd.enable = true;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
+    enableZshIntegration = pkgs.stdenv.hostPlatform.isLinux;
   };
 }
