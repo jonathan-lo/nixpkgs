@@ -56,6 +56,7 @@ in
       "**/.claude/settings.local.json"
       "kls_database.db"
       ".idea/GitLink.xml"
+      ".envrc"
     ];
   };
 }
