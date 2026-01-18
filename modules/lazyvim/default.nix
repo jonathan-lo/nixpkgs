@@ -8,6 +8,8 @@
 {
   home.packages = with pkgs; [
     ktlint
+    lua-language-server
+    markdownlint-cli2
     tflint
   ];
 
@@ -47,7 +49,7 @@
     vimAlias = true;
   };
 
-  # fork for externally managed lazyvim config
+  # externally managed lazyvim config
   xdg.configFile."lazyvim-new/".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/lazyvim/lazyvim-new";
 }
