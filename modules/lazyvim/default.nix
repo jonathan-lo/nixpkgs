@@ -24,7 +24,7 @@
       nnoremap <C-L> <C-W><C-L>
       nnoremap <C-H> <C-W><C-H>
       nnoremap <C-d> <C-d>zz
-      nnoremap <C-H> <C-u>zz
+      nnoremap <C-u> <C-u>zz
 
       set autoindent
       set autoread
