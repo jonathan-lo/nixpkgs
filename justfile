@@ -1,4 +1,10 @@
-rebuild := if os() == "linux" { "sudo nixos-rebuild" } else { "sudo ./result/sw/bin/darwin-rebuild switch" }
+rebuild := if os() == "linux" { 
+  "sudo nixos-rebuild" 
+} else if os() == "windows" { 
+  "home-manager" 
+} else { 
+  "sudo ./result/sw/bin/darwin-rebuild"
+}
 
 # apply nix configuration based on OS
 [linux]
@@ -7,14 +13,15 @@ apply:
 
 [macos]
 apply:
-    nix build \
-      .#darwinConfigurations."Jonathans-MacBook-Pro".system
-    sudo ./result/sw/bin/darwin-rebuild switch --impure --flake .
+    {{ rebuild }} switch --impure --flake .
 
 [windows]
 apply:
-    home-manager switch --flake .#$(hostname) \
-      --extra-experimental-features 'nix-command flakes'
+    {{ rebuild }} --extra-experimental-features 'nix-command flakes'
+
+[macos]
+build:
+    nix build .#darwinconfigurations."jonathans-macbook-pro".system
 
 # print system os
 system-info:
