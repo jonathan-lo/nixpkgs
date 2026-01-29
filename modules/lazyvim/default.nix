@@ -11,6 +11,7 @@
     lua-language-server
     markdownlint-cli2
     tflint
+    tree-sitter
     yaml-language-server
   ];
 
@@ -59,6 +60,8 @@
           (pkgs.vimPlugins.nvim-treesitter.withPlugins (
             plugins: with plugins; [
               bash
+              c
+              cpp
               go
               gomod
               helm
@@ -69,10 +72,13 @@
               make
               markdown
               nix
+              python
               rust
               terraform
               toml
+              typescript
               vim
+              vimdoc
               yaml
             ]
           )).dependencies;
