@@ -13,7 +13,7 @@ apply:
 
 [macos]
 apply:
-    {{ rebuild }} switch --impure --flake .
+    {{ rebuild }} switch --flake .
 
 [windows]
 apply:
