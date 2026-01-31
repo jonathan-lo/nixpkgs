@@ -6,7 +6,6 @@
   homebrew = {
     enable = true;
     brews = [
-      "bash"
       "node"
     ];
     casks = [

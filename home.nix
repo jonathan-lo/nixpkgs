@@ -34,6 +34,7 @@
   imports = [
     ./modules/ai.nix
     ./modules/aws.nix
+    ./modules/bash.nix
     ./modules/bitwarden.nix
     ./modules/calibre.nix
     ./modules/direnv.nix
