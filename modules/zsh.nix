@@ -38,7 +38,6 @@ in
         export PATH=$PATH:$HOME/go/bin
         export PATH=/opt/homebrew/bin:$PATH
         export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS:$PATH"
-        source $HOME/.sdkman/bin/sdkman-init.sh
       '';
       profileExtra = cfg.profileExtra;
       shellAliases = aliases // cfg.aliases;

@@ -67,7 +67,7 @@
           {
             nixpkgs = nixPkgsConfig;
             home-manager.useGlobalPkgs = true;
-            home-manager.users.jlo = import ./home.nix;
+            home-manager.users.jlo = import ./hosts/darwin/nc/home.nix;
           }
           ./hosts/darwin/homebrew.nix
           ./hosts/darwin/services.nix
