@@ -15,9 +15,6 @@
       "ghostty"
       "google-chrome"
       "logseq"
-      "obsidian"
-      "rectangle"
-      "wezterm"
       "zed"
     ];
 
