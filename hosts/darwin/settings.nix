@@ -2,6 +2,5 @@
 
 {
   environment.variables = {
-    NVIM_APPNAME = "lazyvim-new";
   };
 }
