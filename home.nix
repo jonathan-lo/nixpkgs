@@ -38,6 +38,7 @@
     ./modules/ai.nix
     ./modules/aws.nix
     ./modules/bitwarden.nix
+    ./modules/calibre.nix
     ./modules/direnv.nix
     ./modules/docker.nix
     ./modules/editor.nix
