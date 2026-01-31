@@ -9,7 +9,10 @@
     ];
   };
 
-  modules.java.enable = true;
+  modules = {
+    bitwarden.enable = true;
+    java.enable = true;
+  };
 
   imports = [ ../../../home.nix ];
 }
