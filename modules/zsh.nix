@@ -29,16 +29,24 @@ in
       description = "extra profile commands";
       type = types.lines;
     };
+    initContent = mkOption {
+      description = "extra init content";
+      type = types.lines;
+      default = "";
+    };
   };
   config.programs.zsh = mkMerge [
     {
       enable = true;
-      initContent = lib.mkBefore ''
-        export PATH=$PATH:$HOME/bin
-        export PATH=$PATH:$HOME/go/bin
-        export PATH=/opt/homebrew/bin:$PATH
-        export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS:$PATH"
-      '';
+      initContent = lib.mkMerge [
+        (lib.mkBefore ''
+          export PATH=$PATH:$HOME/bin
+          export PATH=$PATH:$HOME/go/bin
+          export PATH=/opt/homebrew/bin:$PATH
+          export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS:$PATH"
+        '')
+        cfg.initContent
+      ];
       profileExtra = cfg.profileExtra;
       shellAliases = aliases // cfg.aliases;
 

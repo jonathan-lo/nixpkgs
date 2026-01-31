@@ -23,5 +23,6 @@
 
   environment.systemPackages = with pkgs; [
     rectangle
+    logseq
   ];
 }

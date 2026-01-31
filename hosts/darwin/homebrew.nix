@@ -14,7 +14,6 @@
     casks = [
       "ghostty"
       "google-chrome"
-      "logseq"
       "zed"
     ];
 
