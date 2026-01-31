@@ -7,14 +7,12 @@
     enable = true;
     brews = [
       "bash"
-      "coreutils"
-      "findutils"
       "node"
     ];
     casks = [
       "ghostty"
       "google-chrome"
-      "zed"
+      "postman"
     ];
 
     extraConfig = ''
@@ -28,7 +26,7 @@
 
     onActivation = {
       autoUpdate = false;
-      cleanup = "none"; # move this back to zap once lima situation is sorted.
+      cleanup = "zap"; # move this back to zap once lima situation is sorted.
       upgrade = false;
     };
 

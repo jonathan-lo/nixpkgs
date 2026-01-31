@@ -22,7 +22,10 @@
   system.primaryUser = "jlo";
 
   environment.systemPackages = with pkgs; [
-    rectangle
+    coreutils
+    findutils
     logseq
+    rectangle
+    zed-editor
   ];
 }
