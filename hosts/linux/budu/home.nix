@@ -9,5 +9,7 @@
     ];
   };
 
+  modules.java.enable = true;
+
   imports = [ ../../../home.nix ];
 }
