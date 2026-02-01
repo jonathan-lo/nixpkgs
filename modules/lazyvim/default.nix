@@ -53,7 +53,7 @@
   };
 
   # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
-  home.file.".config/nvim/parser".source =
+  home.file.".config/lazyvim-new/parser".source =
     let
       parsers = pkgs.symlinkJoin {
         name = "treesitter-parsers";
@@ -88,6 +88,6 @@
     "${parsers}/parser";
 
   # externally managed lazyvim config
-  xdg.configFile."nvim/".source =
+  xdg.configFile."lazyvim-new/".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/lazyvim/lazyvim-new";
 }
