@@ -30,10 +30,6 @@
     username = "jlo";
   };
 
-  modules.shell.zsh = {
-    profileExtra = ". /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh";
-  };
-
   imports = [
     ./modules/ai.nix
     ./modules/aws.nix

@@ -28,6 +28,7 @@ in
     profileExtra = mkOption {
       description = "extra profile commands";
       type = types.lines;
+      default = "";
     };
     initContent = mkOption {
       description = "extra init content";
