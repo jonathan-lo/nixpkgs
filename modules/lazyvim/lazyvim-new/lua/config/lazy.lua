@@ -18,6 +18,11 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- neotest
+    { import = "lazyvim.plugins.extras.test.core" },
+    -- language extras with neotest adapters
+    { import = "lazyvim.plugins.extras.lang.go" },
+    { import = "lazyvim.plugins.extras.lang.java" },
     -- import/override with your plugins
     { import = "plugins" },
   },
