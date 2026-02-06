@@ -10,7 +10,7 @@
     kotlin-language-server
     lua-language-server
     markdownlint-cli2
-    nil-ls
+    nixd
     statix # nix linting
     tflint
     tree-sitter
