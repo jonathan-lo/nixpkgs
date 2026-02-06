@@ -7,7 +7,7 @@
     enable = pkgs.stdenv.hostPlatform.isLinux;
     enableZshIntegration = pkgs.stdenv.hostPlatform.isLinux;
     settings = {
-      theme = "Catppuccin Macchiato";
+      theme = "Catppuccin Mocha";
     };
   };
 }
