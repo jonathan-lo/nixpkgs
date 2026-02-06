@@ -13,7 +13,9 @@
     nixd
     statix # nix linting
     tflint
+    terraform-ls
     tree-sitter
+
     yaml-language-server
   ];
 
