@@ -1,3 +1,3 @@
 # set theme
 theme = Catppuccin Mocha
-custom-shader = ./cursors/sajah-b/cursor_warp.glsl
+custom-shader = ./shaders/sahaj-b/cursor_warp.glsl
