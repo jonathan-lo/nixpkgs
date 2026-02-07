@@ -60,7 +60,4 @@
   programs.home-manager.enable = true;
 
   programs.zoxide.enable = true;
-  xdg.configFile.".config/ghostty".text = ''
-    theme=catppucin-mocha
-  '';
 }
