@@ -6,8 +6,8 @@
   programs.ghostty = {
     enable = pkgs.stdenv.hostPlatform.isLinux;
     enableZshIntegration = pkgs.stdenv.hostPlatform.isLinux;
-  };
 
-  xdg.configFile."ghostty/config".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/ghostty/config";
+  };
+     xdg.configFile."ghostty".source =
+         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/ghostty";
 }
