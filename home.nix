@@ -39,6 +39,7 @@
     ./modules/direnv.nix
     ./modules/docker.nix
     ./modules/editor.nix
+    ./modules/firefox.nix
     ./modules/fzf.nix
     ./modules/go.nix
     ./modules/google.nix
