@@ -1,4 +1,3 @@
-
 { config, pkgs, ... }:
 
 {
@@ -8,7 +7,6 @@
   };
 
   modules.java.enable = true;
-
 
   # workaround for mac updates breaking nix
   modules.shell.zsh = {

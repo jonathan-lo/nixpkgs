@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     exercism
-#    gitbutler
+    #    gitbutler
     helix
     vscode
   ];
