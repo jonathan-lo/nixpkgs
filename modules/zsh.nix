@@ -42,7 +42,6 @@ in
       initContent = lib.mkMerge [
         (lib.mkBefore ''
           export PATH=$PATH:$HOME/bin
-          export PATH=$PATH:$HOME/go/bin
           export PATH=/opt/homebrew/bin:$PATH
           export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS:$PATH"
         '')
