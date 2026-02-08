@@ -6,7 +6,6 @@
   home = {
     packages = with pkgs; [
       act
-      bat
       dust
       fd
       fira-code
@@ -34,6 +33,7 @@
     ./modules/ai.nix
     ./modules/aws.nix
     ./modules/bash.nix
+    ./modules/bat.nix
     ./modules/bitwarden.nix
     ./modules/calibre.nix
     ./modules/direnv.nix
