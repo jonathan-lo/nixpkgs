@@ -9,7 +9,6 @@
       dust
       fd
       fira-code
-      unstable.gh
       jq
       just
       mktemp

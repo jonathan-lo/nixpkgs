@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     unstable.claude-code
-    lazygit
     unstable.uv # for running mcps
   ];
 

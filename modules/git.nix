@@ -25,38 +25,46 @@ in
     };
   };
 
-  config.programs.git = {
-    enable = true;
-
-    settings = {
-      alias = {
-        ci = "commit";
-        co = "checkout";
-        l = "lg -n 10";
-        lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-        purr = "pull --rebase";
-        st = "status";
-      };
-      core = {
-        editor = "nvim";
-      };
-      init = {
-        defaultBranch = cfg.defaultBranch;
-      };
-      push = {
-        autoSetupRemote = "true";
-      };
-      user = {
-        email = cfg.email;
-        name = "Jonathan Lo";
-      };
-    };
-
-    ignores = [
-      "**/.claude/settings.local.json"
-      "kls_database.db"
-      ".idea/GitLink.xml"
-      ".envrc"
+  config = {
+    home.packages = with pkgs; [
+      unstable.gh
+      #    gitbutler
+      lazygit
     ];
+
+    programs.git = {
+      enable = true;
+
+      settings = {
+        alias = {
+          ci = "commit";
+          co = "checkout";
+          l = "lg -n 10";
+          lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+          purr = "pull --rebase";
+          st = "status";
+        };
+        core = {
+          editor = "nvim";
+        };
+        init = {
+          defaultBranch = cfg.defaultBranch;
+        };
+        push = {
+          autoSetupRemote = "true";
+        };
+        user = {
+          email = cfg.email;
+          name = "Jonathan Lo";
+        };
+      };
+
+      ignores = [
+        "**/.claude/settings.local.json"
+        "kls_database.db"
+        ".idea/GitLink.xml"
+        ".envrc"
+      ];
+    };
   };
 }
