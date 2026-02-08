@@ -3,6 +3,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
+    catppuccin.url = "github:catppuccin/nix";
+
     darwin = {
       url = "github:lnl7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +21,7 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
+      catppuccin,
       darwin,
       home-manager,
       ...
@@ -50,7 +53,12 @@
               nixpkgs = nixPkgsConfig;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jlo = import ./hosts/linux/budu/home.nix;
+              home-manager.users.jlo = {
+                imports = [
+                  ./hosts/linux/budu/home.nix
+                  catppuccin.homeModules.catppuccin
+                ];
+              };
             }
             ./hosts/linux/budu/configuration.nix
           ];
@@ -67,7 +75,12 @@
           {
             nixpkgs = nixPkgsConfig;
             home-manager.useGlobalPkgs = true;
-            home-manager.users.jlo = import ./hosts/darwin/nc/home.nix;
+            home-manager.users.jlo = {
+              imports = [
+                ./hosts/darwin/nc/home.nix
+                catppuccin.homeModules.catppuccin
+              ];
+            };
           }
           ./hosts/darwin/homebrew.nix
           ./hosts/darwin/services.nix
@@ -80,6 +93,7 @@
         modules = [
           ./home.nix
           ./hosts/linux/settings.nix
+          catppuccin.homeModules.catppuccin
         ];
       };
       homeConfigurations."LAPTOP-GIVRN79I" = home-manager.lib.homeManagerConfiguration {
@@ -87,6 +101,7 @@
         modules = [
           ./home.nix
           ./hosts/linux/settings.nix
+          catppuccin.homeModules.catppuccin
         ];
       };
     };

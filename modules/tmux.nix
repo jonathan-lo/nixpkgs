@@ -80,14 +80,8 @@ in
 
     extraConfig = extraConfigText;
 
+    # theme is set by catppuccin module in theme.nix
     plugins = with pkgs.tmuxPlugins; [
-      {
-        plugin = catppuccin;
-        extraConfig = ''
-          set -g @catppuccin_flavor "mocha"
-          set -g @catppuccin_window_status_style "rounded"
-        '';
-      }
       {
         plugin = tmux-thumbs;
       }

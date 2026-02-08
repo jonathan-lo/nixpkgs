@@ -20,13 +20,13 @@ in
     };
   };
 
+  # theme is set by catppuccin module in theme.nix
   config.programs.wezterm = {
     enable = true;
     enableZshIntegration = true;
     extraConfig = ''
       local config = {}
 
-      config.color_scheme = "Catppuccin Mocha"
       config.enable_tab_bar = false
       config.font_size = 16.0
 
