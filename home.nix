@@ -52,7 +52,6 @@
     ./modules/ripgrep.nix
     ./modules/theme.nix
     ./modules/tmux.nix
-    ./modules/wezterm.nix
     ./modules/zsh.nix
   ];
 
