@@ -43,7 +43,7 @@
     ./modules/go.nix
     ./modules/google.nix
     ./modules/git.nix
-    ./modules/ghostty.nix
+    ./modules/ghostty
     ./modules/java
     ./modules/kubernetes.nix
     ./modules/node.nix
