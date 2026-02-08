@@ -9,6 +9,7 @@
       dust
       fd
       fira-code
+      gnumake
       jq
       just
       mktemp
