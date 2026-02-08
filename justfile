@@ -26,3 +26,7 @@ build:
 # print system os
 system-info:
     @echo "{{ os() }}"
+
+
+lint:
+  nixfmt .
