@@ -39,14 +39,7 @@ in
   config.programs.zsh = mkMerge [
     {
       enable = true;
-      initContent = lib.mkMerge [
-        (lib.mkBefore ''
-          export PATH=$PATH:$HOME/bin
-          export PATH=/opt/homebrew/bin:$PATH
-          export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS:$PATH"
-        '')
-        cfg.initContent
-      ];
+      initContent = cfg.initContent;
       profileExtra = cfg.profileExtra;
       shellAliases = aliases // cfg.aliases;
 

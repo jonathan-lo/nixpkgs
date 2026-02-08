@@ -1,8 +1,12 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   home = {
     packages = with pkgs; [
+    ];
+    sessionPath = lib.mkBefore [
+      "/Applications/IntelliJ IDEA.app/Contents/MacOS"
+      "/opt/homebrew/bin"
     ];
   };
 
