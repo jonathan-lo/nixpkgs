@@ -12,8 +12,6 @@
     markdownlint-cli2
     nixd
     statix # nix linting
-    terraform-ls
-    tflint
     tree-sitter
 
     yaml-language-server
