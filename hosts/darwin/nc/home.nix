@@ -10,6 +10,10 @@
     ];
   };
 
+  targets.darwin.copyApps.enable = true;
+  targets.darwin.linkApps.enable = false;
+
+  modules.firefox.enable = true;
   modules.java.enable = true;
 
   # workaround for mac updates breaking nix
