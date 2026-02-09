@@ -26,6 +26,5 @@
     findutils
     logseq
     rectangle
-    zed-editor
   ];
 }

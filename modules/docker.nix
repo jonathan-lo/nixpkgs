@@ -1,6 +1,4 @@
 {
-  options,
-  config,
   lib,
   pkgs,
   ...
@@ -11,5 +9,4 @@ with lib;
     unstable.dive
     docker-client
   ];
-
 }
