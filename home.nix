@@ -5,20 +5,12 @@
 
   home = {
     packages = with pkgs; [
-      act
-      dust
-      fd
-      fira-code
-      gnumake
       jq
       just
-      mktemp
-      neofetch
       nixfmt-rfc-style
       unstable.sesh
       step-cli
       tcpdump
-      tree
       yq-go
     ];
 
