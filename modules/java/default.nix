@@ -21,6 +21,10 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       maven
+
+      # language servers
+      jdt-language-server
+      kotlin-language-server
     ];
 
     programs.java = {

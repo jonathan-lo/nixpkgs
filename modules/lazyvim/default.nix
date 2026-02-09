@@ -7,7 +7,6 @@
 
 {
   home.packages = with pkgs; [
-    kotlin-language-server
     lua-language-server
     markdownlint-cli2
     nixd
