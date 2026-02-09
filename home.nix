@@ -42,7 +42,7 @@
     ./modules/firefox.nix
     ./modules/fzf.nix
     ./modules/go.nix
-    ./modules/google.nix
+    ./modules/gcp.nix
     ./modules/git.nix
     ./modules/ghostty
     ./modules/java

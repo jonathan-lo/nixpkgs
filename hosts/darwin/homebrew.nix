@@ -6,7 +6,7 @@
   homebrew = {
     enable = true;
     brews = [
-      "node"
+      "node" # install via homebrew so can use npm to install mcps
     ];
     casks = [
       "ghostty"
