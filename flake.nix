@@ -60,6 +60,7 @@
                 ];
               };
             }
+            ./hosts/common/system-packages.nix
             ./hosts/linux/budu/configuration.nix
           ];
         };
@@ -82,6 +83,7 @@
               ];
             };
           }
+          ./hosts/common/system-packages.nix
           ./hosts/darwin/homebrew.nix
           ./hosts/darwin/services.nix
           ./hosts/darwin/settings.nix
