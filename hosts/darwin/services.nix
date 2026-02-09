@@ -22,8 +22,6 @@
   system.primaryUser = "jlo";
 
   environment.systemPackages = with pkgs; [
-    coreutils
-    findutils
     logseq
     rectangle
   ];
