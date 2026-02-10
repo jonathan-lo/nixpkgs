@@ -6,9 +6,5 @@
     unstable.uv # for running mcps
   ];
 
-  home.file.".claude/settings.json".text = ''
-    {
-          "includeCoAuthoredBy": false
-        }
-  '';
+  home.file.".claude/settings.json".source = ./claude/settings.json;
 }
