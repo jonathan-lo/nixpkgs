@@ -8,6 +8,7 @@
       jq
       just
       nixfmt-rfc-style
+      postman
       unstable.sesh
       step-cli
       tcpdump

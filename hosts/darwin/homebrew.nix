@@ -11,7 +11,6 @@
     casks = [
       "ghostty"
       "google-chrome"
-      "postman"
     ];
 
     extraConfig = ''
