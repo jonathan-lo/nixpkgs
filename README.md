@@ -34,5 +34,5 @@
 ## nixos setup
 
 ```
-sudo nixos-rebuild switch --flake ".#nixos"
+just
 ```

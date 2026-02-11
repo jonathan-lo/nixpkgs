@@ -7,6 +7,7 @@
 
 {
   home.packages = with pkgs; [
+    codesnap
     lua-language-server
     markdownlint-cli2
     nixd
