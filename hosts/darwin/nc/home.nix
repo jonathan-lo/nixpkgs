@@ -10,6 +10,7 @@
     ];
   };
 
+  # ensure that both systemPackages and home manager packages are indexed in Spotlight
   targets.darwin.copyApps.enable = true;
   targets.darwin.linkApps.enable = false;
 
