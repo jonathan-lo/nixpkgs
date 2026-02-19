@@ -33,6 +33,6 @@ in
     };
 
     home.file.".ideavimrc".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/java/.ideavimrc";
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/_legacy-modules/java/.ideavimrc";
   };
 }

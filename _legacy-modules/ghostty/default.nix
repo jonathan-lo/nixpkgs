@@ -9,5 +9,5 @@
 
   };
   xdg.configFile."ghostty".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/ghostty";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/_legacy-modules/ghostty";
 }
