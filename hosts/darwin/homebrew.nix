@@ -9,6 +9,7 @@
       "node" # install via homebrew so can use npm to install mcps
     ];
     casks = [
+      "claude-devtools"
       "ghostty"
       "google-chrome"
     ];
