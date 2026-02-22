@@ -35,7 +35,14 @@
       home-manager,
       ...
     }:
+    let
+      importTree = import inputs.import-tree;
+    in
     flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        inputs.flake-parts.flakeModules.modules
+        (importTree ./modules)
+      ];
       systems = [ "x86_64-linux" "aarch64-darwin" ];
 
       flake =
@@ -55,30 +62,7 @@
           };
         in
         {
-          nixosConfigurations = {
-            "budu" = nixpkgs.lib.nixosSystem {
-
-              specialArgs = { inherit inputs; };
-
-              modules = [
-                determinate.nixosModules.default
-                home-manager.nixosModules.home-manager
-                {
-                  nixpkgs = nixPkgsConfig;
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.users.jlo = {
-                    imports = [
-                      ./hosts/linux/budu/home.nix
-                      catppuccin.homeModules.catppuccin
-                    ];
-                  };
-                }
-                ./hosts
-                ./hosts/linux/budu/configuration.nix
-              ];
-            };
-          };
+          # nixosConfigurations.budu is now defined in modules/hosts/budu [N]/budu.nix
 
           darwinConfigurations."Jonathans-MacBook-Pro" = darwin.lib.darwinSystem {
             system = "aarch64-darwin";
