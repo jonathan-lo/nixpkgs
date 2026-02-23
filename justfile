@@ -3,7 +3,7 @@ rebuild := if os() == "linux" {
 } else if os() == "windows" { 
   "home-manager" 
 } else { 
-  "sudo ./result/sw/bin/darwin-rebuild"
+  "sudo darwin-rebuild"
 }
 
 # apply nix configuration based on OS
