@@ -45,50 +45,8 @@
       ];
       systems = [ "x86_64-linux" "aarch64-darwin" ];
 
-      flake =
-        let
-          overlay = final: prev: {
-            unstable = import inputs.nixpkgs-unstable {
-              system = prev.stdenv.hostPlatform.system;
-              config.allowUnfree = true;
-            };
-          };
-
-          overlays = [ overlay ];
-
-          nixPkgsConfig = {
-            inherit overlays;
-            config.allowUnfree = true;
-          };
-        in
-        {
-          # nixosConfigurations.budu is now defined in modules/hosts/budu [N]/budu.nix
-
-          darwinConfigurations."Jonathans-MacBook-Pro" = darwin.lib.darwinSystem {
-            system = "aarch64-darwin";
-
-            specialArgs = { inherit inputs; };
-
-            modules = [
-              home-manager.darwinModules.home-manager
-              {
-                nixpkgs = nixPkgsConfig;
-                home-manager.useGlobalPkgs = true;
-                home-manager.users.jlo = {
-                  imports = [
-                    ./hosts/darwin/nc/home.nix
-                    catppuccin.homeModules.catppuccin
-                  ];
-                };
-              }
-              ./hosts
-              ./hosts/darwin/homebrew.nix
-              ./hosts/darwin/services.nix
-              ./hosts/darwin/settings.nix
-            ];
-          };
-
-          homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
+      flake = {
+        homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages."x86_64-linux";
             modules = [
               ./home.nix

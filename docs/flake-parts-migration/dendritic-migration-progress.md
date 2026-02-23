@@ -112,19 +112,28 @@ home-manager.users.jlo = {
 ## Verification Commands
 
 ```bash
-# Verify flake evaluates successfully
-nix eval .#nixosConfigurations.budu.config.system.build.toplevel.drvPath
+# Use the extraction verification script (handles baseline capture and comparison)
+./scripts/verify-extraction.sh <flake-output> [label]           # capture baseline
+./scripts/verify-extraction.sh <flake-output> [label] --verify  # compare after changes
+./scripts/verify-extraction.sh --list                           # list active baselines
+./scripts/verify-extraction.sh <flake-output> [label] --clean   # cleanup baseline
 
-# Compare package counts (should be identical)
-nix derivation show <baseline-hm-path.drv> | jq '.derivations[].inputs.drvs | keys | length'
-nix derivation show <current-hm-path.drv> | jq '.derivations[].inputs.drvs | keys | length'
+# Manual verification (if needed)
+nix eval .#nixosConfigurations.budu.config.system.build.toplevel.drvPath
 ```
 
 ## Module Migration Pattern
 
 For each legacy module:
 
-1. **Create dendritic module**
+1. **Capture baseline**
+   ```bash
+   ./scripts/verify-extraction.sh <flake-output> <module-name>
+   # e.g. ./scripts/verify-extraction.sh nixosConfigurations.budu bash
+   # e.g. ./scripts/verify-extraction.sh darwinConfigurations.Jonathans-MacBook-Pro bash
+   ```
+
+2. **Create dendritic module**
    ```nix
    # modules/programs/<feature> [nd]/<feature>.nix
    { inputs, ... }:
@@ -135,16 +144,19 @@ For each legacy module:
    }
    ```
 
-2. **Update budu.nix** - add to imports:
+3. **Update host module** - add to imports:
    ```nix
    config.flake.modules.homeManager.<feature>
    ```
 
-3. **Update home.nix** - remove legacy import
+4. **Update home.nix** - remove legacy import
 
-4. **Stage for git**: `git add "modules/programs/<feature> [nd]/<feature>.nix"`
+5. **Stage for git**: `git add "modules/programs/<feature> [nd]/<feature>.nix"`
 
-5. **Verify**: `nix eval .#nixosConfigurations.budu.config.system.build.toplevel.drvPath`
+6. **Verify equivalence**
+   ```bash
+   ./scripts/verify-extraction.sh <flake-output> <module-name> --verify
+   ```
 
 ## Special Cases
 
@@ -161,6 +173,90 @@ For each legacy module:
 - Remove `modules.X.enable = true` from hosts/linux/budu/home.nix
 
 ## Next Steps
+
+### Phase 1.5: Extract MacBook Host to Module
+
+Extract `darwinConfigurations."Jonathans-MacBook-Pro"` from inline flake.nix to its own module.
+
+#### Before (capture baseline)
+```bash
+./scripts/verify-extraction.sh darwinConfigurations.Jonathans-MacBook-Pro macbook
+```
+
+#### Steps
+
+1. **Create host module file**
+   ```bash
+   mkdir -p "modules/hosts/macbook [D]"
+   ```
+
+2. **Create `modules/hosts/macbook [D]/macbook.nix`**
+   ```nix
+   { inputs, config, ... }:
+   let
+     inherit (inputs) darwin home-manager catppuccin;
+
+     overlay = final: prev: {
+       unstable = import inputs.nixpkgs-unstable {
+         system = prev.stdenv.hostPlatform.system;
+         config.allowUnfree = true;
+       };
+     };
+
+     overlays = [ overlay ];
+
+     nixPkgsConfig = {
+       inherit overlays;
+       config.allowUnfree = true;
+     };
+   in
+   {
+     flake.darwinConfigurations."Jonathans-MacBook-Pro" = darwin.lib.darwinSystem {
+       system = "aarch64-darwin";
+
+       specialArgs = { inherit inputs; };
+
+       modules = [
+         home-manager.darwinModules.home-manager
+         {
+           nixpkgs = nixPkgsConfig;
+           home-manager.useGlobalPkgs = true;
+           home-manager.users.jlo = {
+             imports = [
+               ../../../hosts/darwin/nc/home.nix
+               catppuccin.homeModules.catppuccin
+             ];
+           };
+         }
+         ../../../hosts
+         ../../../hosts/darwin/homebrew.nix
+         ../../../hosts/darwin/services.nix
+         ../../../hosts/darwin/settings.nix
+       ];
+     };
+   }
+   ```
+
+3. **Stage for git**
+   ```bash
+   git add "modules/hosts/macbook [D]/macbook.nix"
+   ```
+
+4. **Remove inline definition from flake.nix**
+   - Remove `darwinConfigurations."Jonathans-MacBook-Pro"` block (lines 67-89)
+   - Remove `overlay`, `overlays`, `nixPkgsConfig` if no longer used by other configs
+
+5. **Verify logical equivalence**
+   ```bash
+   ./scripts/verify-extraction.sh darwinConfigurations.Jonathans-MacBook-Pro macbook --verify
+   ```
+
+6. **Test activation**
+   ```bash
+   sudo darwin-rebuild switch --flake .
+   ```
+
+### Phase 2: Module Migration
 
 1. Continue migrating simple modules (ai, bash, bat, btop, direnv, editor, fzf, go, gcp, kubernetes, node, ops, platform, ripgrep)
 2. Handle modules with options (git, zsh) - preserve option interfaces
