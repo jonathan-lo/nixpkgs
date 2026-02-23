@@ -27,14 +27,12 @@ in
       {
         nixpkgs = nixPkgsConfig;
         home-manager.useGlobalPkgs = true;
-        home-manager.users.jlo = {
-          imports = [
-            ../../../hosts/darwin/nc/home.nix
-            catppuccin.homeModules.catppuccin
-            config.flake.modules.homeManager.ai
-            config.flake.modules.homeManager.aws
-          ];
-        };
+        home-manager.users.jlo.imports = with config.flake.modules.homeManager; [
+          ../../../hosts/darwin/nc/home.nix
+          catppuccin.homeModules.catppuccin
+          ai
+          aws
+        ];
       }
       ../../../hosts
       ../../../hosts/darwin/homebrew.nix

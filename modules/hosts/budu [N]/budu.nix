@@ -28,14 +28,12 @@ in
         nixpkgs = nixPkgsConfig;
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users.jlo = {
-          imports = [
-            ../../../hosts/linux/budu/home.nix
-            catppuccin.homeModules.catppuccin
-            config.flake.modules.homeManager.ai
-            config.flake.modules.homeManager.aws
-          ];
-        };
+        home-manager.users.jlo.imports = with config.flake.modules.homeManager; [
+          ../../../hosts/linux/budu/home.nix
+          catppuccin.homeModules.catppuccin
+          ai
+          aws
+        ];
       }
       ../../../hosts
       ../../../hosts/linux/budu/configuration.nix
