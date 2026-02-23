@@ -23,7 +23,6 @@
   };
 
   imports = [
-    ./_legacy-modules/ai.nix
     ./_legacy-modules/bash.nix
     ./_legacy-modules/bat.nix
     ./_legacy-modules/btop.nix

@@ -32,6 +32,7 @@ in
           imports = [
             ../../../hosts/linux/budu/home.nix
             catppuccin.homeModules.catppuccin
+            config.flake.modules.homeManager.ai
             config.flake.modules.homeManager.aws
           ];
         };

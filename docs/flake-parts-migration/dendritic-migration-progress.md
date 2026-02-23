@@ -32,12 +32,13 @@
 | Module | Source | Destination | Notes |
 |--------|--------|-------------|-------|
 | aws | `_legacy-modules/aws.nix` | `modules/programs/aws [nd]/aws.nix` | First migration, proof of concept |
+| ai | `_legacy-modules/ai.nix` | `modules/programs/ai [nd]/ai.nix` | Includes claude/settings.json |
 
 #### Pending
 
 | Module | Type | Notes |
 |--------|------|-------|
-| ai | packages + file | Has `home.file` for claude settings.json - needs path adjustment |
+| ~~ai~~ | ~~packages + file~~ | ✅ Migrated |
 | bash | program | Simple `programs.bash.enable = true` |
 | bat | program | Simple `programs.bat.enable = true` |
 | btop | program | Simple `programs.btop.enable = true` |
@@ -144,7 +145,9 @@ For each legacy module:
    }
    ```
 
-3. **Update host module** - add to imports:
+3. **Update BOTH host modules** - add to imports in each:
+   - `modules/hosts/budu [N]/budu.nix`
+   - `modules/hosts/macbook [D]/macbook.nix`
    ```nix
    config.flake.modules.homeManager.<feature>
    ```

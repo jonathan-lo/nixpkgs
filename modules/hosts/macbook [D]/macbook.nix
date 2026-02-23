@@ -31,6 +31,7 @@ in
           imports = [
             ../../../hosts/darwin/nc/home.nix
             catppuccin.homeModules.catppuccin
+            config.flake.modules.homeManager.ai
             config.flake.modules.homeManager.aws
           ];
         };
