@@ -35,6 +35,7 @@
 | ai | `_legacy-modules/ai.nix` | `modules/programs/ai [nd]/ai.nix` | Includes claude/settings.json |
 | bash | `_legacy-modules/bash.nix` | `modules/programs/bash [nd]/bash.nix` | Simple enable |
 | bat | `_legacy-modules/bat.nix` | `modules/programs/bat [nd]/bat.nix` | Simple enable |
+| btop | `_legacy-modules/btop.nix` | `modules/programs/btop [nd]/btop.nix` | Simple enable |
 
 #### Pending
 
@@ -43,7 +44,7 @@
 | ~~ai~~ | ~~packages + file~~ | ✅ Migrated |
 | ~~bash~~ | ~~program~~ | ✅ Migrated |
 | ~~bat~~ | ~~program~~ | ✅ Migrated |
-| btop | program | Simple `programs.btop.enable = true` |
+| ~~btop~~ | ~~program~~ | ✅ Migrated |
 | direnv | program | Has zsh integration |
 | editor | packages | exercism, vscode |
 | fzf | program | Has tmux integration |

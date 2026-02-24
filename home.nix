@@ -23,7 +23,6 @@
   };
 
   imports = [
-    ./_legacy-modules/btop.nix
     ./_legacy-modules/bitwarden.nix
     ./_legacy-modules/calibre.nix
     ./_legacy-modules/direnv.nix

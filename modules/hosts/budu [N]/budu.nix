@@ -35,6 +35,7 @@ in
           aws
           bash
           bat
+          btop
         ];
       }
       ../../../hosts
