@@ -33,6 +33,7 @@ in
           catppuccin.homeModules.catppuccin
           ai
           aws
+          bash
         ];
       }
       ../../../hosts

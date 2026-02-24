@@ -33,13 +33,14 @@
 |--------|--------|-------------|-------|
 | aws | `_legacy-modules/aws.nix` | `modules/programs/aws [nd]/aws.nix` | First migration, proof of concept |
 | ai | `_legacy-modules/ai.nix` | `modules/programs/ai [nd]/ai.nix` | Includes claude/settings.json |
+| bash | `_legacy-modules/bash.nix` | `modules/programs/bash [nd]/bash.nix` | Simple enable |
 
 #### Pending
 
 | Module | Type | Notes |
 |--------|------|-------|
 | ~~ai~~ | ~~packages + file~~ | ✅ Migrated |
-| bash | program | Simple `programs.bash.enable = true` |
+| ~~bash~~ | ~~program~~ | ✅ Migrated |
 | bat | program | Simple `programs.bat.enable = true` |
 | btop | program | Simple `programs.btop.enable = true` |
 | direnv | program | Has zsh integration |
