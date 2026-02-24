@@ -38,6 +38,7 @@ in
           direnv
           editor
           fzf
+          go
         ];
       }
       ../../../hosts
