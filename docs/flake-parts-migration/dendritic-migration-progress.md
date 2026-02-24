@@ -36,6 +36,7 @@
 | bash | `_legacy-modules/bash.nix` | `modules/programs/bash [nd]/bash.nix` | Simple enable |
 | bat | `_legacy-modules/bat.nix` | `modules/programs/bat [nd]/bat.nix` | Simple enable |
 | btop | `_legacy-modules/btop.nix` | `modules/programs/btop [nd]/btop.nix` | Simple enable |
+| direnv | `_legacy-modules/direnv.nix` | `modules/programs/direnv [nd]/direnv.nix` | With zsh integration |
 
 #### Pending
 
@@ -45,7 +46,7 @@
 | ~~bash~~ | ~~program~~ | ✅ Migrated |
 | ~~bat~~ | ~~program~~ | ✅ Migrated |
 | ~~btop~~ | ~~program~~ | ✅ Migrated |
-| direnv | program | Has zsh integration |
+| ~~direnv~~ | ~~program~~ | ✅ Migrated |
 | editor | packages | exercism, vscode |
 | fzf | program | Has tmux integration |
 | go | packages + program | Has sessionPath config |

@@ -25,7 +25,6 @@
   imports = [
     ./_legacy-modules/bitwarden.nix
     ./_legacy-modules/calibre.nix
-    ./_legacy-modules/direnv.nix
     ./_legacy-modules/docker.nix
     ./_legacy-modules/editor.nix
     ./_legacy-modules/firefox.nix

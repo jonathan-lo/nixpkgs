@@ -35,6 +35,7 @@ in
           bash
           bat
           btop
+          direnv
         ];
       }
       ../../../hosts
