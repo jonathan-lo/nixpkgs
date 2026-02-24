@@ -37,6 +37,7 @@ in
           btop
           direnv
           editor
+          fzf
         ];
       }
       ../../../hosts
