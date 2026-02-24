@@ -33,6 +33,7 @@ in
           ai
           aws
           bash
+          bat
         ];
       }
       ../../../hosts
