@@ -26,7 +26,6 @@
     ./_legacy-modules/bitwarden.nix
     ./_legacy-modules/calibre.nix
     ./_legacy-modules/docker.nix
-    ./_legacy-modules/editor.nix
     ./_legacy-modules/firefox.nix
     ./_legacy-modules/fzf.nix
     ./_legacy-modules/go.nix

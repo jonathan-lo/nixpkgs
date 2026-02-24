@@ -37,6 +37,7 @@
 | bat | `_legacy-modules/bat.nix` | `modules/programs/bat [nd]/bat.nix` | Simple enable |
 | btop | `_legacy-modules/btop.nix` | `modules/programs/btop [nd]/btop.nix` | Simple enable |
 | direnv | `_legacy-modules/direnv.nix` | `modules/programs/direnv [nd]/direnv.nix` | With zsh integration |
+| editor | `_legacy-modules/editor.nix` | `modules/programs/editor [nd]/editor.nix` | exercism, vscode |
 
 #### Pending
 
@@ -47,7 +48,7 @@
 | ~~bat~~ | ~~program~~ | ✅ Migrated |
 | ~~btop~~ | ~~program~~ | ✅ Migrated |
 | ~~direnv~~ | ~~program~~ | ✅ Migrated |
-| editor | packages | exercism, vscode |
+| ~~editor~~ | ~~packages~~ | ✅ Migrated |
 | fzf | program | Has tmux integration |
 | go | packages + program | Has sessionPath config |
 | gcp | packages | google-cloud-sdk with components |

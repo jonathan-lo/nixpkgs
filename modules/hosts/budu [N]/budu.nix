@@ -37,6 +37,7 @@ in
           bat
           btop
           direnv
+          editor
         ];
       }
       ../../../hosts
