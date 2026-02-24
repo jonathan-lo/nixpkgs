@@ -41,6 +41,7 @@
 | fzf | `_legacy-modules/fzf.nix` | `modules/programs/fzf [nd]/fzf.nix` | With tmux integration |
 | gcp | `_legacy-modules/gcp.nix` | `modules/programs/gcp [nd]/gcp.nix` | google-cloud-sdk with components |
 | go | `_legacy-modules/go.nix` | `modules/programs/go [nd]/go.nix` | With sessionPath |
+| kubernetes | `_legacy-modules/kubernetes.nix` | `modules/programs/kubernetes [nd]/kubernetes.nix` | With zsh aliases |
 
 #### Pending
 
@@ -55,7 +56,7 @@
 | ~~fzf~~ | ~~program~~ | ✅ Migrated |
 | ~~go~~ | ~~packages + program~~ | ✅ Migrated |
 | ~~gcp~~ | ~~packages~~ | ✅ Migrated |
-| kubernetes | packages + aliases | Has zsh aliases via `modules.shell.zsh.aliases` |
+| ~~kubernetes~~ | ~~packages + aliases~~ | ✅ Migrated |
 | node | packages | TBD |
 | ops | packages | TBD |
 | platform | packages | TBD |

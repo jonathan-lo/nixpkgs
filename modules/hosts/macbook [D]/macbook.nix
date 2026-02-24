@@ -40,6 +40,7 @@ in
           fzf
           gcp
           go
+          kubernetes
         ];
       }
       ../../../hosts

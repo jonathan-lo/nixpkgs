@@ -30,7 +30,6 @@
     ./_legacy-modules/git.nix
     ./_legacy-modules/ghostty
     ./_legacy-modules/java
-    ./_legacy-modules/kubernetes.nix
     ./_legacy-modules/node.nix
     ./_legacy-modules/lazyvim
     ./_legacy-modules/ops.nix
