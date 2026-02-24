@@ -39,6 +39,7 @@
 | direnv | `_legacy-modules/direnv.nix` | `modules/programs/direnv [nd]/direnv.nix` | With zsh integration |
 | editor | `_legacy-modules/editor.nix` | `modules/programs/editor [nd]/editor.nix` | exercism, vscode |
 | fzf | `_legacy-modules/fzf.nix` | `modules/programs/fzf [nd]/fzf.nix` | With tmux integration |
+| gcp | `_legacy-modules/gcp.nix` | `modules/programs/gcp [nd]/gcp.nix` | google-cloud-sdk with components |
 | go | `_legacy-modules/go.nix` | `modules/programs/go [nd]/go.nix` | With sessionPath |
 
 #### Pending
@@ -53,7 +54,7 @@
 | ~~editor~~ | ~~packages~~ | ✅ Migrated |
 | ~~fzf~~ | ~~program~~ | ✅ Migrated |
 | ~~go~~ | ~~packages + program~~ | ✅ Migrated |
-| gcp | packages | google-cloud-sdk with components |
+| ~~gcp~~ | ~~packages~~ | ✅ Migrated |
 | kubernetes | packages + aliases | Has zsh aliases via `modules.shell.zsh.aliases` |
 | node | packages | TBD |
 | ops | packages | TBD |

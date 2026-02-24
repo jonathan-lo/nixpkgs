@@ -39,6 +39,7 @@ in
           direnv
           editor
           fzf
+          gcp
           go
         ];
       }
