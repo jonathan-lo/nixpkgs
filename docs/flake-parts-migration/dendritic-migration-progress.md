@@ -54,6 +54,7 @@
 | firefox | `_legacy-modules/firefox.nix` | `modules/programs/firefox [nd]/firefox.nix` | enable→presence conversion |
 | java | `_legacy-modules/java` | `modules/programs/java [nd]/java.nix` | enable→presence, includes .ideavimrc |
 | theme | `_legacy-modules/theme.nix` | `modules/programs/theming [nd]/theming.nix` | Catppuccin with btop/ghostty settings |
+| tmux | `_legacy-modules/tmux.nix` | `modules/programs/tmux [nd]/tmux.nix` | Includes 5 config files |
 
 #### Pending
 
@@ -80,8 +81,8 @@
 | ~~firefox~~ | ~~enable→presence~~ | ✅ Migrated |
 | ~~docker~~ | ~~config~~ | ✅ Migrated |
 | ~~java~~ | ~~enable→presence~~ | ✅ Migrated |
-| theme | config | Catppuccin theming |
-| tmux | config | Complex config with multiple files |
+| ~~theme~~ | ~~config~~ | ✅ Migrated |
+| ~~tmux~~ | ~~config~~ | ✅ Migrated |
 | ghostty | directory | Has config files and shaders |
 | lazyvim | directory | Has lua configs |
 

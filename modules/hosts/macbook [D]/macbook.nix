@@ -49,6 +49,7 @@ in
           platform
           ripgrep
           theming
+          tmux
           zsh
         ];
       }

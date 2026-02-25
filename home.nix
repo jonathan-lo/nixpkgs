@@ -25,7 +25,6 @@
   imports = [
     ./_legacy-modules/ghostty
     ./_legacy-modules/lazyvim
-    ./_legacy-modules/tmux.nix
   ];
 
   # Let Home Manager install and manage itself.
