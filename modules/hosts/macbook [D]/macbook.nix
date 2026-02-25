@@ -44,6 +44,7 @@ in
           node
           ops
           platform
+          ripgrep
         ];
       }
       ../../../hosts
