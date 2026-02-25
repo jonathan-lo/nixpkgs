@@ -48,6 +48,11 @@
 | ripgrep | `_legacy-modules/ripgrep.nix` | `modules/programs/ripgrep [nd]/ripgrep.nix` | With xdg config |
 | git | `_legacy-modules/git.nix` | `modules/programs/git [nd]/git.nix` | With settings.git options |
 | zsh | `_legacy-modules/zsh.nix` | `modules/programs/zsh [nd]/zsh.nix` | With modules.shell.zsh options |
+| docker | `_legacy-modules/docker.nix` | `modules/programs/docker [nd]/docker.nix` | Simple packages |
+| bitwarden | `_legacy-modules/bitwarden.nix` | `modules/programs/bitwarden [nd]/bitwarden.nix` | enable→presence conversion |
+| calibre | `_legacy-modules/calibre.nix` | `modules/programs/calibre [nd]/calibre.nix` | enable→presence conversion |
+| firefox | `_legacy-modules/firefox.nix` | `modules/programs/firefox [nd]/firefox.nix` | enable→presence conversion |
+| java | `_legacy-modules/java` | `modules/programs/java [nd]/java.nix` | enable→presence, includes .ideavimrc |
 
 #### Pending
 
@@ -69,13 +74,13 @@
 | ~~ripgrep~~ | ~~program~~ | ✅ Migrated |
 | ~~git~~ | ~~options~~ | ✅ Migrated |
 | ~~zsh~~ | ~~options~~ | ✅ Migrated |
-| bitwarden | enable→presence | Convert from `modules.bitwarden.enable` to presence-based |
-| calibre | enable→presence | Convert from `modules.calibre.enable` to presence-based |
-| firefox | enable→presence | Convert from `modules.firefox.enable` to presence-based |
-| java | enable→presence | Directory module with enable option |
+| ~~bitwarden~~ | ~~enable→presence~~ | ✅ Migrated |
+| ~~calibre~~ | ~~enable→presence~~ | ✅ Migrated |
+| ~~firefox~~ | ~~enable→presence~~ | ✅ Migrated |
+| ~~docker~~ | ~~config~~ | ✅ Migrated |
+| ~~java~~ | ~~enable→presence~~ | ✅ Migrated |
 | theme | config | Catppuccin theming |
 | tmux | config | Complex config with multiple files |
-| docker | config | TBD |
 | ghostty | directory | Has config files and shaders |
 | lazyvim | directory | Has lua configs |
 

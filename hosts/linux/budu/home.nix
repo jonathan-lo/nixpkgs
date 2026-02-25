@@ -8,10 +8,5 @@
     ];
   };
 
-  modules = {
-    firefox.enable = true;
-    java.enable = true;
-  };
-
   imports = [ ../../../home.nix ];
 }

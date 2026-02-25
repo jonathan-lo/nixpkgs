@@ -38,6 +38,7 @@ in
           direnv
           docker
           editor
+          firefox
           fzf
           gcp
           go

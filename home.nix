@@ -23,9 +23,7 @@
   };
 
   imports = [
-    ./_legacy-modules/firefox.nix
     ./_legacy-modules/ghostty
-    ./_legacy-modules/java
     ./_legacy-modules/lazyvim
     ./_legacy-modules/theme.nix
     ./_legacy-modules/tmux.nix
