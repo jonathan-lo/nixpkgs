@@ -32,7 +32,6 @@
     ./_legacy-modules/lazyvim
     ./_legacy-modules/theme.nix
     ./_legacy-modules/tmux.nix
-    ./_legacy-modules/zsh.nix
   ];
 
   # Let Home Manager install and manage itself.

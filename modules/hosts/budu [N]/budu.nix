@@ -47,6 +47,7 @@ in
           git
           platform
           ripgrep
+          zsh
         ];
       }
       ../../../hosts

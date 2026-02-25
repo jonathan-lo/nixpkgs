@@ -47,6 +47,7 @@
 | platform | `_legacy-modules/platform.nix` | `modules/programs/platform [nd]/platform.nix` | k8s platform tools |
 | ripgrep | `_legacy-modules/ripgrep.nix` | `modules/programs/ripgrep [nd]/ripgrep.nix` | With xdg config |
 | git | `_legacy-modules/git.nix` | `modules/programs/git [nd]/git.nix` | With settings.git options |
+| zsh | `_legacy-modules/zsh.nix` | `modules/programs/zsh [nd]/zsh.nix` | With modules.shell.zsh options |
 
 #### Pending
 
@@ -67,7 +68,7 @@
 | ~~platform~~ | ~~packages~~ | ✅ Migrated |
 | ~~ripgrep~~ | ~~program~~ | ✅ Migrated |
 | ~~git~~ | ~~options~~ | ✅ Migrated |
-| zsh | options | Has `modules.shell.zsh` options - consumed by kubernetes.nix |
+| ~~zsh~~ | ~~options~~ | ✅ Migrated |
 | bitwarden | enable→presence | Convert from `modules.bitwarden.enable` to presence-based |
 | calibre | enable→presence | Convert from `modules.calibre.enable` to presence-based |
 | firefox | enable→presence | Convert from `modules.firefox.enable` to presence-based |
