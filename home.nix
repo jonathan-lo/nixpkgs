@@ -30,9 +30,7 @@
     ./_legacy-modules/git.nix
     ./_legacy-modules/ghostty
     ./_legacy-modules/java
-    ./_legacy-modules/node.nix
     ./_legacy-modules/lazyvim
-    ./_legacy-modules/ops.nix
     ./_legacy-modules/platform.nix
     ./_legacy-modules/ripgrep.nix
     ./_legacy-modules/theme.nix

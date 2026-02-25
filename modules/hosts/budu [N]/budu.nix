@@ -42,6 +42,8 @@ in
           gcp
           go
           kubernetes
+          node
+          ops
         ];
       }
       ../../../hosts

@@ -42,6 +42,8 @@
 | gcp | `_legacy-modules/gcp.nix` | `modules/programs/gcp [nd]/gcp.nix` | google-cloud-sdk with components |
 | go | `_legacy-modules/go.nix` | `modules/programs/go [nd]/go.nix` | With sessionPath |
 | kubernetes | `_legacy-modules/kubernetes.nix` | `modules/programs/kubernetes [nd]/kubernetes.nix` | With zsh aliases |
+| node | `_legacy-modules/node.nix` | `modules/programs/node [nd]/node.nix` | bun |
+| ops | `_legacy-modules/ops.nix` | `modules/programs/ops [nd]/ops.nix` | terraform tools |
 
 #### Pending
 
@@ -57,8 +59,8 @@
 | ~~go~~ | ~~packages + program~~ | ✅ Migrated |
 | ~~gcp~~ | ~~packages~~ | ✅ Migrated |
 | ~~kubernetes~~ | ~~packages + aliases~~ | ✅ Migrated |
-| node | packages | TBD |
-| ops | packages | TBD |
+| ~~node~~ | ~~packages~~ | ✅ Migrated |
+| ~~ops~~ | ~~packages~~ | ✅ Migrated |
 | platform | packages | TBD |
 | ripgrep | program | TBD |
 | git | options | Has `settings.git.defaultBranch` and `settings.git.email` options |
