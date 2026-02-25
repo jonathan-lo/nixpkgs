@@ -9,7 +9,6 @@
   };
 
   modules = {
-    bitwarden.enable = true;
     calibre.enable = true;
     firefox.enable = true;
     java.enable = true;

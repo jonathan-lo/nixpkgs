@@ -35,6 +35,7 @@ in
           aws
           bash
           bat
+          bitwarden
           btop
           direnv
           docker
