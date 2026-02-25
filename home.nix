@@ -23,7 +23,6 @@
   };
 
   imports = [
-    ./_legacy-modules/calibre.nix
     ./_legacy-modules/firefox.nix
     ./_legacy-modules/ghostty
     ./_legacy-modules/java

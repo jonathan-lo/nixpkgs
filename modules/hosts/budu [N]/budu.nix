@@ -37,6 +37,7 @@ in
           bat
           bitwarden
           btop
+          calibre
           direnv
           docker
           editor

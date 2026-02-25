@@ -9,7 +9,6 @@
   };
 
   modules = {
-    calibre.enable = true;
     firefox.enable = true;
     java.enable = true;
   };
