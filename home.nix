@@ -31,7 +31,6 @@
     ./_legacy-modules/ghostty
     ./_legacy-modules/java
     ./_legacy-modules/lazyvim
-    ./_legacy-modules/platform.nix
     ./_legacy-modules/ripgrep.nix
     ./_legacy-modules/theme.nix
     ./_legacy-modules/tmux.nix

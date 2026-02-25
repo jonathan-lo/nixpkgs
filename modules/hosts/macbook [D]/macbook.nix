@@ -43,6 +43,7 @@ in
           kubernetes
           node
           ops
+          platform
         ];
       }
       ../../../hosts
