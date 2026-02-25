@@ -1,7 +1,6 @@
 # modules/hosts/budu [N]/budu.nix
 { inputs, config, ... }:
 let
-  catppuccin = inputs.catppuccin;
   determinate = inputs.determinate;
   home-manager = inputs.home-manager;
   nixpkgs = inputs.nixpkgs;
@@ -30,7 +29,6 @@ in
         home-manager.useUserPackages = true;
         home-manager.users.jlo.imports = with config.flake.modules.homeManager; [
           ../../../hosts/linux/budu/home.nix
-          catppuccin.homeModules.catppuccin
           ai
           aws
           bash
@@ -52,6 +50,7 @@ in
           git
           platform
           ripgrep
+          theming
           zsh
         ];
       }

@@ -53,6 +53,7 @@
 | calibre | `_legacy-modules/calibre.nix` | `modules/programs/calibre [nd]/calibre.nix` | enable→presence conversion |
 | firefox | `_legacy-modules/firefox.nix` | `modules/programs/firefox [nd]/firefox.nix` | enable→presence conversion |
 | java | `_legacy-modules/java` | `modules/programs/java [nd]/java.nix` | enable→presence, includes .ideavimrc |
+| theme | `_legacy-modules/theme.nix` | `modules/programs/theming [nd]/theming.nix` | Catppuccin with btop/ghostty settings |
 
 #### Pending
 

@@ -48,6 +48,7 @@ in
           git
           platform
           ripgrep
+          theming
           zsh
         ];
       }
