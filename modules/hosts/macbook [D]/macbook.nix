@@ -36,6 +36,7 @@ in
           bat
           btop
           direnv
+          docker
           editor
           fzf
           gcp
