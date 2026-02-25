@@ -44,6 +44,7 @@ in
           kubernetes
           node
           ops
+          git
           platform
           ripgrep
         ];

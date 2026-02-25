@@ -27,7 +27,6 @@
     ./_legacy-modules/calibre.nix
     ./_legacy-modules/docker.nix
     ./_legacy-modules/firefox.nix
-    ./_legacy-modules/git.nix
     ./_legacy-modules/ghostty
     ./_legacy-modules/java
     ./_legacy-modules/lazyvim

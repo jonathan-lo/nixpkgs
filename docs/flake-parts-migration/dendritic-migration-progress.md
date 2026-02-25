@@ -46,6 +46,7 @@
 | ops | `_legacy-modules/ops.nix` | `modules/programs/ops [nd]/ops.nix` | terraform tools |
 | platform | `_legacy-modules/platform.nix` | `modules/programs/platform [nd]/platform.nix` | k8s platform tools |
 | ripgrep | `_legacy-modules/ripgrep.nix` | `modules/programs/ripgrep [nd]/ripgrep.nix` | With xdg config |
+| git | `_legacy-modules/git.nix` | `modules/programs/git [nd]/git.nix` | With settings.git options |
 
 #### Pending
 
@@ -65,7 +66,7 @@
 | ~~ops~~ | ~~packages~~ | ✅ Migrated |
 | ~~platform~~ | ~~packages~~ | ✅ Migrated |
 | ~~ripgrep~~ | ~~program~~ | ✅ Migrated |
-| git | options | Has `settings.git.defaultBranch` and `settings.git.email` options |
+| ~~git~~ | ~~options~~ | ✅ Migrated |
 | zsh | options | Has `modules.shell.zsh` options - consumed by kubernetes.nix |
 | bitwarden | enable→presence | Convert from `modules.bitwarden.enable` to presence-based |
 | calibre | enable→presence | Convert from `modules.calibre.enable` to presence-based |
