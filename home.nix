@@ -23,7 +23,6 @@
   };
 
   imports = [
-    ./_legacy-modules/ghostty
     ./_legacy-modules/lazyvim
   ];
 

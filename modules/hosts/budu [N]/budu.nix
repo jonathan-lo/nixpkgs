@@ -53,6 +53,7 @@ in
           theming
           tmux
           zsh
+          ghostty
         ];
       }
       ../../../hosts
