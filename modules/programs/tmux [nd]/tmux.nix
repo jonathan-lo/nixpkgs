@@ -1,5 +1,9 @@
 # modules/programs/tmux [nd]/tmux.nix
 { inputs, ... }:
+let
+  configDir = ./config;
+  configFiles = builtins.attrNames (builtins.readDir configDir);
+in
 {
   flake.modules.homeManager.tmux = { pkgs, ... }: {
     programs.tmux = {
@@ -15,13 +19,8 @@
       sensibleOnTop = false;
       shell = "${pkgs.zsh}/bin/zsh";
 
-      extraConfig = builtins.concatStringsSep "\n" [
-        (builtins.readFile ./keybindings.conf)
-        (builtins.readFile ./options.conf)
-        (builtins.readFile ./vim-navigator.conf)
-        (builtins.readFile ./appearance.conf)
-        (builtins.readFile ./sesh.conf)
-      ];
+      extraConfig = builtins.concatStringsSep "\n"
+        (map (f: builtins.readFile (configDir + "/${f}")) configFiles);
 
       # theme is set by catppuccin module in theming.nix
       plugins = with pkgs.tmuxPlugins; [
