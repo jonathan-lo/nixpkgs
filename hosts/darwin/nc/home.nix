@@ -14,9 +14,6 @@
   targets.darwin.copyApps.enable = true;
   targets.darwin.linkApps.enable = false;
 
-  modules.firefox.enable = true;
-  modules.java.enable = true;
-
   # workaround for mac updates breaking nix
   modules.shell.zsh = {
     profileExtra = ". /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh";

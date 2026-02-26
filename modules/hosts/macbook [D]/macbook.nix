@@ -29,7 +29,6 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.users.jlo.imports = with config.flake.modules.homeManager; [
           ../../../hosts/darwin/nc/home.nix
-          catppuccin.homeModules.catppuccin
           ai
           aws
           bash
