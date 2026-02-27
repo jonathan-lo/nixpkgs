@@ -24,6 +24,7 @@ in
 
     modules = [
       home-manager.darwinModules.home-manager
+      config.flake.modules.darwin.cli
       {
         nixpkgs = nixPkgsConfig;
         home-manager.useGlobalPkgs = true;

@@ -23,6 +23,7 @@ in
     modules = [
       determinate.nixosModules.default
       home-manager.nixosModules.home-manager
+      config.flake.modules.nixos.cli
       {
         nixpkgs = nixPkgsConfig;
         home-manager.useGlobalPkgs = true;
