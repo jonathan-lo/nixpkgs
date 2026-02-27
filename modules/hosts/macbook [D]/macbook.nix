@@ -41,6 +41,7 @@ in
           fzf
           gcp
           go
+          java
           kubernetes
           node
           ops
