@@ -5,7 +5,45 @@
   ...
 }:
 
+let
+  treesitterParsers = [
+    "bash"
+    "c"
+    "cpp"
+    "go"
+    "gomod"
+    "helm"
+    "hcl"
+    "java"
+    "kotlin"
+    "lua"
+    "make"
+    "markdown"
+    "markdown_inline"
+    "nix"
+    "python"
+    "query"
+    "rust"
+    "terraform"
+    "toml"
+    "typescript"
+    "vim"
+    "vimdoc"
+    "yaml"
+  ];
+
+  grammarsPath = pkgs.symlinkJoin {
+    name = "nvim-treesitter-grammars";
+    paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (
+      plugins: map (name: plugins.${name}) treesitterParsers
+    )).dependencies;
+  };
+in
 {
+  home.sessionVariables = {
+    NVIM_TREESITTER_PARSERS = "${grammarsPath}";
+  };
+
   home.packages = with pkgs; [
     codesnap
     lua-language-server
@@ -52,41 +90,6 @@
     viAlias = true;
     vimAlias = true;
   };
-
-  # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
-  home.file.".config/lazyvim-new/parser".source =
-    let
-      parsers = pkgs.symlinkJoin {
-        name = "treesitter-parsers";
-        paths =
-          (pkgs.vimPlugins.nvim-treesitter.withPlugins (
-            plugins: with plugins; [
-              bash
-              c
-              cpp
-              go
-              gomod
-              helm
-              hcl
-              java
-              kotlin
-              lua
-              make
-              markdown
-              nix
-              python
-              rust
-              terraform
-              toml
-              typescript
-              vim
-              vimdoc
-              yaml
-            ]
-          )).dependencies;
-      };
-    in
-    "${parsers}/parser";
 
   # externally managed lazyvim config
   xdg.configFile."lazyvim-new/".source =
