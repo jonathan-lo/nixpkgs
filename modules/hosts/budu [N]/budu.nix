@@ -36,6 +36,7 @@ in
           bitwarden
           btop
           calibre
+          cli
           direnv
           docker
           editor

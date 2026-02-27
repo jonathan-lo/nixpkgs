@@ -34,6 +34,7 @@ in
           bash
           bat
           btop
+          cli
           direnv
           docker
           editor
