@@ -52,6 +52,7 @@ in
           ripgrep
           theming
           tmux
+          zoxide
           zsh
           ghostty
         ];
