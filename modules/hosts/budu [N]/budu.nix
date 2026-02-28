@@ -56,7 +56,6 @@ in
           ghostty
         ];
       }
-      ../../../hosts
       ../../../hosts/linux/budu/configuration.nix
     ];
   };

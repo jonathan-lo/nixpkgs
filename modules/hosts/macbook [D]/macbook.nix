@@ -56,7 +56,6 @@ in
           ghostty
         ];
       }
-      ../../../hosts
       ../../../hosts/darwin/homebrew.nix
       ../../../hosts/darwin/services.nix
       ../../../hosts/darwin/settings.nix
