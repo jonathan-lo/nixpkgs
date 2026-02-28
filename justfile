@@ -30,3 +30,12 @@ system-info:
 
 lint:
   nixfmt .
+
+# setup claude LSP plugins
+# declarative approach not currently supported
+# https://github.com/anthropics/claude-code/issues/21340
+claude-lsp:
+  claude plugin marketplace update claude-plugins-official
+  claude plugin install gopls-lsp || true
+  claude plugin install jdtls-lsp || true
+  claude plugin install kotlin-lsp || true

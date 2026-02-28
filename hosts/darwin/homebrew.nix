@@ -6,6 +6,7 @@
   homebrew = {
     enable = true;
     brews = [
+      "JetBrains/utils/kotlin-lsp"
       "node" # install via homebrew so can use npm to install mcps
     ];
     casks = [
@@ -30,6 +31,7 @@
     };
 
     taps = [
+      "JetBrains/utils"
     ];
   };
 }

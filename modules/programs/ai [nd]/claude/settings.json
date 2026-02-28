@@ -1,3 +1,9 @@
 {
-  "includeCoAuthoredBy": false
+  "includeCoAuthoredBy": false,
+  "ENABLE_LSP_TOOL": "1",
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "jdtls-lsp@claude-plugins-official": true,
+    "kotlin-lsp@claude-plugins-official": true
+  }
 }
