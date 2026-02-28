@@ -19,7 +19,9 @@ in
       sensibleOnTop = false;
       shell = "${pkgs.zsh}/bin/zsh";
 
-      extraConfig = builtins.concatStringsSep "\n"
+      extraConfig = ''
+        set -g default-command "${pkgs.zsh}/bin/zsh -l"
+      '' + builtins.concatStringsSep "\n"
         (map (f: builtins.readFile (configDir + "/${f}")) configFiles);
 
       # theme is set by catppuccin module in theming.nix

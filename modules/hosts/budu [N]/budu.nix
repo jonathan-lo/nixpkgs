@@ -2,7 +2,6 @@
 { inputs, config, ... }:
 let
   determinate = inputs.determinate;
-  home-manager = inputs.home-manager;
   nixpkgs = inputs.nixpkgs;
 
   overlay = final: prev: {
@@ -22,12 +21,10 @@ in
     specialArgs = { inherit inputs; };
     modules = [
       determinate.nixosModules.default
-      home-manager.nixosModules.home-manager
+      config.flake.modules.nixos.home-manager
       config.flake.modules.nixos.cli
       {
         nixpkgs = nixPkgsConfig;
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
         home-manager.users.jlo.imports = with config.flake.modules.homeManager; [
           ../../../hosts/linux/budu/home.nix
           ai

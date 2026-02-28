@@ -1,6 +1,6 @@
 { inputs, config, ... }:
 let
-  inherit (inputs) darwin home-manager catppuccin;
+  inherit (inputs) darwin catppuccin;
 
   overlay = final: prev: {
     unstable = import inputs.nixpkgs-unstable {
@@ -23,11 +23,10 @@ in
     specialArgs = { inherit inputs; };
 
     modules = [
-      home-manager.darwinModules.home-manager
+      config.flake.modules.darwin.home-manager
       config.flake.modules.darwin.cli
       {
         nixpkgs = nixPkgsConfig;
-        home-manager.useGlobalPkgs = true;
         home-manager.users.jlo.imports = with config.flake.modules.homeManager; [
           ../../../hosts/darwin/nc/home.nix
           ai

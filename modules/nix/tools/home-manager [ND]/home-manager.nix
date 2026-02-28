@@ -1,17 +1,24 @@
-# modules/nix/tools/home-manager [ND]/home-manager.nix
 { inputs, ... }:
+let
+  home-manager-config = { ... }: {
+    home-manager = {
+      useUserPackages = true;
+      useGlobalPkgs = true;
+    };
+  };
+in
 {
-  # NixOS home-manager integration
-  flake.modules.nixos.homeManagerIntegration = { ... }: {
-    imports = [ inputs.home-manager.nixosModules.home-manager ];
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
+  flake.modules.nixos.home-manager = {
+    imports = [
+      inputs.home-manager.nixosModules.home-manager
+      home-manager-config
+    ];
   };
 
-  # Darwin home-manager integration
-  flake.modules.darwin.homeManagerIntegration = { ... }: {
-    imports = [ inputs.home-manager.darwinModules.home-manager ];
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
+  flake.modules.darwin.home-manager = {
+    imports = [
+      inputs.home-manager.darwinModules.home-manager
+      home-manager-config
+    ];
   };
 }
