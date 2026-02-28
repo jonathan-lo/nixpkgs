@@ -7,12 +7,9 @@
   # https://github.com/nix-community/home-manager
 
   imports = [ inputs.home-manager.flakeModules.home-manager ];
-}
-// (if inputs ? flake-file then
-{
+
   flake-file.inputs = {
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 }
-else {})

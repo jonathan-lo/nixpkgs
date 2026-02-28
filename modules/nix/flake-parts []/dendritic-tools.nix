@@ -1,13 +1,19 @@
 {
   inputs,
-  lib,
   ...
 }:
-# When flake-file is available, this module will configure it
-# to generate flake.nix from modules using import-tree.
-# Until Phase 4, this is a no-op.
-if inputs ? flake-file then
 {
+  # Setup of tools for dendritic pattern
+  #
+  # flake-parts: Simplify Nix Flakes with the module system
+  # https://github.com/hercules-ci/flake-parts
+  #
+  # flake-file: Generate flake.nix from module options
+  # https://github.com/vic/flake-file
+  #
+  # import-tree: Import all nix files in a directory tree
+  # https://github.com/vic/import-tree
+
   imports = [
     inputs.flake-parts.flakeModules.modules
     inputs.flake-file.flakeModules.default
@@ -25,8 +31,4 @@ if inputs ? flake-file then
   flake-file.outputs = ''
     inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ((import inputs.import-tree) ./modules)
   '';
-}
-else
-{
-  # No-op until flake-file is added as input (Phase 4)
 }
