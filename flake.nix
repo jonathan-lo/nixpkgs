@@ -1,69 +1,29 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-
-    catppuccin.url = "github:catppuccin/nix";
-
-    darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    import-tree = {
-      url = "github:vic/import-tree";
-      flake = false;
-    };
-  };
 
   outputs =
-    inputs@{
-      nixpkgs,
-      catppuccin,
-      darwin,
-      determinate,
-      flake-parts,
-      home-manager,
-      ...
-    }:
-    let
-      importTree = import inputs.import-tree;
-    in
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        inputs.flake-parts.flakeModules.modules
-        (importTree ./modules)
-      ];
-      systems = [ "x86_64-linux" "aarch64-darwin" ];
+    inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ((import inputs.import-tree) ./modules);
 
-      flake = {
-        homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages."x86_64-linux";
-            modules = [
-              ./home.nix
-              ./hosts/linux/settings.nix
-              catppuccin.homeModules.catppuccin
-            ];
-          };
-          homeConfigurations."LAPTOP-GIVRN79I" = home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages."x86_64-linux";
-            modules = [
-              ./home.nix
-              ./hosts/linux/settings.nix
-              catppuccin.homeModules.catppuccin
-            ];
-          };
-        };
-
-      perSystem = { pkgs, ... }: { };
+  inputs = {
+    catppuccin.url = "github:catppuccin/nix";
+    darwin = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:lnl7/nix-darwin/nix-darwin-25.11";
     };
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    flake-file.url = "github:vic/flake-file";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    home-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager/release-25.11";
+    };
+    import-tree = {
+      flake = false;
+      url = "github:vic/import-tree";
+    };
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+  };
+
 }

@@ -8,16 +8,22 @@
 # Until Phase 4, this is a no-op.
 if inputs ? flake-file then
 {
-  imports = [ inputs.flake-file.flakeModules.default ];
+  imports = [
+    inputs.flake-parts.flakeModules.modules
+    inputs.flake-file.flakeModules.default
+  ];
 
   flake-file.inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-file.url = "github:vic/flake-file";
-    import-tree.url = "github:vic/import-tree";
+    import-tree = {
+      url = "github:vic/import-tree";
+      flake = false;
+    };
   };
 
   flake-file.outputs = ''
-    inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules)
+    inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ((import inputs.import-tree) ./modules)
   '';
 }
 else
