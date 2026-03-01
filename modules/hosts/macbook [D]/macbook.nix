@@ -54,6 +54,7 @@ in
           zoxide
           zsh
           ghostty
+          lazyvim
         ];
       }
       ../../../hosts/darwin/homebrew.nix

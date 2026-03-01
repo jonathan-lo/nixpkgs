@@ -54,6 +54,7 @@ in
           zoxide
           zsh
           ghostty
+          lazyvim
         ];
       }
       ../../../hosts/linux/budu/configuration.nix
