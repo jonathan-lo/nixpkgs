@@ -147,7 +147,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.variables = {
-    NVIM_APPNAME = "lazyvim-new";
+    NVIM_APPNAME = "lazyvim";
   };
 
   # List packages installed in system profile. To search, run:

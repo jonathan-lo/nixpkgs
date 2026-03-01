@@ -1,4 +1,3 @@
 .idea
 result
-modules/lazyvim/lazyvim-new/parser
-_legacy-modules/lazyvim/lazyvim-new/parser
+modules/programs/lazyvim [nd]/lazyvim/parser

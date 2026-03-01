@@ -93,7 +93,7 @@
     };
 
     # externally managed lazyvim config
-    xdg.configFile."lazyvim-new/".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/_legacy-modules/lazyvim/lazyvim-new";
+    xdg.configFile."lazyvim/".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/programs/lazyvim [nd]/lazyvim";
   };
 }
