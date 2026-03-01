@@ -42,3 +42,9 @@ just
 > https://github.com/anthropics/claude-code/issues/14803#issuecomment-3725184443
 
 manually delete startupTimeout for kotlin and java LSP plugins from `~/.claude/plugins/marketplaces/claude-plugins-official/.claude-plugin/marketplace.json`
+
+## zsh completions
+
+```
+just zcomp-regenerate
+```

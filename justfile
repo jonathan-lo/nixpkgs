@@ -39,3 +39,6 @@ claude-lsp:
   claude plugin install gopls-lsp || true
   claude plugin install jdtls-lsp || true
   claude plugin install kotlin-lsp || true
+
+zcomp-regenerate:
+  rm ~/.zcompdump* && compinit
