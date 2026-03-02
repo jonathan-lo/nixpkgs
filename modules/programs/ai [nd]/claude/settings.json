@@ -5,5 +5,6 @@
     "jdtls-lsp@claude-plugins-official": true,
     "kotlin-lsp@claude-plugins-official": true
   },
-  "ENABLE_LSP_TOOL": "1"
+  "ENABLE_LSP_TOOL": "1",
+  "effortLevel": "medium"
 }
