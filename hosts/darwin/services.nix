@@ -21,5 +21,8 @@
   system.stateVersion = 5;
   system.primaryUser = "jlo";
 
-  environment.systemPackages = [ pkgs.rectangle ];
+  environment.systemPackages = with pkgs; [
+    logseq
+    rectangle
+  ];
 }

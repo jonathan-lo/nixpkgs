@@ -1,85 +1,29 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-
-    darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      nixpkgs-unstable,
-      darwin,
-      home-manager,
-      ...
-    }:
-    let
-      overlay = final: prev: {
-        unstable = import inputs.nixpkgs-unstable {
-          system = prev.system;
-          config.allowUnfree = true;
-        };
-      };
+    inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ((import inputs.import-tree) ./modules);
 
-      system = "aarch64-darwin";
-      overlays = [ overlay ];
-
-      pkgs = import nixpkgs {
-        inherit system overlays;
-        config = {
-          allowUnfree = true;
-          # allowUnfreePredicate = (_: true);
-        };
-      };
-
-      nixPkgsConfig = {
-        inherit overlays;
-      };
-    in
-    {
-
-      darwinConfigurations."Jonathans-MacBook-Pro" = darwin.lib.darwinSystem {
-        pkgs = pkgs;
-        system = "aarch64-darwin";
-
-        specialArgs = { inherit inputs; };
-
-        modules = [
-          home-manager.darwinModules.home-manager
-          {
-            nixpkgs = nixPkgsConfig;
-            home-manager.useGlobalPkgs = true;
-            home-manager.users.jlo = import ./home-work.nix;
-          }
-          ./hosts/darwin/homebrew.nix
-          ./hosts/darwin/services.nix
-          ./hosts/darwin/settings.nix
-        ];
-      };
-
-      homeConfigurations."DESKTOP-7RRDPPB" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [
-          ./home.nix
-          ./hosts/linux/settings.nix
-        ];
-      };
-      homeConfigurations."LAPTOP-GIVRN79I" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        modules = [
-          ./home.nix
-          ./hosts/linux/settings.nix
-        ];
-      };
+  inputs = {
+    catppuccin.url = "github:catppuccin/nix";
+    darwin = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:lnl7/nix-darwin/nix-darwin-25.11";
     };
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    flake-file.url = "github:vic/flake-file";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    home-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager/release-25.11";
+    };
+    import-tree = {
+      flake = false;
+      url = "github:vic/import-tree";
+    };
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+  };
+
 }

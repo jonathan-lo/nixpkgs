@@ -6,19 +6,13 @@
   homebrew = {
     enable = true;
     brews = [
-      "bash"
-      "coreutils"
-      "findutils"
-      "node"
+      "JetBrains/utils/kotlin-lsp"
+      "node" # install via homebrew so can use npm to install mcps
     ];
     casks = [
+      "claude-devtools"
       "ghostty"
       "google-chrome"
-      "logseq"
-      "obsidian"
-      "rectangle"
-      "wezterm"
-      "zed"
     ];
 
     extraConfig = ''
@@ -32,11 +26,12 @@
 
     onActivation = {
       autoUpdate = false;
-      cleanup = "none"; # move this back to zap once lima situation is sorted.
+      cleanup = "zap"; # move this back to zap once lima situation is sorted.
       upgrade = false;
     };
 
     taps = [
+      "JetBrains/utils"
     ];
   };
 }

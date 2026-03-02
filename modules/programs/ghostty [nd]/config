@@ -1,0 +1,2 @@
+theme = Catppuccin Mocha
+custom-shader = ./shaders/sahaj-b/cursor_warp.glsl
