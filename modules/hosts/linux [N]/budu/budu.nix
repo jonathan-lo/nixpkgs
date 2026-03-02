@@ -1,4 +1,4 @@
-# modules/hosts/budu [N]/budu.nix
+# modules/hosts/linux/budu [N]/budu.nix
 { inputs, config, ... }:
 let
   determinate = inputs.determinate;
@@ -26,7 +26,7 @@ in
       {
         nixpkgs = nixPkgsConfig;
         home-manager.users.jlo.imports = with config.flake.modules.homeManager; [
-          ../../../hosts/linux/budu/home.nix
+          ../../../../hosts/linux/budu/home.nix
           ai
           aws
           bash
@@ -57,7 +57,7 @@ in
           lazyvim
         ];
       }
-      ../../../hosts/linux/budu/configuration.nix
+      ../../../../hosts/linux/budu/configuration.nix
     ];
   };
 }

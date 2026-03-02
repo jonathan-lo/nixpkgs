@@ -28,7 +28,7 @@ in
       {
         nixpkgs = nixPkgsConfig;
         home-manager.users.jlo.imports = with config.flake.modules.homeManager; [
-          ../../../hosts/darwin/nc/home.nix
+          ../../../../hosts/darwin/nc/home.nix
           ai
           aws
           bash
@@ -57,9 +57,9 @@ in
           lazyvim
         ];
       }
-      ../../../hosts/darwin/homebrew.nix
-      ../../../hosts/darwin/services.nix
-      ../../../hosts/darwin/settings.nix
+      ../../../../hosts/darwin/homebrew.nix
+      ../../../../hosts/darwin/services.nix
+      ../../../../hosts/darwin/settings.nix
     ];
   };
 }
