@@ -42,6 +42,7 @@
     };
   in {
     home.sessionVariables = {
+      NVIM_APPNAME = "lazyvim";
       NVIM_TREESITTER_PARSERS = "${grammarsPath}";
     };
 
