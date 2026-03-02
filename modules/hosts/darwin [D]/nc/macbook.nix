@@ -23,6 +23,7 @@ in
     specialArgs = { inherit inputs; };
 
     modules = [
+      config.flake.modules.darwin.nix
       config.flake.modules.darwin.home-manager
       config.flake.modules.darwin.cli
       {
