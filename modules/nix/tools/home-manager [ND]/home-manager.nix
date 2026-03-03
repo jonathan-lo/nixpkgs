@@ -4,6 +4,9 @@ let
     home-manager = {
       useUserPackages = true;
       useGlobalPkgs = true;
+      sharedModules = [{
+        programs.home-manager.enable = true;
+      }];
     };
   };
 in
