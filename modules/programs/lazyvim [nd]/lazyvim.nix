@@ -93,6 +93,10 @@
       vimAlias = true;
     };
 
+    programs.zsh.shellAliases = {
+      vi = "nvim";
+    };
+
     # externally managed lazyvim config
     xdg.configFile."lazyvim/".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/programs/lazyvim [nd]/lazyvim";
