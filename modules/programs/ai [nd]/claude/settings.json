@@ -3,7 +3,8 @@
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "jdtls-lsp@claude-plugins-official": true,
-    "kotlin-lsp@claude-plugins-official": true
+    "kotlin-lsp@claude-plugins-official": true,
+    "gke-diagnostics@helix-plugins": true
   },
   "ENABLE_LSP_TOOL": "1",
   "effortLevel": "medium"
