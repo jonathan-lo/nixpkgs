@@ -29,6 +29,7 @@ in
       config.flake.modules.darwin.rectangle
       config.flake.modules.darwin.home-manager
       config.flake.modules.darwin.cli
+      config.flake.modules.darwin.homebrew
       {
         nixpkgs = nixPkgsConfig;
         home-manager.users.jlo.imports = with config.flake.modules.homeManager; [
@@ -61,7 +62,6 @@ in
           lazyvim
         ];
       }
-      ../../../../hosts/darwin/homebrew.nix
       ../../../../hosts/darwin/services.nix
     ];
   };
