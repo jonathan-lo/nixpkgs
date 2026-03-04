@@ -27,7 +27,7 @@ in
         jq
         just
         nixfmt-rfc-style
-        postman
+        unstable.postman
         unstable.sesh
         step-cli
         tcpdump
