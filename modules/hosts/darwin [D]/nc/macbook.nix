@@ -24,6 +24,7 @@ in
 
     modules = [
       config.flake.modules.darwin.nix
+      config.flake.modules.darwin.nix-darwin
       config.flake.modules.darwin.logseq
       config.flake.modules.darwin.rectangle
       config.flake.modules.darwin.home-manager
