@@ -9,7 +9,6 @@ let
       # utils
       dust
       fd
-      fira-code
       gnumake
       mktemp
       neofetch
