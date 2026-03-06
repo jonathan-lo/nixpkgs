@@ -7,7 +7,12 @@ let
   mkWslHome = name: home-manager.lib.homeManagerConfiguration {
     pkgs = nixpkgs.legacyPackages."x86_64-linux";
     modules = [
-      ../../../home.nix
+      {
+        home = {
+          stateVersion = "22.05";
+          username = "jlo";
+        };
+      }
       ../../../hosts/linux/settings.nix
       catppuccin.homeModules.catppuccin
     ];

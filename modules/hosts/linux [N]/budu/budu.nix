@@ -26,7 +26,12 @@ in
       {
         nixpkgs = nixPkgsConfig;
         home-manager.users.jlo.imports = with config.flake.modules.homeManager; [
-          ../../../../hosts/linux/budu/home.nix
+          {
+            home = {
+              stateVersion = "22.05";
+              username = "jlo";
+            };
+          }
           ai
           aws
           bash
