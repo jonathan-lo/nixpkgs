@@ -13,7 +13,6 @@ let
           username = "jlo";
         };
       }
-      ../../../hosts/linux/settings.nix
       catppuccin.homeModules.catppuccin
     ];
   };
