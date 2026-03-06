@@ -23,6 +23,7 @@ in
       determinate.nixosModules.default
       config.flake.modules.nixos.home-manager
       config.flake.modules.nixos.cli
+      config.flake.modules.nixos.keyd
       {
         nixpkgs = nixPkgsConfig;
         home-manager.users.jlo.imports = with config.flake.modules.homeManager; [

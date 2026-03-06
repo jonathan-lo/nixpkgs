@@ -90,24 +90,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # override capslock with control on hold and escape on tap
-  services.keyd = {
-    enable = true;
-    keyboards = {
-      # The name is just the name of the configuration file, it does not really matter
-      default = {
-        ids = [ "*" ]; # what goes into the [id] section, here we select all keyboards
-        # Everything but the ID section:
-        settings = {
-          main = {
-            capslock = "overload(control, escape)";
-          };
-          otherlayer = { };
-        };
-      };
-    };
-  };
-
   # disable power button
   # see all options in /etc/systemd/logind.conf
   services.logind.settings = {
