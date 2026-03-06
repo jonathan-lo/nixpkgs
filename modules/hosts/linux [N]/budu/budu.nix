@@ -32,6 +32,7 @@ in
           bash
           bat
           bitwarden
+          browsers
           btop
           calibre
           cli
