@@ -12,7 +12,6 @@
           home-manager
           cli
           keyd
-          jlo
         ]
         ++ [
           ./_hardware-configuration.nix
