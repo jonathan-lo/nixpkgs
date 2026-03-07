@@ -3,6 +3,7 @@
   flake.modules.nixos.budu = { pkgs, ... }: {
     imports = with inputs.self.modules.nixos; [
       determinate
+      docker
       nixpkgsConfig
       home-manager
       cli
@@ -96,8 +97,6 @@
       protonvpn-gui
       unixtools.ifconfig
     ];
-
-    virtualisation.docker.enable = true;
 
     system.stateVersion = "25.11";
 
