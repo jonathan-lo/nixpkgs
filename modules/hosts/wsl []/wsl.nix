@@ -4,18 +4,20 @@ let
   inherit (inputs) nixpkgs home-manager catppuccin;
 
   # Shared WSL home configuration
-  mkWslHome = name: home-manager.lib.homeManagerConfiguration {
-    pkgs = nixpkgs.legacyPackages."x86_64-linux";
-    modules = [
-      {
-        home = {
-          stateVersion = "22.05";
-          username = "jlo";
-        };
-      }
-      catppuccin.homeModules.catppuccin
-    ];
-  };
+  mkWslHome =
+    name:
+    home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      modules = [
+        {
+          home = {
+            stateVersion = "22.05";
+            username = "jlo";
+          };
+        }
+        catppuccin.homeModules.catppuccin
+      ];
+    };
 in
 {
   flake.homeConfigurations = {

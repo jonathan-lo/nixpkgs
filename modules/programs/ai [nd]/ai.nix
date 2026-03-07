@@ -1,12 +1,14 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.ai = { config, pkgs, ... }: {
-    home.packages = with pkgs; [
-      unstable.claude-code
-      unstable.uv
-    ];
+  flake.modules.homeManager.ai =
+    { config, pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        unstable.claude-code
+        unstable.uv
+      ];
 
-    home.file.".claude/settings.json".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/programs/ai [nd]/claude/settings.json";
-  };
+      home.file.".claude/settings.json".source =
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/programs/ai [nd]/claude/settings.json";
+    };
 }

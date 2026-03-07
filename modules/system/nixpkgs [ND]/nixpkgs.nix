@@ -11,14 +11,18 @@ let
 in
 {
   # NixOS system-level nixpkgs config
-  flake.modules.nixos.nixpkgsConfig = { ... }: {
-    nixpkgs.overlays = [ unstableOverlay ];
-    nixpkgs.config.allowUnfree = true;
-  };
+  flake.modules.nixos.nixpkgsConfig =
+    { ... }:
+    {
+      nixpkgs.overlays = [ unstableOverlay ];
+      nixpkgs.config.allowUnfree = true;
+    };
 
   # Darwin system-level nixpkgs config
-  flake.modules.darwin.nixpkgsConfig = { ... }: {
-    nixpkgs.overlays = [ unstableOverlay ];
-    nixpkgs.config.allowUnfree = true;
-  };
+  flake.modules.darwin.nixpkgsConfig =
+    { ... }:
+    {
+      nixpkgs.overlays = [ unstableOverlay ];
+      nixpkgs.config.allowUnfree = true;
+    };
 }

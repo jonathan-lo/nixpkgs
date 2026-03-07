@@ -1,6 +1,12 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.zsh = { config, lib, pkgs, ... }:
+  flake.modules.homeManager.zsh =
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     with lib;
     let
       cfg = config.modules.shell.zsh;
@@ -42,20 +48,26 @@
         {
           enable = true;
           initContent = mkMerge [
-            (mkBefore (''
-              # Skip oh-my-zsh compinit, we'll do it manually with caching
-              skip_global_compinit=1
-            '' + optionalString cfg.enableProfiling ''
-              zmodload zsh/zprof
-            ''))
+            (mkBefore (
+              ''
+                # Skip oh-my-zsh compinit, we'll do it manually with caching
+                skip_global_compinit=1
+              ''
+              + optionalString cfg.enableProfiling ''
+                zmodload zsh/zprof
+              ''
+            ))
             cfg.initContent
-            (mkAfter (''
-              # Use cached completions - skip regeneration
-              autoload -Uz compinit
-              compinit -C
-            '' + optionalString cfg.enableProfiling ''
-              zprof
-            ''))
+            (mkAfter (
+              ''
+                # Use cached completions - skip regeneration
+                autoload -Uz compinit
+                compinit -C
+              ''
+              + optionalString cfg.enableProfiling ''
+                zprof
+              ''
+            ))
           ];
           profileExtra = cfg.profileExtra;
           shellAliases = aliases // cfg.aliases;

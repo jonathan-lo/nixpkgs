@@ -5,31 +5,33 @@ let
   configFiles = builtins.attrNames (builtins.readDir configDir);
 in
 {
-  flake.modules.homeManager.tmux = { pkgs, ... }: {
-    programs.tmux = {
-      enable = true;
+  flake.modules.homeManager.tmux =
+    { pkgs, ... }:
+    {
+      programs.tmux = {
+        enable = true;
 
-      baseIndex = 1;
-      customPaneNavigationAndResize = true;
-      disableConfirmationPrompt = true;
-      escapeTime = 0;
-      historyLimit = 1000000;
-      keyMode = "vi";
-      prefix = "C-Space";
-      sensibleOnTop = false;
-      shell = "${pkgs.zsh}/bin/zsh";
+        baseIndex = 1;
+        customPaneNavigationAndResize = true;
+        disableConfirmationPrompt = true;
+        escapeTime = 0;
+        historyLimit = 1000000;
+        keyMode = "vi";
+        prefix = "C-Space";
+        sensibleOnTop = false;
+        shell = "${pkgs.zsh}/bin/zsh";
 
-      extraConfig = ''
-        set -g default-command "${pkgs.zsh}/bin/zsh -l"
-      '' + builtins.concatStringsSep "\n"
-        (map (f: builtins.readFile (configDir + "/${f}")) configFiles);
+        extraConfig = ''
+          set -g default-command "${pkgs.zsh}/bin/zsh -l"
+        ''
+        + builtins.concatStringsSep "\n" (map (f: builtins.readFile (configDir + "/${f}")) configFiles);
 
-      # theme is set by catppuccin module in theming.nix
-      plugins = with pkgs.tmuxPlugins; [
-        {
-          plugin = tmux-thumbs;
-        }
-      ];
+        # theme is set by catppuccin module in theming.nix
+        plugins = with pkgs.tmuxPlugins; [
+          {
+            plugin = tmux-thumbs;
+          }
+        ];
+      };
     };
-  };
 }

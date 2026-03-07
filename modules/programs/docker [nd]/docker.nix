@@ -5,10 +5,12 @@
     virtualisation.docker.enable = true;
   };
 
-  flake.modules.homeManager.docker = { pkgs, ... }: {
-    home.packages = with pkgs; [
-      unstable.dive
-      docker-client
-    ];
-  };
+  flake.modules.homeManager.docker =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        unstable.dive
+        docker-client
+      ];
+    };
 }

@@ -1,6 +1,12 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.git = { config, lib, pkgs, ... }:
+  flake.modules.homeManager.git =
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     with lib;
     let
       cfg = config.settings.git;

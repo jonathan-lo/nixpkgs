@@ -1,6 +1,7 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.ripgrep = { config, pkgs, ... }:
+  flake.modules.homeManager.ripgrep =
+    { config, pkgs, ... }:
     let
       configPath = config.home.homeDirectory + "/.config/ripgrep/ripgreprc";
     in

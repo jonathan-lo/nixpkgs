@@ -1,111 +1,114 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.budu = { pkgs, ... }: {
-    imports = with inputs.self.modules.nixos; [
-      determinate
-      docker
-      nixpkgsConfig
-      home-manager
-      cli
-      keyd
-      jlo
-    ] ++ [
-      ./_hardware-configuration.nix
-    ];
+  flake.modules.nixos.budu =
+    { pkgs, ... }:
+    {
+      imports =
+        with inputs.self.modules.nixos;
+        [
+          determinate
+          docker
+          nixpkgsConfig
+          home-manager
+          cli
+          keyd
+          jlo
+        ]
+        ++ [
+          ./_hardware-configuration.nix
+        ];
 
-    # Bootloader
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+      # Bootloader
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
 
-    networking.hostName = "budu";
-    networking.networkmanager.enable = true;
-    # for vpn compat
-    networking.firewall.checkReversePath = false;
+      networking.hostName = "budu";
+      networking.networkmanager.enable = true;
+      # for vpn compat
+      networking.firewall.checkReversePath = false;
 
-    time.timeZone = "Australia/Sydney";
+      time.timeZone = "Australia/Sydney";
 
-    i18n.defaultLocale = "en_AU.UTF-8";
-    i18n.extraLocaleSettings = {
-      LC_ADDRESS = "en_AU.UTF-8";
-      LC_IDENTIFICATION = "en_AU.UTF-8";
-      LC_MEASUREMENT = "en_AU.UTF-8";
-      LC_MONETARY = "en_AU.UTF-8";
-      LC_NAME = "en_AU.UTF-8";
-      LC_NUMERIC = "en_AU.UTF-8";
-      LC_PAPER = "en_AU.UTF-8";
-      LC_TELEPHONE = "en_AU.UTF-8";
-      LC_TIME = "en_AU.UTF-8";
-    };
-
-    nix = {
-      enable = true;
-      extraOptions = ''
-        experimental-features = nix-command flakes
-      '';
-      gc = {
-        automatic = true;
-        options = "--delete-older-than 30d";
+      i18n.defaultLocale = "en_AU.UTF-8";
+      i18n.extraLocaleSettings = {
+        LC_ADDRESS = "en_AU.UTF-8";
+        LC_IDENTIFICATION = "en_AU.UTF-8";
+        LC_MEASUREMENT = "en_AU.UTF-8";
+        LC_MONETARY = "en_AU.UTF-8";
+        LC_NAME = "en_AU.UTF-8";
+        LC_NUMERIC = "en_AU.UTF-8";
+        LC_PAPER = "en_AU.UTF-8";
+        LC_TELEPHONE = "en_AU.UTF-8";
+        LC_TIME = "en_AU.UTF-8";
       };
-    };
 
-    # X11 and GNOME
-    services.xserver.enable = true;
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
-    services.xserver.xkb = {
-      layout = "au";
-      variant = "";
-    };
-
-    # Printing
-    services.printing.enable = true;
-
-    # Sound with pipewire
-    services.pulseaudio.enable = false;
-    security.rtkit.enable = true;
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-
-    # Disable power button
-    services.logind.settings = {
-      Login = {
-        HandlePowerKey = "ignore";
+      nix = {
+        enable = true;
+        extraOptions = ''
+          experimental-features = nix-command flakes
+        '';
+        gc = {
+          automatic = true;
+          options = "--delete-older-than 30d";
+        };
       };
-    };
 
-    # Hardware acceleration
-    hardware.graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
+      # X11 and GNOME
+      services.xserver.enable = true;
+      services.xserver.displayManager.gdm.enable = true;
+      services.xserver.desktopManager.gnome.enable = true;
+      services.xserver.xkb = {
+        layout = "au";
+        variant = "";
+      };
 
-    # AMD GPU controller
-    systemd.packages = with pkgs; [ lact ];
-    systemd.services.lactd.wantedBy = [ "multi-user.target" ];
+      # Printing
+      services.printing.enable = true;
 
-    programs.steam.enable = true;
+      # Sound with pipewire
+      services.pulseaudio.enable = false;
+      security.rtkit.enable = true;
+      services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
 
-    nixpkgs.config.allowUnfree = true;
+      # Disable power button
+      services.logind.settings = {
+        Login = {
+          HandlePowerKey = "ignore";
+        };
+      };
 
-    environment.systemPackages = with pkgs; [
-      lact
-      libreoffice
-      protonvpn-gui
-      unixtools.ifconfig
-    ];
+      # Hardware acceleration
+      hardware.graphics = {
+        enable = true;
+        enable32Bit = true;
+      };
 
-    system.stateVersion = "25.11";
+      # AMD GPU controller
+      systemd.packages = with pkgs; [ lact ];
+      systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 
-    home-manager.users.jlo = {
-      imports = with inputs.self.modules.homeManager; [
-        bitwarden
-        browsers
-        calibre
+      programs.steam.enable = true;
+
+      environment.systemPackages = with pkgs; [
+        lact
+        libreoffice
+        protonvpn-gui
+        unixtools.ifconfig
       ];
+
+      system.stateVersion = "25.11";
+
+      home-manager.users.jlo = {
+        imports = with inputs.self.modules.homeManager; [
+          bitwarden
+          browsers
+          calibre
+        ];
+      };
     };
-  };
 }

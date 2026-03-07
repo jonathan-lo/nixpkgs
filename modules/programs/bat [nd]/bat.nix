@@ -1,6 +1,8 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.bat = { ... }: {
-    programs.bat.enable = true;
-  };
+  flake.modules.homeManager.bat =
+    { ... }:
+    {
+      programs.bat.enable = true;
+    };
 }
