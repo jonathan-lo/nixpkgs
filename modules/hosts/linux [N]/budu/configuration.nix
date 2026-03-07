@@ -7,6 +7,7 @@
       home-manager
       cli
       keyd
+      jlo
     ] ++ [
       ./_hardware-configuration.nix
     ];
@@ -85,16 +86,6 @@
     systemd.packages = with pkgs; [ lact ];
     systemd.services.lactd.wantedBy = [ "multi-user.target" ];
 
-    users.users.jlo = {
-      isNormalUser = true;
-      description = "jonathan";
-      extraGroups = [
-        "docker"
-        "networkmanager"
-        "wheel"
-      ];
-    };
-
     programs.steam.enable = true;
 
     nixpkgs.config.allowUnfree = true;
@@ -112,41 +103,10 @@
 
     home-manager.users.jlo = {
       imports = with inputs.self.modules.homeManager; [
-        ai
-        aws
-        bash
-        bat
         bitwarden
         browsers
-        btop
         calibre
-        cli
-        direnv
-        docker
-        editor
-        firefox
-        fzf
-        gcp
-        go
-        java
-        kubernetes
-        node
-        ops
-        git
-        platform
-        ripgrep
-        theming
-        tmux
-        zoxide
-        zsh
-        ghostty
-        lazyvim
       ];
-
-      home = {
-        stateVersion = "22.05";
-        username = "jlo";
-      };
     };
   };
 }
