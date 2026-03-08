@@ -14,11 +14,4 @@
     ];
 
     system.stateVersion = 5;
-
-    home-manager.users.jlo = {
-      imports = with inputs.self.modules.homeManager; [
-        nix-darwin
-      ];
-    };
-  };
 }
