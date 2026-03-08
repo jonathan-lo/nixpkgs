@@ -12,6 +12,11 @@
           home-manager
           cli
           keyd
+          gnome
+          pipewire
+          printing
+          gpu
+          steam
         ]
         ++ [
           ./_hardware-configuration.nix
@@ -52,28 +57,6 @@
         };
       };
 
-      # X11 and GNOME
-      services.xserver.enable = true;
-      services.xserver.displayManager.gdm.enable = true;
-      services.xserver.desktopManager.gnome.enable = true;
-      services.xserver.xkb = {
-        layout = "au";
-        variant = "";
-      };
-
-      # Printing
-      services.printing.enable = true;
-
-      # Sound with pipewire
-      services.pulseaudio.enable = false;
-      security.rtkit.enable = true;
-      services.pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-      };
-
       # Disable power button
       services.logind.settings = {
         Login = {
@@ -81,20 +64,7 @@
         };
       };
 
-      # Hardware acceleration
-      hardware.graphics = {
-        enable = true;
-        enable32Bit = true;
-      };
-
-      # AMD GPU controller
-      systemd.packages = with pkgs; [ lact ];
-      systemd.services.lactd.wantedBy = [ "multi-user.target" ];
-
-      programs.steam.enable = true;
-
       environment.systemPackages = with pkgs; [
-        lact
         libreoffice
         protonvpn-gui
         unixtools.ifconfig
