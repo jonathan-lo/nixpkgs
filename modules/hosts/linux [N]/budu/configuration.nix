@@ -3,21 +3,19 @@
   flake.modules.nixos.budu =
     { pkgs, ... }:
     {
-      imports =
-        with inputs.self.modules.nixos;
-        [
-          determinate
-          docker
-          nixpkgsConfig
-          home-manager
-          cli
-          keyd
-          gnome
-          pipewire
-          printing
-          gpu
-          steam
-        ];
+      imports = with inputs.self.modules.nixos; [
+        determinate
+        docker
+        nixpkgsConfig
+        home-manager
+        cli
+        keyd
+        gnome
+        pipewire
+        printing
+        gpu
+        steam
+      ];
 
       # Bootloader
       boot.loader.systemd-boot.enable = true;
