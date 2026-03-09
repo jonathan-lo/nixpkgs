@@ -31,7 +31,6 @@ in
           just
           nixfmt-rfc-style
           unstable.postman
-          unstable.sesh
           step-cli
           tcpdump
           yq-go

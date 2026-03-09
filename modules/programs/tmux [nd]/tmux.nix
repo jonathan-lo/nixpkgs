@@ -8,6 +8,11 @@ in
   flake.modules.homeManager.tmux =
     { pkgs, ... }:
     {
+      home = {
+        packages = with pkgs; [
+          unstable.sesh # tmux session switcher
+        ];
+      };
       programs.tmux = {
         enable = true;
 
