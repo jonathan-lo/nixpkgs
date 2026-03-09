@@ -62,7 +62,6 @@
       environment.systemPackages = with pkgs; [
         libreoffice
         protonvpn-gui
-        unixtools.ifconfig
       ];
 
       system.stateVersion = "25.11";

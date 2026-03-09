@@ -7,6 +7,7 @@ let
         # base cli
         coreutils
         findutils
+        unixtools.net-tools
 
         # utils
         dust
