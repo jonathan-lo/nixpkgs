@@ -29,7 +29,7 @@
 
       config = {
         home.packages = with pkgs; [
-          unstable.gh
+          gh
           #    gitbutler
           lazygit
         ];
@@ -38,6 +38,12 @@
           enable = true;
 
           settings = {
+            credential."https://github.com" = {
+              helper = "!gh auth git-credential";
+            };
+            credential."https://gist.github.com" = {
+              helper = "!gh auth git-credential";
+            };
             alias = {
               ci = "commit";
               co = "checkout";
