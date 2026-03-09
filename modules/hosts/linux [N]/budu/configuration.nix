@@ -17,9 +17,6 @@
           printing
           gpu
           steam
-        ]
-        ++ [
-          ./_hardware-configuration.nix
         ];
 
       # Bootloader
