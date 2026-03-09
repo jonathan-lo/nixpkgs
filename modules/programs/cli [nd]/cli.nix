@@ -30,7 +30,6 @@ in
           jq
           just
           nixfmt-rfc-style
-          unstable.postman
           step-cli
           tcpdump
           yq-go
