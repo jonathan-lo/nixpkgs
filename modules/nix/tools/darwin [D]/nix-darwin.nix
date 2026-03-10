@@ -14,6 +14,12 @@
     # workaround for mac updates breaking nix
     modules.shell.zsh = {
       profileExtra = ". /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh";
+
+      # ensure nix paths take precedence over macOS system paths
+      # (path_helper in /etc/zprofile reorders PATH, pushing nix paths to the end)
+      initContent = ''
+        export PATH="/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin:$PATH"
+      '';
     };
   };
 }
