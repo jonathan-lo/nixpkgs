@@ -14,4 +14,5 @@
     ];
 
     system.stateVersion = 5;
+  };
 }
