@@ -15,6 +15,8 @@
         printing
         gpu
         steam
+        libreoffice
+        protonvpn
       ];
 
       # Bootloader
@@ -23,8 +25,6 @@
 
       networking.hostName = "budu";
       networking.networkmanager.enable = true;
-      # for vpn compat
-      networking.firewall.checkReversePath = false;
 
       time.timeZone = "Australia/Sydney";
 
@@ -58,11 +58,6 @@
           HandlePowerKey = "ignore";
         };
       };
-
-      environment.systemPackages = with pkgs; [
-        libreoffice
-        protonvpn-gui
-      ];
 
       system.stateVersion = "25.11";
     };
