@@ -17,6 +17,7 @@
         steam
         libreoffice
         protonvpn
+        powerkey
       ];
 
       # Bootloader
@@ -49,13 +50,6 @@
         gc = {
           automatic = true;
           options = "--delete-older-than 30d";
-        };
-      };
-
-      # Disable power button
-      services.logind.settings = {
-        Login = {
-          HandlePowerKey = "ignore";
         };
       };
 
