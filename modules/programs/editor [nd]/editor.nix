@@ -7,5 +7,7 @@
         exercism
         vscode
       ];
+
+      programs.zed-editor.enable = true;
     };
 }
