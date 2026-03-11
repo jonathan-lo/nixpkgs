@@ -25,6 +25,6 @@
       };
 
       home.file.".ideavimrc".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/programs/java [nd]/.ideavimrc";
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/programs/lang/java [nd]/.ideavimrc";
     };
 }
