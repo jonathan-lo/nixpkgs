@@ -27,6 +27,7 @@
             editor
             firefox
             fzf
+            git
             gcp
             ghostty
             go
@@ -35,8 +36,8 @@
             lazyvim
             node
             ops
-            git
             platform
+            python
             ripgrep
             theming
             tmux
