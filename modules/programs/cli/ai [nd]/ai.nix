@@ -8,6 +8,6 @@
       ];
 
       home.file.".claude/settings.json".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/programs/ai [nd]/claude/settings.json";
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/programs/cli/ai [nd]/claude/settings.json";
     };
 }
