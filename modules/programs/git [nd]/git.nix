@@ -29,7 +29,8 @@
 
       config = {
         home.packages = with pkgs; [
-          gh
+          unstable.gh
+          jujitsu
           #    gitbutler
           lazygit
         ];
