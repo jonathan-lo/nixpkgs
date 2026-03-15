@@ -1,6 +1,4 @@
-{
-  ...
-}:
+{ ... }:
 {
   flake-file.inputs = {
     # Determinate 3.* module

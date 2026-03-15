@@ -2,6 +2,8 @@
 {
   flake.modules.darwin."Jonathans-MacBook-Pro" = {
     imports = with inputs.self.modules.darwin; [
+      determinate
+      system-minimal
       nix
       nix-darwin
       nixpkgsConfig
