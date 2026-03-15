@@ -18,7 +18,6 @@
         casks = [
           "claude-devtools"
           "ghostty"
-          "google-chrome"
         ];
 
         extraConfig = ''

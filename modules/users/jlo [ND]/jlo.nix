@@ -20,6 +20,7 @@
             aws
             bash
             bat
+            browsers
             btop
             cli
             direnv

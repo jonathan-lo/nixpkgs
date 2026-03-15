@@ -1,7 +1,0 @@
-{ ... }:
-{
-  flake.modules.darwin.nix =
-    { ... }:
-    {
-    };
-}

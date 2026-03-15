@@ -30,7 +30,7 @@
       config = {
         home.packages = with pkgs; [
           unstable.gh
-          jujitsu
+          jujutsu
           #    gitbutler
           lazygit
         ];
