@@ -11,7 +11,6 @@
       home-manager
       cli
       homebrew
-      jlo
     ];
 
     system.stateVersion = 5;
