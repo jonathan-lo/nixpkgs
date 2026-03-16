@@ -26,7 +26,6 @@
             direnv
             docker
             editor
-            firefox
             fzf
             git
             gcp
