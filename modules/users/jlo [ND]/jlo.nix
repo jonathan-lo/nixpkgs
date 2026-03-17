@@ -36,6 +36,7 @@
             lazyvim
             node
             ops
+            postman
             platform
             python
             ripgrep
