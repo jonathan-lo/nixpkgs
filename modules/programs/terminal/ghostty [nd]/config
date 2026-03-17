@@ -1,2 +1,4 @@
 theme = Catppuccin Mocha
+custom-shader-animation = always
 custom-shader = ./shaders/sahaj-b/cursor_warp.glsl
+custom-shader = ./shaders/sahaj-b/ripple_cursor.glsl
