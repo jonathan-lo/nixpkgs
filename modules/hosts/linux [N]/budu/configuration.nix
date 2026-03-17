@@ -42,17 +42,6 @@
         LC_TIME = "en_AU.UTF-8";
       };
 
-      nix = {
-        enable = true;
-        extraOptions = ''
-          experimental-features = nix-command flakes
-        '';
-        gc = {
-          automatic = true;
-          options = "--delete-older-than 30d";
-        };
-      };
-
       system.stateVersion = "25.11";
     };
 }
