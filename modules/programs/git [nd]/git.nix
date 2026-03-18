@@ -1,6 +1,12 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.git = { config, lib, pkgs, ... }:
+  flake.modules.homeManager.git =
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     with lib;
     let
       cfg = config.settings.git;
@@ -24,6 +30,7 @@
       config = {
         home.packages = with pkgs; [
           unstable.gh
+          jujutsu
           #    gitbutler
           lazygit
         ];
@@ -32,6 +39,12 @@
           enable = true;
 
           settings = {
+            credential."https://github.com" = {
+              helper = "!gh auth git-credential";
+            };
+            credential."https://gist.github.com" = {
+              helper = "!gh auth git-credential";
+            };
             alias = {
               ci = "commit";
               co = "checkout";

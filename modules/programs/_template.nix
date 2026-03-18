@@ -10,20 +10,31 @@
 #   feature [ND].nix  = Both system contexts
 #   feature [].nix    = Flake-level only (no system context)
 #
-{ inputs, lib, config, ... }:
+{
+  inputs,
+  lib,
+  config,
+  ...
+}:
 {
   # NixOS system configuration
-  flake.modules.nixos.featureName = { config, pkgs, ... }: {
-    # NixOS options here
-  };
+  flake.modules.nixos.featureName =
+    { config, pkgs, ... }:
+    {
+      # NixOS options here
+    };
 
   # Darwin system configuration
-  flake.modules.darwin.featureName = { config, pkgs, ... }: {
-    # Darwin options here
-  };
+  flake.modules.darwin.featureName =
+    { config, pkgs, ... }:
+    {
+      # Darwin options here
+    };
 
   # Home-manager configuration (works on any OS)
-  flake.modules.homeManager.featureName = { config, pkgs, ... }: {
-    # Home-manager options here
-  };
+  flake.modules.homeManager.featureName =
+    { config, pkgs, ... }:
+    {
+      # Home-manager options here
+    };
 }

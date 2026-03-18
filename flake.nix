@@ -11,7 +11,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:lnl7/nix-darwin/nix-darwin-25.11";
     };
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    determinate = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
+    };
     flake-file.url = "github:vic/flake-file";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {

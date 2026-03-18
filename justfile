@@ -27,6 +27,8 @@ build:
 system-info:
     @echo "{{ os() }}"
 
+update:
+  nix flake update
 
 lint:
   nixfmt .
