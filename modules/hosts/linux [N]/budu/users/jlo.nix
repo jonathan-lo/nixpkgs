@@ -11,7 +11,6 @@
     home-manager.users.jlo = {
       imports = with inputs.self.modules.homeManager; [
         bitwarden
-        browsers
         calibre
       ];
     };
