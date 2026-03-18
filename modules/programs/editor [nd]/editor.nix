@@ -1,5 +1,7 @@
 { inputs, ... }:
 {
+  flake.allowedUnfreePackages = [ "vscode" ];
+
   flake.modules.homeManager.editor =
     { pkgs, ... }:
     {

@@ -1,5 +1,7 @@
 { ... }:
 {
+  flake.allowedUnfreePackages = [ "google-chrome" ];
+
   flake.modules.homeManager.browsers =
     { pkgs, ... }:
     {

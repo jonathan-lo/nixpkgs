@@ -1,5 +1,7 @@
 { inputs, ... }:
 {
+  flake.allowedUnfreePackages = [ "claude-code" ];
+
   flake.modules.homeManager.ai =
     { config, pkgs, ... }:
     {

@@ -1,8 +1,13 @@
 {
+  config,
   inputs,
   lib,
   ...
 }:
+let
+  allowedUnfree = config.flake.allowedUnfreePackages;
+  unfreePredicate = pkg: builtins.elem (lib.getName pkg) allowedUnfree;
+in
 {
   # Helper functions for creating system / home-manager configurations
 
@@ -36,16 +41,7 @@
         pkgs = inputs.nixpkgs.legacyPackages.${system};
         modules = [
           inputs.self.modules.homeManager.${name}
-          {
-            nixpkgs.config.allowUnfreePredicate = pkg:
-              builtins.elem (lib.getName pkg) [
-                "claude-code"
-                "google-chrome"
-                "postman"
-                "terraform"
-                "vscode"
-              ];
-          }
+          { nixpkgs.config.allowUnfreePredicate = unfreePredicate; }
         ];
       };
     };

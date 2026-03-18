@@ -1,18 +1,12 @@
 # modules/system/nixpkgs [ND]/nixpkgs.nix
-{ inputs, lib, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 let
-  allowedUnfree = [
-    "claude-code"
-    "google-chrome"
-    "postman"
-    "steam"
-    "steam-original"
-    "steam-unwrapped"
-    "steam-run"
-    "terraform"
-    "vscode"
-  ];
-
+  allowedUnfree = config.flake.allowedUnfreePackages;
   unfreePredicate = pkg: builtins.elem (lib.getName pkg) allowedUnfree;
 
   # Overlay to add unstable packages
@@ -24,19 +18,27 @@ let
   };
 in
 {
-  # NixOS system-level nixpkgs config
-  flake.modules.nixos.nixpkgsConfig =
-    { ... }:
-    {
-      nixpkgs.overlays = [ unstableOverlay ];
-      nixpkgs.config.allowUnfreePredicate = unfreePredicate;
-    };
+  options.flake.allowedUnfreePackages = lib.mkOption {
+    type = lib.types.listOf lib.types.str;
+    default = [ ];
+    description = "Package names to allow in the unfree predicate.";
+  };
 
-  # Darwin system-level nixpkgs config
-  flake.modules.darwin.nixpkgsConfig =
-    { ... }:
-    {
-      nixpkgs.overlays = [ unstableOverlay ];
-      nixpkgs.config.allowUnfreePredicate = unfreePredicate;
-    };
+  config = {
+    # NixOS system-level nixpkgs config
+    flake.modules.nixos.nixpkgsConfig =
+      { ... }:
+      {
+        nixpkgs.overlays = [ unstableOverlay ];
+        nixpkgs.config.allowUnfreePredicate = unfreePredicate;
+      };
+
+    # Darwin system-level nixpkgs config
+    flake.modules.darwin.nixpkgsConfig =
+      { ... }:
+      {
+        nixpkgs.overlays = [ unstableOverlay ];
+        nixpkgs.config.allowUnfreePredicate = unfreePredicate;
+      };
+  };
 }

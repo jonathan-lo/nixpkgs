@@ -1,5 +1,7 @@
 { inputs, ... }:
 {
+  flake.allowedUnfreePackages = [ "postman" ];
+
   flake.modules.homeManager.postman =
     { pkgs, ... }:
     {

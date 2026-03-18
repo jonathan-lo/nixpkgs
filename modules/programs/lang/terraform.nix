@@ -1,5 +1,7 @@
 { inputs, ... }:
 {
+  flake.allowedUnfreePackages = [ "terraform" ];
+
   flake.modules.homeManager.ops =
     { pkgs, ... }:
     {
