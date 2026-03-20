@@ -4,6 +4,7 @@
     { pkgs, ... }:
     {
       imports = with inputs.self.modules.nixos; [
+        system-minimal
         determinate
         docker
         nixpkgsConfig
