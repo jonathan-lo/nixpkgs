@@ -44,3 +44,18 @@ claude-lsp:
 
 zcomp-regenerate:
   rm ~/.zcompdump* && compinit
+
+# generate module dependency graph for budu host
+[linux]
+package-graph:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  tmpdir=$(mktemp -d)
+  trap 'rm -rf "$tmpdir"' EXIT
+  nix eval --json '.#nixosConfigurations.budu.graph' > "$tmpdir/graph.json"
+  {
+    echo '# nixos laptop configuration'
+    echo '```mermaid'
+    nixoscope --input "$tmpdir/graph.json" --format mm
+    echo '```'
+  } > "modules/hosts/linux [N]/budu/README.md"

@@ -15,6 +15,7 @@ let
         gnumake
         mktemp
         neofetch
+        unstable.nixoscope
         tree
       ];
     };
