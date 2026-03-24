@@ -11,7 +11,7 @@
       [
         system-minimal
         home-manager
-      ]
+      ];
   };
 
   flake.modules.darwin.system-cli = {
@@ -22,7 +22,7 @@
         determinate
         home-manager
         homebrew
-      ]
+      ];
   };
 
   # impermanence is not added by default to home-manager, because of missing Darwin implementation
@@ -33,6 +33,6 @@
       with inputs.self.modules.homeManager;
       [
         system-minimal
-      ]
+      ];
   };
 }
