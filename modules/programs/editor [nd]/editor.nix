@@ -10,6 +10,6 @@
         vscode
       ];
 
-#      programs.zed-editor.enable = true;
+      #      programs.zed-editor.enable = true;
     };
 }

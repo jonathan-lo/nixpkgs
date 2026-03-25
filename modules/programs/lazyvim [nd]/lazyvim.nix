@@ -46,11 +46,16 @@
       home.sessionVariables = {
         NVIM_APPNAME = "lazyvim";
         NVIM_TREESITTER_PARSERS = "${grammarsPath}";
-      };
+      } // (if pkgs.stdenv.isDarwin then {
+        DYLD_FALLBACK_LIBRARY_PATH = "${pkgs.pcre2.out}/lib";
+      } else {
+        LD_LIBRARY_PATH = "${pkgs.pcre2.out}/lib";
+      });
 
       home.packages = with pkgs; [
         codesnap
         lua-language-server
+        pcre2
         markdownlint-cli2
         nixd
         statix # nix linting

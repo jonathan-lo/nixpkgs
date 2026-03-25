@@ -4,3 +4,6 @@
 
 -- LSP goto definition with Ctrl-] (classic vim tag jump)
 vim.keymap.set("n", "<C-]>", vim.lsp.buf.definition, { desc = "Goto Definition" })
+
+-- CodeSnap
+vim.keymap.set("v", "<leader>cy", "<cmd>CodeSnap<cr>", { desc = "CodeSnap" })
