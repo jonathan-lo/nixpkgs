@@ -64,3 +64,10 @@ These names correspond to `flake.modules.homeManager.<name>` declared in program
 
 `modules/nix/tools/nixpkgs [ND]/nixpkgs.nix` sets up an overlay making `nixpkgs-unstable` packages available as `pkgs.unstable.*`.
 
+
+## Active Technologies
+- Nix (flake-based, using flake-parts + import-tree) + import-tree, flake-parts, flake-file (001-private-modules)
+- N/A (file-based Nix modules) (001-private-modules)
+
+## Recent Changes
+- 001-private-modules: Added Nix (flake-based, using flake-parts + import-tree) + import-tree, flake-parts, flake-file
