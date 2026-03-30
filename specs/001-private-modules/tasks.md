@@ -84,11 +84,11 @@
 
 ### Implementation for User Story 3
 
-- [ ] T018 [US3] Create or modify a module file inside `modules/private/` in the submodule working directory
-- [ ] T019 [US3] Commit and push the change within the `modules/private/` submodule
-- [ ] T020 [US3] In the parent repo, run `git add modules/private` to update the tracked submodule commit
-- [ ] T021 [US3] Commit the submodule reference update in the parent repo
-- [ ] T022 [US3] Run `just build` to verify the updated private module content is reflected in the build
+- [X] T018 [US3] Create or modify a module file inside `modules/private/` in the submodule working directory
+- [X] T019 [US3] Commit and push the change within the `modules/private/` submodule
+- [X] T020 [US3] In the parent repo, run `git add modules/private` to update the tracked submodule commit
+- [X] T021 [US3] Commit the submodule reference update in the parent repo
+- [X] T022 [US3] Run `just build` to verify the updated private module content is reflected in the build
 
 **Checkpoint**: User Story 3 complete — independent maintenance workflow validated.
 
@@ -98,9 +98,9 @@
 
 **Purpose**: Cleanup and ensure long-term maintainability
 
-- [ ] T023 [P] Add `modules/private/` to .gitignore if desired for forks without private access (optional — evaluate if needed)
-- [ ] T024 Run `just lint` to ensure all committed .nix files pass formatting
-- [ ] T025 Run `just build` as a final regression check across the full module tree
+- [X] T023 [P] Add `modules/private/` to .gitignore if desired for forks without private access (optional — evaluated: not needed, submodule gracefully degrades)
+- [X] T024 Run `just lint` to ensure all committed .nix files pass formatting
+- [X] T025 Run `just build` as a final regression check across the full module tree
 
 ---
 
