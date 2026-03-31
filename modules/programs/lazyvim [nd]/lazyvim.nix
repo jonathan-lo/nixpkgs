@@ -60,6 +60,7 @@
 
       home.packages = with pkgs; [
         codesnap
+        helm-ls
         lua-language-server
         pcre2
         markdownlint-cli2
