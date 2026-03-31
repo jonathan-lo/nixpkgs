@@ -13,7 +13,7 @@ apply:
 
 [macos]
 apply:
-    {{ rebuild }} switch --flake .
+    {{ rebuild }} switch --flake 'git+file:.?submodules=1'
 
 [windows]
 apply:
@@ -21,7 +21,7 @@ apply:
 
 [macos]
 build:
-    nix build .#darwinconfigurations."jonathans-macbook-pro".system
+    nix build 'git+file:.?submodules=1#darwinConfigurations.Jonathans-MacBook-Pro.system' --dry-run
 
 # print system os
 system-info:

@@ -5,8 +5,9 @@
   flake.modules.homeManager.ai =
     { config, pkgs, ... }:
     {
-      home.packages = with pkgs; [
-        unstable.claude-code
+      home.packages = [
+        pkgs.unstable.claude-code
+        inputs.llm-agents.packages.${pkgs.system}.spec-kit
       ];
 
       home.file.".claude/settings.json".source =
