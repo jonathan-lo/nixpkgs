@@ -17,6 +17,7 @@ let
         neofetch
         unstable.nixoscope
         tree
+        zip
       ];
     };
 in
