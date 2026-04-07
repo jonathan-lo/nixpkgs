@@ -6,12 +6,17 @@ let
 in
 {
   flake.modules.homeManager.tmux =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       home = {
-        packages = with pkgs; [
-          unstable.sesh # tmux session switcher
-        ];
+        packages =
+          with pkgs;
+          [
+            unstable.sesh # tmux session switcher
+          ]
+          ++ lib.optionals stdenv.isDarwin [
+            terminal-notifier
+          ];
       };
       programs.tmux = {
         enable = true;
