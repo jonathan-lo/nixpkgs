@@ -30,6 +30,7 @@ in
     {
       home = {
         packages = with pkgs; [
+          devenv
           jq
           just
           nixfmt-rfc-style
