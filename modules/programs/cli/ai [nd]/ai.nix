@@ -8,6 +8,10 @@
       home.packages = [
         pkgs.unstable.claude-code
         inputs.llm-agents.packages.${pkgs.system}.spec-kit
+
+        # usage
+        #inputs.llm-agents.packages.${pkgs.system}.agentsview
+        inputs.llm-agents.packages.${pkgs.system}.ccusage
       ];
 
       home.file.".claude/settings.json".source =
