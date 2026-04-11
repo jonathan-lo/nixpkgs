@@ -10,7 +10,7 @@
         inputs.llm-agents.packages.${pkgs.system}.spec-kit
 
         # usage
-        #inputs.llm-agents.packages.${pkgs.system}.agentsview
+        inputs.llm-agents.packages.${pkgs.system}.agentsview
         inputs.llm-agents.packages.${pkgs.system}.ccusage
       ];
 
