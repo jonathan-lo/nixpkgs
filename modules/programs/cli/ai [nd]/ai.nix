@@ -5,14 +5,16 @@
   flake.modules.homeManager.ai =
     { config, pkgs, ... }:
     {
-      home.packages = [
-        pkgs.unstable.claude-code
-        inputs.llm-agents.packages.${pkgs.system}.spec-kit
+      home.packages =
+        with pkgs;
+        [ unstable.claude-code ]
+        ++ (with inputs.llm-agents.packages.${system}; [
+          spec-kit
 
-        # usage
-        inputs.llm-agents.packages.${pkgs.system}.agentsview
-        inputs.llm-agents.packages.${pkgs.system}.ccusage
-      ];
+          # usage
+          agentsview
+          ccusage
+        ]);
 
       home.file.".claude/settings.json".source =
         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/nixpkgs/modules/programs/cli/ai [nd]/claude/settings.json";
