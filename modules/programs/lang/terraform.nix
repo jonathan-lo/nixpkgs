@@ -6,6 +6,7 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
+        unstable.opentofu
         terraform
         terraform-ls
         tflint
