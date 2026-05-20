@@ -39,6 +39,9 @@
           enable = true;
 
           settings = {
+            credential = {
+              helper = "";
+            };
             credential."https://github.com" = {
               helper = "!gh auth git-credential";
             };

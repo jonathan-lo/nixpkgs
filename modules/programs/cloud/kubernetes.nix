@@ -17,6 +17,16 @@
         tlsx
       ];
 
+      modules.shell.zsh.initContent = ''
+        kc() {
+          gcloud container clusters get-credentials "''${1}" --dns-endpoint
+        }
+        _kc() {
+          compadd $(gcloud container clusters list --format='value(name)' 2>/dev/null)
+        }
+        compdef _kc kc
+      '';
+
       modules.shell.zsh.aliases = {
         k = "kubectl";
         ka = "kubectl apply -f";

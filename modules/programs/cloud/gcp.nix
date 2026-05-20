@@ -8,6 +8,7 @@
           google-cloud-sdk.components.cloud-firestore-emulator
           google-cloud-sdk.components.cloud-sql-proxy
           google-cloud-sdk.components.gke-gcloud-auth-plugin
+          #google-cloud-sdk.components.nomos # nomos cli
         ])
       ];
     };
