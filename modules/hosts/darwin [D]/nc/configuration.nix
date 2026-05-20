@@ -11,6 +11,7 @@
       home-manager
       cli
       homebrew
+      karabiner
     ];
 
     system.stateVersion = 5;
