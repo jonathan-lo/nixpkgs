@@ -7,12 +7,12 @@
     {
       imports = [ inputs.catppuccin.homeModules.catppuccin ];
 
-      # catppuccin's opencode module requires programs.opencode.tui which is
-      # only on home-manager master, not release-25.11
-      options.programs.opencode.tui = lib.mkOption {
-        type = lib.types.anything;
-        default = { };
-      };
+      # catppuccin modules require options only available on home-manager
+      # master, not release-25.11. Stub them out until we upgrade.
+      options.programs = lib.genAttrs
+        [ "antigravity" "cursor" "kiro" "vscodium" "windsurf" ]
+        (_: lib.mkOption { type = lib.types.anything; default = { }; })
+        // { opencode.tui = lib.mkOption { type = lib.types.anything; default = { }; }; };
 
       # Enable catppuccin globally
       config.catppuccin = {
