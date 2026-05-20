@@ -7,8 +7,13 @@
     {
       home.packages =
         with pkgs;
-        [ unstable.claude-code ]
+        [
+        ]
         ++ (with inputs.llm-agents.packages.${system}; [
+          # harnesses
+          claude-code
+          codex
+
           spec-kit
 
           # usage
