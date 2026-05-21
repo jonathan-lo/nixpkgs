@@ -85,38 +85,6 @@ let
     }
   ) ctrlRemappedKeys;
 
-  # Option→Cmd for OS-level shortcuts (window/app switching). No terminal
-  # exclusion — these are intercepted before any app sees them, matching how
-  # Linux WMs handle Alt+Tab regardless of focused window.
-  altOsLevelKeys = [
-    "tab"
-  ];
-
-  altOsLevelManipulators = map (
-    key:
-    mkSwap {
-      fromMod = "left_option";
-      toMod = "left_command";
-      inherit key;
-    }
-  ) altOsLevelKeys;
-
-  # Option→Cmd for in-app shortcuts (e.g. browser back/forward). Excluded in
-  # terminals so Option stays available as Meta for readline/tmux/emacs.
-  # Empty by default — populate when you want specific Alt-based in-app
-  # shortcuts (e.g. "left_arrow", "right_arrow" for browser nav).
-  altInAppKeys = [ ];
-
-  altInAppManipulators = map (
-    key:
-    mkSwap {
-      fromMod = "left_option";
-      toMod = "left_command";
-      inherit key;
-      conditions = excludeTerminalsCondition;
-    }
-  ) altInAppKeys;
-
   karabinerConfig = {
     global = {
       check_for_updates_on_startup = true;
@@ -138,14 +106,6 @@ let
             {
               description = "Linux-style Ctrl shortcuts (Ctrl→Cmd outside terminals)";
               manipulators = ctrlToCmdManipulators;
-            }
-            {
-              description = "Linux-style Alt shortcuts — OS-level (Option→Cmd, all apps)";
-              manipulators = altOsLevelManipulators;
-            }
-            {
-              description = "Linux-style Alt shortcuts — in-app (Option→Cmd outside terminals)";
-              manipulators = altInAppManipulators;
             }
           ];
         };
