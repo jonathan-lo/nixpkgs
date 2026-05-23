@@ -1,17 +1,20 @@
 { inputs, ... }:
 let
   # Apps where modifier remaps should NOT apply. Terminals need raw Ctrl for
-  # SIGINT / readline, and raw Alt as Meta for word-jumps, tmux, emacs, etc.
-  # Extend by adding the app's bundle identifier as a regex.
-  terminalBundleIds = [
+  # SIGINT / readline, and raw Alt as Meta for word-jumps/tmux/emacs.
+  # JetBrains IDEs ship a deep Ctrl-based keymap (Ctrl+Shift+A actions,
+  # debugger, etc.) that should stay intact. Extend by adding bundle
+  # identifier regexes.
+  excludedBundleIds = [
     "^com\\.mitchellh\\.ghostty$"
     "^com\\.googlecode\\.iterm2$"
+    "^com\\.jetbrains\\."
   ];
 
-  excludeTerminalsCondition = [
+  excludeAppsCondition = [
     {
       type = "frontmost_application_unless";
-      bundle_identifiers = terminalBundleIds;
+      bundle_identifiers = excludedBundleIds;
     }
   ];
 
@@ -44,8 +47,9 @@ let
     in
     if conditions == null then base else base // { inherit conditions; };
 
-  # Ctrl→Cmd for clipboard / editing / app shortcuts. Excluded in terminals so
-  # Ctrl+C remains SIGINT, Ctrl+R remains history search, etc.
+  # Ctrl→Cmd for clipboard / editing / app shortcuts. Excluded in apps that
+  # depend on raw Ctrl (terminals for SIGINT/readline, JetBrains IDEs for
+  # their Ctrl-based keymap).
   ctrlRemappedKeys = [
     "a"
     "b"
@@ -81,7 +85,7 @@ let
       fromMod = "left_control";
       toMod = "left_command";
       inherit key;
-      conditions = excludeTerminalsCondition;
+      conditions = excludeAppsCondition;
     }
   ) ctrlRemappedKeys;
 
