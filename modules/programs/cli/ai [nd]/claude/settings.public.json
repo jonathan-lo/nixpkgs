@@ -1,0 +1,26 @@
+{
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "Bash(curl:*)",
+      "Bash(export *)",
+      "Bash(find *)",
+      "Bash(gh pr *)",
+      "Bash(gh project *)",
+      "Bash(git *)",
+      "Bash(git commit *)",
+      "Bash(java *)",
+      "Bash(javap *)",
+      "Bash(mkdir *)",
+      "Bash(which *)"
+    ]
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "jdtls-lsp@claude-plugins-official": true,
+    "kotlin-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "ENABLE_LSP_TOOL": "1"
+}
