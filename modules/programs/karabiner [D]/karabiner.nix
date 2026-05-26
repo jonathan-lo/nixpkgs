@@ -89,6 +89,32 @@ let
     }
   ) ctrlRemappedKeys;
 
+  # Match every keyboard that isn't the laptop's built-in one. Covers any
+  # external keyboard without enumerating vendor/product IDs.
+  externalKeyboardCondition = [
+    {
+      type = "device_unless";
+      identifiers = [ { is_built_in_keyboard = true; } ];
+    }
+  ];
+
+  mkModSwap = from: to: {
+    type = "basic";
+    from = {
+      key_code = from;
+      modifiers.optional = [ "any" ];
+    };
+    to = [ { key_code = to; } ];
+    conditions = externalKeyboardCondition;
+  };
+
+  optCmdSwapManipulators = [
+    (mkModSwap "left_option" "left_command")
+    (mkModSwap "left_command" "left_option")
+    (mkModSwap "right_option" "right_command")
+    (mkModSwap "right_command" "right_option")
+  ];
+
   karabinerConfig = {
     global = {
       check_for_updates_on_startup = true;
@@ -107,6 +133,10 @@ let
             "basic.to_if_held_down_threshold_milliseconds" = 500;
           };
           rules = [
+            {
+              description = "Swap Option ↔ Command on external keyboards";
+              manipulators = optCmdSwapManipulators;
+            }
             {
               description = "Linux-style Ctrl shortcuts (Ctrl→Cmd outside terminals)";
               manipulators = ctrlToCmdManipulators;
