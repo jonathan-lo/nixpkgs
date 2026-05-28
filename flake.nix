@@ -26,6 +26,7 @@
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
     nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
+    nixpkgs-firefox-devedition.url = "github:nixos/nixpkgs/ea1d480338c301fb20b067a155d6cba71a65b406";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 }

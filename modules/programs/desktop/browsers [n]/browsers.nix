@@ -1,9 +1,16 @@
-{ ... }:
+{ inputs, ... }:
 {
   flake.allowedUnfreePackages = [ "google-chrome" ];
 
   flake.modules.homeManager.browsers =
     { pkgs, ... }:
+    let
+      # firefox-devedition pinned via inputs.nixpkgs-firefox-devedition — see
+      # the colocated flake-parts.nix for why.
+      firefoxPinned = import inputs.nixpkgs-firefox-devedition {
+        inherit (pkgs.stdenv.hostPlatform) system;
+      };
+    in
     {
       home.packages = with pkgs; [
         google-chrome
@@ -11,7 +18,7 @@
 
       programs.firefox = {
         enable = true;
-        package = pkgs.firefox-devedition;
+        package = firefoxPinned.firefox-devedition;
         policies = {
           ExtensionSettings = {
             "uBlock0@raymondhill.net" = {
