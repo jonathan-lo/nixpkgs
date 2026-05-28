@@ -5,9 +5,12 @@ let
   # JetBrains IDEs ship a deep Ctrl-based keymap (Ctrl+Shift+A actions,
   # debugger, etc.) that should stay intact. Extend by adding bundle
   # identifier regexes.
-  excludedBundleIds = [
+  terminalBundleIds = [
     "^com\\.mitchellh\\.ghostty$"
     "^com\\.googlecode\\.iterm2$"
+  ];
+
+  excludedBundleIds = terminalBundleIds ++ [
     "^com\\.jetbrains\\."
   ];
 
@@ -15,6 +18,13 @@ let
     {
       type = "frontmost_application_unless";
       bundle_identifiers = excludedBundleIds;
+    }
+  ];
+
+  terminalOnlyCondition = [
+    {
+      type = "frontmost_application_if";
+      bundle_identifiers = terminalBundleIds;
     }
   ];
 
@@ -89,6 +99,33 @@ let
     }
   ) ctrlRemappedKeys;
 
+  # Ctrl+Shift+{C,V,X} → Cmd+{C,V,X} inside terminals only. Matches the
+  # GNOME/KDE convention where raw Ctrl+C stays as SIGINT.
+  terminalCopyPasteManipulators =
+    map
+      (key: {
+        type = "basic";
+        from = {
+          key_code = key;
+          modifiers.mandatory = [
+            "left_control"
+            "left_shift"
+          ];
+        };
+        to = [
+          {
+            key_code = key;
+            modifiers = [ "left_command" ];
+          }
+        ];
+        conditions = terminalOnlyCondition;
+      })
+      [
+        "c"
+        "v"
+        "x"
+      ];
+
   # Match every keyboard that isn't the laptop's built-in one. Covers any
   # external keyboard without enumerating vendor/product IDs.
   externalKeyboardCondition = [
@@ -140,6 +177,10 @@ let
             {
               description = "Linux-style Ctrl shortcuts (Ctrl→Cmd outside terminals)";
               manipulators = ctrlToCmdManipulators;
+            }
+            {
+              description = "Linux-style copy/paste/cut in terminals (Ctrl+Shift+C/V/X → Cmd+C/V/X)";
+              manipulators = terminalCopyPasteManipulators;
             }
           ];
         };
