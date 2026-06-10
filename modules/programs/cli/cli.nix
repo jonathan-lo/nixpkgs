@@ -14,7 +14,7 @@ let
         fd
         gnumake
         mktemp
-        neofetch
+        fastfetch
         unstable.nixoscope
         tree
         zip

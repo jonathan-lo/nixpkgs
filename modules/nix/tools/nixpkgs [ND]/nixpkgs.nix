@@ -31,6 +31,8 @@ in
       {
         nixpkgs.overlays = [ unstableOverlay ];
         nixpkgs.config.allowUnfreePredicate = unfreePredicate;
+        # logseq still depends on this; remove once upstream bumps electron
+        nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
       };
 
     # Darwin system-level nixpkgs config
@@ -39,6 +41,8 @@ in
       {
         nixpkgs.overlays = [ unstableOverlay ];
         nixpkgs.config.allowUnfreePredicate = unfreePredicate;
+        # logseq still depends on this; remove once upstream bumps electron
+        nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
       };
   };
 }

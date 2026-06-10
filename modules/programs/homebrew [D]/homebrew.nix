@@ -3,7 +3,7 @@
   flake.modules.darwin.homebrew =
     { config, ... }:
     {
-      environment.systemPath = [ config.homebrew.brewPrefix ];
+      environment.systemPath = [ "${config.homebrew.prefix}/bin" ];
 
       home-manager.sharedModules = [
         inputs.self.modules.homeManager.homebrew
@@ -26,7 +26,6 @@
 
         global = {
           brewfile = true;
-          lockfiles = true;
         };
 
         onActivation = {
