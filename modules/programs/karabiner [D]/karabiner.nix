@@ -142,7 +142,7 @@ let
       modifiers.optional = [ "any" ];
     };
     to = [ { key_code = to; } ];
-    conditions = externalKeyboardCondition ++ excludeAppsCondition;
+    conditions = externalKeyboardCondition;
   };
 
   optCmdSwapManipulators = [
@@ -151,34 +151,6 @@ let
     (mkModSwap "right_option" "right_command")
     (mkModSwap "right_command" "right_option")
   ];
-
-  # System shortcuts the physical Alt key should still reach even in excluded
-  # apps: Cmd+Tab app switcher, Cmd+Space launcher, Cmd+` window cycling.
-  # The bare-modifier swap above is suppressed in those apps so Option stays
-  # as Option (terminal Meta, JetBrains Opt+Enter); these rules then
-  # re-translate Option+{Tab,Space,`} → Cmd+{Tab,Space,`}. In non-excluded
-  # apps the modifier swap has already converted Option to Command, so
-  # `mandatory: left_option` no longer matches and there's no double swap.
-  optCmdSwapCarveOutKeys = [
-    "tab"
-    "spacebar"
-    "grave_accent_and_tilde"
-  ];
-
-  optCmdSwapCarveOutManipulators = builtins.concatMap (key: [
-    (mkSwap {
-      fromMod = "left_option";
-      toMod = "left_command";
-      inherit key;
-      conditions = externalKeyboardCondition;
-    })
-    (mkSwap {
-      fromMod = "right_option";
-      toMod = "right_command";
-      inherit key;
-      conditions = externalKeyboardCondition;
-    })
-  ]) optCmdSwapCarveOutKeys;
 
   karabinerConfig = {
     global = {
@@ -201,10 +173,6 @@ let
             {
               description = "Swap Option ↔ Command on external keyboards";
               manipulators = optCmdSwapManipulators;
-            }
-            {
-              description = "Keep Cmd+Tab/Space/` reachable via Option in excluded apps";
-              manipulators = optCmdSwapCarveOutManipulators;
             }
             {
               description = "Linux-style Ctrl shortcuts (Ctrl→Cmd outside terminals)";
