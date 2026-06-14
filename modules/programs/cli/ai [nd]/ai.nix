@@ -21,7 +21,7 @@
         with pkgs;
         [
         ]
-        ++ (with inputs.llm-agents.packages.${system}; [
+        ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
           # harnesses
           claude-code
           codex
