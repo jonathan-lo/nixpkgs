@@ -14,7 +14,6 @@
         "cpp"
         "go"
         "gomod"
-        "helm"
         "hcl"
         "java"
         "kotlin"
@@ -34,12 +33,31 @@
         "yaml"
       ];
 
+      # Pin the helm tree-sitter grammar to a revision whose anonymous tokens
+      # still match the queries shipped by our pinned nvim-treesitter plugin
+      # (lazyvim plugin commit 42fc28ba, lockfile gotmpl rev 5f19a36). Upstream
+      # ngalaiko/tree-sitter-go-template later split "else if" into separate
+      # "else" and "if" tokens, which breaks queries/helm/highlights.scm
+      # (inherits gotmpl).
+      helmGrammar =
+        pkgs.vimPlugins.nvim-treesitter.passthru.builtGrammars.helm.overrideAttrs
+          (_: {
+            src = pkgs.fetchFromGitHub {
+              owner = "ngalaiko";
+              repo = "tree-sitter-go-template";
+              rev = "5f19a36bb1eebb30454e277b222b278ceafed0dd";
+              hash = "sha256-apZ5yhWzLxaJFxMcuugNTuCxdDUxhKTZecZFsvjyqdo=";
+            };
+          });
+      helmGrammarPlugin = pkgs.vimPlugins.nvim-treesitter.passthru.grammarToPlugin helmGrammar;
+
       grammarsPath = pkgs.symlinkJoin {
         name = "nvim-treesitter-grammars";
         paths =
           (pkgs.vimPlugins.nvim-treesitter.withPlugins (
             plugins: map (name: plugins.${name}) treesitterParsers
-          )).dependencies;
+          )).dependencies
+          ++ [ helmGrammarPlugin ];
       };
     in
     {
