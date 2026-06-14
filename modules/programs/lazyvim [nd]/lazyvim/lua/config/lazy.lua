@@ -23,7 +23,6 @@ require("lazy").setup({
     -- language extras with neotest adapters
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.java" },
-    { import = "lazyvim.plugins.extras.lang.lua" },
     { import = "lazyvim.plugins.extras.lang.nix" },
     -- import/override with your plugins
     { import = "plugins" },
