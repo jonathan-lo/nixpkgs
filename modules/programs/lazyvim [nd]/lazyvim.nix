@@ -92,6 +92,8 @@
       programs.neovim = {
         enable = true;
         defaultEditor = true;
+        withRuby = false;
+        withPython3 = false;
 
         extraConfig = ''
           let mapleader = "\<Space>"
