@@ -39,16 +39,14 @@
       # ngalaiko/tree-sitter-go-template later split "else if" into separate
       # "else" and "if" tokens, which breaks queries/helm/highlights.scm
       # (inherits gotmpl).
-      helmGrammar =
-        pkgs.vimPlugins.nvim-treesitter.passthru.builtGrammars.helm.overrideAttrs
-          (_: {
-            src = pkgs.fetchFromGitHub {
-              owner = "ngalaiko";
-              repo = "tree-sitter-go-template";
-              rev = "5f19a36bb1eebb30454e277b222b278ceafed0dd";
-              hash = "sha256-apZ5yhWzLxaJFxMcuugNTuCxdDUxhKTZecZFsvjyqdo=";
-            };
-          });
+      helmGrammar = pkgs.vimPlugins.nvim-treesitter.passthru.builtGrammars.helm.overrideAttrs (_: {
+        src = pkgs.fetchFromGitHub {
+          owner = "ngalaiko";
+          repo = "tree-sitter-go-template";
+          rev = "5f19a36bb1eebb30454e277b222b278ceafed0dd";
+          hash = "sha256-apZ5yhWzLxaJFxMcuugNTuCxdDUxhKTZecZFsvjyqdo=";
+        };
+      });
       helmGrammarPlugin = pkgs.vimPlugins.nvim-treesitter.passthru.grammarToPlugin helmGrammar;
 
       grammarsPath = pkgs.symlinkJoin {
