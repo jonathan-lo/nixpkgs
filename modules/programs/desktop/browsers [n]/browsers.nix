@@ -3,7 +3,7 @@
   flake.allowedUnfreePackages = [ "google-chrome" ];
 
   flake.modules.homeManager.browsers =
-    { pkgs, ... }:
+    { config, pkgs, ... }:
     let
       # firefox-devedition pinned via inputs.nixpkgs-firefox-devedition — see
       # the colocated flake-parts.nix for why.
@@ -19,6 +19,7 @@
       programs.firefox = {
         enable = true;
         package = firefoxPinned.firefox-devedition;
+        configPath = "${config.xdg.configHome}/mozilla/firefox";
         policies = {
           ExtensionSettings = {
             "uBlock0@raymondhill.net" = {
