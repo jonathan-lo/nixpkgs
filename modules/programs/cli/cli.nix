@@ -33,7 +33,7 @@ in
           devenv
           jq
           just
-          nixfmt-rfc-style
+          nixfmt
           step-cli
           tcpdump
           yq-go
