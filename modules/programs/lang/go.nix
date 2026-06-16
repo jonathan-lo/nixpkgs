@@ -6,6 +6,7 @@
       home.packages = with pkgs; [
         unstable.gofumpt
         unstable.gopls
+        golangci-lint
       ];
 
       home.sessionPath = [
