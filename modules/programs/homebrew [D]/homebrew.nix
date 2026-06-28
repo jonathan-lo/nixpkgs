@@ -31,7 +31,15 @@
 
         onActivation = {
           autoUpdate = false;
-          cleanup = "zap"; # move this back to zap once lima situation is sorted.
+          # Homebrew 5.x removed `brew bundle --force-cleanup`, which nix-darwin still
+          # emits for cleanup = "zap" (modules/homebrew.nix), breaking activation. Drive
+          # the replacement flags (`--cleanup` implies force, `--zap` selects zap) directly
+          # via extraFlags until nix-darwin catches up. Equivalent to cleanup = "zap".
+          cleanup = "none";
+          extraFlags = [
+            "--cleanup"
+            "--zap"
+          ];
           upgrade = false;
         };
 
