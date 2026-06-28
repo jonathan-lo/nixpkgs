@@ -8,10 +8,16 @@
       jlo
     ];
 
-    home-manager.users.jlo = {
-      imports = with inputs.self.modules.homeManager; [
-        #
-      ];
-    };
+    home-manager.users.jlo =
+      { config, ... }:
+      {
+        imports = with inputs.self.modules.homeManager; [
+          #
+        ];
+
+        home.sessionPath = [
+          "${config.home.homeDirectory}/bin"
+        ];
+      };
   };
 }
