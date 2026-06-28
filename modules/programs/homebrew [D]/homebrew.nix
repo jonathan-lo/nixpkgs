@@ -18,6 +18,7 @@
         casks = [
           "claude-devtools"
           "ghostty"
+          "logseq"
         ];
 
         extraConfig = ''

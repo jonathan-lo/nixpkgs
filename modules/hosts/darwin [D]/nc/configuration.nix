@@ -6,7 +6,6 @@
       system-minimal
       nix-darwin
       nixpkgsConfig
-      logseq
       rectangle
       home-manager
       cli
