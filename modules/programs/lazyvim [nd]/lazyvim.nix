@@ -95,10 +95,6 @@
 
         extraConfig = ''
           let mapleader = "\<Space>"
-          nnoremap <C-J> <C-W><C-J>
-          nnoremap <C-K> <C-W><C-K>
-          nnoremap <C-L> <C-W><C-L>
-          nnoremap <C-H> <C-W><C-H>
           nnoremap <C-d> <C-d>zz
           nnoremap <C-u> <C-u>zz
 
