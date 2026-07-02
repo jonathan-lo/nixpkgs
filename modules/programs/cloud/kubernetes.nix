@@ -4,6 +4,7 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
+        unstable.kargo
         unstable.kind
         kn
         kubectx
