@@ -32,7 +32,8 @@
             findutils
           ];
           text = ''
-            # List every repo (owner/name) across the configured GitHub orgs.
+            # List every repo (owner/name) across the configured GitHub orgs,
+            # excluding archived repos and forks.
             # Result is cached at ~/.repos and refetched when older than 24h.
             #
             # Usage: gh-repos [--refresh] [ORG...]
@@ -72,7 +73,8 @@
             tmp="$(mktemp)"
             trap 'rm -f "$tmp"' EXIT
             for org in "''${orgs[@]}"; do
-              gh repo list "$org" --limit 1000 --json nameWithOwner --jq '.[].nameWithOwner'
+              gh repo list "$org" --limit 1000 --no-archived --source \
+                --json nameWithOwner --jq '.[].nameWithOwner'
             done | sort -u >"$tmp"
 
             mv "$tmp" "$cache"
