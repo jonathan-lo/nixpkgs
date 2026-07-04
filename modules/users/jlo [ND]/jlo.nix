@@ -30,6 +30,7 @@
             git
             gcp
             ghostty
+            ghRepos
             go
             java
             kubernetes
