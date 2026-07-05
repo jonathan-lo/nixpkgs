@@ -20,7 +20,7 @@
         '';
         type = lib.types.listOf lib.types.str;
         default = [ ];
-        example = [ "UpsideRealty" ];
+        example = [ "kubernetes" ];
       };
 
       config.home.packages = [
