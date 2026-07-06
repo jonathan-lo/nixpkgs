@@ -65,6 +65,12 @@
             push = {
               autoSetupRemote = "true";
             };
+            # rewrite GitHub SSH remotes to HTTPS so auth flows through the gh
+            # credential helper (configured above) rather than SSH keys
+            url."https://github.com/".insteadOf = [
+              "git@github.com:"
+              "ssh://git@github.com/"
+            ];
             user = {
               email = cfg.email;
               name = "Jonathan Lo";
