@@ -18,6 +18,9 @@ let
         unstable.nixoscope
         tree
         zip
+
+        # database cli
+        postgresql
       ];
     };
 in
