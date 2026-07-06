@@ -43,6 +43,34 @@ in
           exec sesh connect "$sel"
         '';
       };
+
+      # Opens a dedicated `claude` tmux session rooted at the cwd, or adds a new
+      # window (named after the cwd) if that session already exists, then focuses
+      # it.
+      claude-session = pkgs.writeShellApplication {
+        name = "claude-session";
+        runtimeInputs = with pkgs; [
+          tmux
+          coreutils
+        ];
+        text = ''
+          session="claude"
+          cwd="$PWD"
+          window="$(basename "$cwd")"
+
+          if tmux has-session -t "=$session" 2>/dev/null; then
+            tmux new-window -t "=$session" -c "$cwd" -n "$window"
+          else
+            tmux new-session -d -s "$session" -c "$cwd" -n "$window"
+          fi
+
+          if [ -n "''${TMUX:-}" ]; then
+            tmux switch-client -t "=$session"
+          else
+            tmux attach-session -t "=$session"
+          fi
+        '';
+      };
     in
     {
       home = {
@@ -51,6 +79,7 @@ in
           [
             unstable.sesh # tmux session switcher
             sesh-connect # picker glue: clone + connect gh-repos entries
+            claude-session # dedicated `claude` tmux session per project
           ]
           ++ lib.optionals stdenv.isDarwin [
             terminal-notifier
