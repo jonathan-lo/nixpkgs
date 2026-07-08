@@ -23,6 +23,18 @@ apply:
 build:
     nix build 'git+file:.?submodules=1#darwinConfigurations.Jonathans-MacBook-Pro.system' --dry-run
 
+# warm root's flake fetch cache for private inputs (run once; re-run after bumping a pinned rev)
+[macos]
+prime:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  # gh runs as the invoking user (root cannot); the token is passed only via
+  # this process's env, never written to disk. `build` fetches every input
+  # (including private getFlake pins) without activating, caching them for root.
+  token=$(gh auth token)
+  sudo env NIX_CONFIG="extra-access-tokens = github.com=$token" \
+    darwin-rebuild build --flake 'git+file:.?submodules=1'
+
 # print system os
 system-info:
     @echo "{{ os() }}"
