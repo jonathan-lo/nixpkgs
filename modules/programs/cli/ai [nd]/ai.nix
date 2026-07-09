@@ -20,6 +20,7 @@
       home.packages =
         with pkgs;
         [
+          unstable.cmux
         ]
         ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
           # harnesses
