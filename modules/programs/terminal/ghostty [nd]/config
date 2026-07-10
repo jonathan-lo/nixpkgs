@@ -4,10 +4,14 @@ custom-shader = ./shaders/sahaj-b/cursor_warp.glsl
 custom-shader = ./shaders/sahaj-b/ripple_cursor.glsl
 macos-titlebar-style = transparent
 
-# cursor colors
+# cursor
 # maroon
 cursor-color = #eba0ac
 # teal
 #cursor-color = #81c8be
 # blue
 #cursor-color = #8caaee
+cursor-style = block
+cursor-style-blink = false
+# shell integration sends DECSCUSR sequences that override cursor-style/blink; disable it
+shell-integration-features = no-cursor
