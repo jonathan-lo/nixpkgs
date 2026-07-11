@@ -23,25 +23,7 @@ in
           coreutils
           gnugrep
         ];
-        text = ''
-          sel="''${1:-}"
-          [ -z "$sel" ] && exit 0
-
-          root="''${GH_REPOS_ROOT:-$HOME/code/github}"
-
-          if [ ! -e "$sel" ] && printf '%s' "$sel" | grep -qE '^[^[:space:]/]+/[^[:space:]/]+$'; then
-            dir="$root/$sel"
-            if [ ! -d "$dir" ]; then
-              mkdir -p "$(dirname "$dir")"
-              tmux display-popup -w 80% -h 60% -E "gh repo clone $sel $dir"
-            fi
-            if [ -d "$dir" ]; then
-              sel="$dir"
-            fi
-          fi
-
-          exec sesh connect "$sel"
-        '';
+        text = builtins.readFile ./scripts/sesh-connect.sh;
       };
 
       # Opens a dedicated `claude` tmux session rooted at the cwd, or adds a new
@@ -53,23 +35,7 @@ in
           tmux
           coreutils
         ];
-        text = ''
-          session="claude"
-          cwd="$PWD"
-          window="$(basename "$cwd")"
-
-          if tmux has-session -t "=$session" 2>/dev/null; then
-            tmux new-window -t "=$session" -c "$cwd" -n "$window"
-          else
-            tmux new-session -d -s "$session" -c "$cwd" -n "$window"
-          fi
-
-          if [ -n "''${TMUX:-}" ]; then
-            tmux switch-client -t "=$session"
-          else
-            tmux attach-session -t "=$session"
-          fi
-        '';
+        text = builtins.readFile ./scripts/claude-session.sh;
       };
 
       # https://github.com/craftzdog/tmux-claude-session-manager — a popup picker
