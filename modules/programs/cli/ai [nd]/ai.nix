@@ -2,6 +2,12 @@
 {
   flake.allowedUnfreePackages = [ "claude-code" ];
 
+  flake.modules.darwin.ai =
+    { pkgs, ... }:
+    {
+      environment.systemPackages = [ pkgs.unstable.cmux ];
+    };
+
   flake.modules.homeManager.ai =
     {
       config,
@@ -18,11 +24,8 @@
     in
     {
       home.packages =
-        with pkgs;
+        with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
         [
-          unstable.cmux
-        ]
-        ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
           # harnesses
           claude-code
           codex
@@ -32,7 +35,7 @@
           # usage
           agentsview
           ccusage
-        ]);
+        ];
 
       home.activation.mergeClaudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         set -euo pipefail

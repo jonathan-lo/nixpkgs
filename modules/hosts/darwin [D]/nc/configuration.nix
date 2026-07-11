@@ -11,6 +11,7 @@
       cli
       homebrew
       karabiner
+      ai
     ];
 
     system.stateVersion = 5;
