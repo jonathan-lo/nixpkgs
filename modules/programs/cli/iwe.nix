@@ -1,12 +1,11 @@
-
-{ inputs, ... }:
+{ ... }:
 {
   # https://iwe.md/
-  flake.modules.homeManager.iwe =
-    { pkgs, ... }:
-    {
-      home.packages = with pkgs; [
-        iwe
-      ];
+  # Installed via homebrew because nixpkgs lags well behind upstream releases.
+  flake.modules.darwin.iwe = {
+    homebrew = {
+      taps = [ "iwe-org/iwe" ];
+      brews = [ "iwe-org/iwe/iwe" ];
     };
+  };
 }

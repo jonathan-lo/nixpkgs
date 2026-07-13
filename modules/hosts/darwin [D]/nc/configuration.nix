@@ -10,6 +10,7 @@
       home-manager
       cli
       homebrew
+      iwe
       karabiner
       ai
     ];
