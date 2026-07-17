@@ -14,6 +14,7 @@
         brews = [
           "JetBrains/utils/kotlin-lsp"
           "node" # install via homebrew so can use npm to install mcps
+          "pcre2" # codesnap.nvim's prebuilt generator .so links against homebrew's libpcre2
         ];
         casks = [
           "claude-devtools"

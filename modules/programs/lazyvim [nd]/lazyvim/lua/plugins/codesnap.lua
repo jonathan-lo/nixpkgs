@@ -21,10 +21,13 @@ return {
 		-- no-? entries as exact filenames, so leaving it there makes every
 		-- later require() of a C module (e.g. blink_cmp_fuzzy) resolve to
 		-- that .so and fail with `undefined symbol: luaopen_<modname>`.
+		-- Match any codesnap entry lacking a `?` so this stays correct across
+		-- platforms (mac-aarch64_generator.so, linux-x86_64_generator.so, ...)
+		-- while keeping the legitimate `libs/?` template intact.
 		local entries = vim.split(package.cpath, ";", { plain = true })
 		package.cpath = table.concat(
 			vim.tbl_filter(function(e)
-				return not e:match("codesnap%.nvim.*linux%-x86_64_generator%.so$")
+				return not (e:find("codesnap%.nvim") and not e:find("?", 1, true))
 			end, entries),
 			";"
 		)
