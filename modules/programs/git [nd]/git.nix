@@ -25,6 +25,17 @@
           example = "reginald@google.com";
           type = types.str;
         };
+        privateOrgs = mkOption {
+          description = ''
+            GitHub orgs whose repositories are private. Consumed by `ghRepos`
+            (repos to list) and `go` (GOPRIVATE). List options concatenate across
+            modules, so the private submodule contributes the actual org names
+            without them appearing in the public repo.
+          '';
+          default = [ ];
+          example = [ "kubernetes" ];
+          type = types.listOf types.str;
+        };
       };
 
       config = {

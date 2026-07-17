@@ -8,22 +8,10 @@
       ...
     }:
     let
-      cfg = config.settings.ghRepos;
-      orgsBash = lib.concatMapStringsSep " " lib.escapeShellArg cfg.orgs;
+      orgsBash = lib.concatMapStringsSep " " lib.escapeShellArg config.settings.git.privateOrgs;
     in
     {
-      options.settings.ghRepos.orgs = lib.mkOption {
-        description = ''
-          GitHub orgs that `gh-repos` lists repositories from. List options
-          concatenate across modules, so the private submodule contributes the
-          actual org names without them appearing in the public repo.
-        '';
-        type = lib.types.listOf lib.types.str;
-        default = [ ];
-        example = [ "kubernetes" ];
-      };
-
-      config.home.packages = [
+      home.packages = [
         (pkgs.writeShellApplication {
           name = "gh-repos";
           runtimeInputs = with pkgs; [
