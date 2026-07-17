@@ -23,19 +23,19 @@
       lastRendered = "${config.home.homeDirectory}/.cache/nixpkgs/claude-settings.last.json";
     in
     {
-      home.packages =
-        with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
-        [
-          # harnesses
-          claude-code
-          codex
+      home.packages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+        # harnesses
+        claude-code
+        codex
 
-          spec-kit
+        spec-kit
 
-          # usage
-          agentsview
-          ccusage
-        ];
+        # usage
+        ccusage
+
+        # coordination
+        agent-deck
+      ];
 
       home.activation.mergeClaudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         set -euo pipefail

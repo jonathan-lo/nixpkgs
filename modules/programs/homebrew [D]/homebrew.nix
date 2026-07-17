@@ -17,7 +17,6 @@
           "pcre2" # codesnap.nvim's prebuilt generator .so links against homebrew's libpcre2
         ];
         casks = [
-          "claude-devtools"
           "ghostty"
           "logseq"
         ];
