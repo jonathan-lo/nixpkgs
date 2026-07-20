@@ -1,0 +1,18 @@
+$schema: https://document-schema.org/draft/2026-06/schema
+
+# Light structural policy for every page in this store.
+# Kept intentionally minimal: a declared `type`, a single top-level H1,
+# and no heading deeper than `###`.
+frontmatter:
+  type: object
+  required: [type]
+  properties:
+    type: { enum: [index, concept, reference, guide] }
+    tags:
+      type: array
+      items: { type: string, pattern: "^[a-z][a-z0-9-]*$" }
+
+maxDepth: 3
+sections:
+  - header: { pattern: ".+" }
+    maxContains: 1
