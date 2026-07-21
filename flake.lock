@@ -467,6 +467,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1768305791,
+        "narHash": "sha256-AIdl6WAn9aymeaH/NvBj0H9qM+XuAuYbGMZaP0zcXAQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1412caf7bf9e660f2f962917c14b1ea1c3bc695e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
@@ -479,7 +495,8 @@
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-firefox-devedition": "nixpkgs-firefox-devedition",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "workmux": "workmux"
       }
     },
     "systems": {
@@ -515,6 +532,24 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "workmux": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1784542512,
+        "narHash": "sha256-qJGXmF1JbJe80si79N0xgiwkLcwl9D3Wi87OHVWddxY=",
+        "owner": "raine",
+        "repo": "workmux",
+        "rev": "d6e243aec198a8417c0ab3c36a08aa7a1923ebdf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "raine",
+        "repo": "workmux",
         "type": "github"
       }
     }

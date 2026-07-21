@@ -43,6 +43,7 @@
             ripgrep
             theming
             tmux
+            workmux
             zoxide
             zsh
           ];

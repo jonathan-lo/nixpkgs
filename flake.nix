@@ -28,5 +28,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
     nixpkgs-firefox-devedition.url = "github:nixos/nixpkgs/ea1d480338c301fb20b067a155d6cba71a65b406";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    workmux.url = "github:raine/workmux";
   };
 }
