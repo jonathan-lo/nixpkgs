@@ -65,9 +65,10 @@ attaches it to each machine.
   the shared home config. (`README.md` there is a generated dependency graph.)
 - **WSL** — `modules/hosts/wsl []/wsl.nix`. **Structurally different**: a standalone
   home-manager config built directly with `home-manager.lib.homeManagerConfiguration`
-  (no system layer, no factory, no `mkHomeManager`). It emits `flake.homeConfigurations`
-  keyed by machine hostname. Note it currently pulls in **only** `home.username` +
-  catppuccin — it does *not* import the shared `jlo` home config.
+  (no system layer, no factory, no `mkHomeManager`), via a local `mkWslHome` helper. It
+  emits `flake.homeConfigurations` keyed by machine hostname — currently `DESKTOP-7RRDPPB`
+  and `LAPTOP-GIVRN79I`. Note each host pulls in **only** `home.username`,
+  `home.stateVersion`, and catppuccin — it does *not* import the shared `jlo` home config.
 
 ## End-to-end trace (budu)
 

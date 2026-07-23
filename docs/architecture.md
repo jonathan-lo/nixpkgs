@@ -81,8 +81,9 @@ Flake inputs are not listed centrally either. Any module can contribute inputs w
 `modules/nix/tools/nixpkgs [ND]/nixpkgs.nix` defines an overlay that imports
 `nixpkgs-unstable` for the current system and exposes it as `pkgs.unstable.*`, applied on
 both NixOS and darwin. Any module can then reference `pkgs.unstable.<pkg>`. The same file
-declares `flake.allowedUnfreePackages` (a mergeable list) and builds the unfree predicate
-reused by the home-manager builder.
+declares `flake.allowedUnfreePackages` (a mergeable list). Both the system nixpkgs config
+here and the home-manager builder in `lib.nix` build their own unfree predicate from that
+shared list.
 
 See [Modules](modules) for how a single module is written and [Hosts and Users](hosts) for
 how modules are assembled into a running system.

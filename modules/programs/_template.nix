@@ -1,14 +1,15 @@
 # modules/programs/_template.nix
 # Template for new features - copy and rename (remove _ prefix)
 #
-# Naming convention:
-#   feature [N].nix   = NixOS system module
-#   feature [D].nix   = Darwin system module
-#   feature [n].nix   = NixOS home-manager module
-#   feature [d].nix   = Darwin home-manager module
-#   feature [nd].nix  = Both home-manager contexts
-#   feature [ND].nix  = Both system contexts
-#   feature [].nix    = Flake-level only (no system context)
+# Platform scope is set by the `flake.modules.<class>` key a file registers into,
+# NOT by the file or directory name:
+#   flake.modules.nixos.<name>        = NixOS system module
+#   flake.modules.darwin.<name>       = Darwin system module
+#   flake.modules.homeManager.<name>  = home-manager module (any OS)
+# Register one or more keys to target multiple platforms; delete the stubs you don't need.
+#
+# The `[..]` suffix seen on directory names elsewhere is a legacy, functionally-inert
+# hint the repo is moving away from — import-tree and flake-parts never parse it.
 #
 {
   inputs,

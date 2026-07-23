@@ -43,7 +43,7 @@ tooling). `modules/programs/_template.nix` is a copy-me scaffold showing the sha
 - **Options** are namespaced under `config.settings.<module>` with `lib.mkOption`, and
   aliased locally as `cfg`.
 - **Unfree packages** are opted in per module with `flake.allowedUnfreePackages = [ ... ]`,
-  consumed by the shared unfree predicate — not by a global `allowUnfree`.
+  the shared list each builder turns into an unfree predicate — not by a global `allowUnfree`.
 - **Module-private inputs** (pins) are declared in a colocated `flake-parts.nix` via
   `flake-file.inputs`, keeping the pin documented next to its consumer. Example: the pinned
   firefox-devedition input beside `modules/programs/desktop/browsers [n]/browsers.nix`.
@@ -52,10 +52,11 @@ tooling). `modules/programs/_template.nix` is a copy-me scaffold showing the sha
   `modules/programs/lazyvim [nd]/lazyvim.nix`.
 - **Naming** is lowercase kebab-case. The module *name* need not match the filename — e.g.
   `terraform.nix` registers `ops`, `gh-repos.nix` registers `ghRepos`.
-- **The same name merges across files.** `git` is declared in both `modules/programs/git
-  [nd]/git.nix` and the private `gh-repos.nix`; flake-parts merges them into one module.
-  List-valued options (like `settings.git.privateOrgs`) concatenate, which lets the private
-  submodule extend a public module without leaking values.
+- **The same name merges across files.** `ghRepos` is declared in both
+  `modules/programs/cli/gh-repos.nix` (the public `gh-repos` script) and the private
+  `modules/private/gh-repos.nix` (the org names); flake-parts merges them into one module.
+  List-valued options concatenate across files, which lets a private submodule contribute
+  values without them appearing in the public repo.
 
 ## Where modules are activated
 
