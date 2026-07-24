@@ -25,18 +25,6 @@ in
         ];
         text = builtins.readFile ./scripts/sesh-connect.sh;
       };
-
-      # Opens a dedicated `claude` tmux session rooted at the cwd, or adds a new
-      # window (named after the cwd) if that session already exists, then focuses
-      # it.
-      claude-session = pkgs.writeShellApplication {
-        name = "claude-session";
-        runtimeInputs = with pkgs; [
-          tmux
-          coreutils
-        ];
-        text = builtins.readFile ./scripts/claude-session.sh;
-      };
     in
     {
       home = {
@@ -45,7 +33,6 @@ in
           [
             unstable.sesh # tmux session switcher
             sesh-connect # picker glue: clone + connect gh-repos entries
-            claude-session # dedicated `claude` tmux session per project
           ]
           ++ lib.optionals stdenv.isDarwin [
             terminal-notifier
