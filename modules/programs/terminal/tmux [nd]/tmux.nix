@@ -37,55 +37,6 @@ in
         ];
         text = builtins.readFile ./scripts/claude-session.sh;
       };
-
-      # https://github.com/craftzdog/tmux-claude-session-manager — a popup picker
-      # (prefix+u) listing every running Claude agent with live status, plus a
-      # per-directory launcher (prefix+y). Not in nixpkgs, so build it from source
-      # and wrap the picker scripts so their runtime deps resolve without relying
-      # on the interactive PATH. `claude` is left to the login shell so the picker
-      # uses the same version the user runs.
-      claude-session-manager = pkgs.tmuxPlugins.mkTmuxPlugin {
-        pluginName = "claude-session-manager";
-        version = "0-unstable-2026-07-09";
-        rtpFilePath = "claude_session_manager.tmux";
-        src = pkgs.fetchFromGitHub {
-          owner = "craftzdog";
-          repo = "tmux-claude-session-manager";
-          rev = "45d593f7e17d34fd5bad5330f825d430e817938e";
-          hash = "sha256-hiV6Zsfbs0XwY+Mko0DnxrxH4ke8xOqhdEMkerFN0pY=";
-        };
-        nativeBuildInputs = [ pkgs.makeWrapper ];
-        postInstall =
-          let
-            runtimeInputs =
-              with pkgs;
-              [
-                tmux
-                fzf
-                jq
-                gawk
-                gnugrep
-                gnused
-                coreutils
-              ]
-              # Linux has no system ps; agents.sh needs `ps -Ao pid=,tty=`.
-              ++ lib.optionals stdenv.isLinux [ procps ];
-          in
-          ''
-            # Pin the interpreter to store bash before wrapping: the wrapProgram
-            # wrappers below exec `.<name>-wrapped` directly, and the PATH they
-            # inject carries the runtime deps but not bash, so an
-            # `#!/usr/bin/env bash` shebang would have nothing to resolve against.
-            for file in "$target"/*.tmux "$target"/scripts/*.sh; do
-              substituteInPlace "$file" \
-                --replace-fail "#!/usr/bin/env bash" "#!${pkgs.bash}/bin/bash"
-            done
-            for script in launch list picker agents; do
-              wrapProgram "$target/scripts/$script.sh" \
-                --prefix PATH : ${lib.makeBinPath runtimeInputs}
-            done
-          '';
-      };
     in
     {
       home = {
@@ -122,9 +73,6 @@ in
         plugins = with pkgs.tmuxPlugins; [
           {
             plugin = tmux-thumbs;
-          }
-          {
-            plugin = claude-session-manager;
           }
         ];
       };
