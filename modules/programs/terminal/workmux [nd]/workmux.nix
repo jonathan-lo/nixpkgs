@@ -9,6 +9,7 @@
       home.packages = [ inputs.workmux.packages.${pkgs.stdenv.hostPlatform.system}.default ];
 
       xdg.configFile."workmux/config.yaml".text = ''
+        nerdfont: true
         merge_strategy: rebase
         agent: claude
         panes:
