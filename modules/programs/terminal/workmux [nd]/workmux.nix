@@ -13,10 +13,15 @@
         merge_strategy: rebase
         agent: claude
         mode: session
-        panes:
-          - command: <agent>
-            focus: true
-          - split: horizontal
+        windows:
+        - name: agent
+          panes:
+            - command: <agent>
+              focus: true
+            - split: horizontal
+        - name: editor
+          panes:
+            - command: vi
       '';
     };
 }
