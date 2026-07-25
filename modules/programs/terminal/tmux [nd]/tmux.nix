@@ -25,6 +25,18 @@ in
         ];
         text = builtins.readFile ./scripts/sesh-connect.sh;
       };
+
+      # `workmux add` wrapper that names the new tmux session <root-repo>-<name>,
+      # since workmux has no config token to prefix session names with the repo.
+      workmux-add = pkgs.writeShellApplication {
+        name = "workmux-add";
+        runtimeInputs = [
+          inputs.workmux.packages.${pkgs.stdenv.hostPlatform.system}.default
+          pkgs.git
+          pkgs.coreutils
+        ];
+        text = builtins.readFile ./scripts/workmux-add.sh;
+      };
     in
     {
       home = {
@@ -33,6 +45,7 @@ in
           [
             unstable.sesh # tmux session switcher
             sesh-connect # picker glue: clone + connect gh-repos entries
+            workmux-add # `workmux add` with a <root-repo>-<name> session name
           ]
           ++ lib.optionals stdenv.isDarwin [
             terminal-notifier

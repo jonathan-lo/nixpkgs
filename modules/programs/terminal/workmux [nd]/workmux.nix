@@ -12,6 +12,7 @@
         nerdfont: true
         merge_strategy: rebase
         agent: claude
+        mode: session
         panes:
           - command: <agent>
             focus: true
