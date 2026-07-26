@@ -51,7 +51,7 @@
           enableGitIntegration = true;
           options = {
             line-numbers = true;
-            side-by-side = true;
+            # side-by-side = true; # disabled: prefer unified diff view
           };
         };
 
