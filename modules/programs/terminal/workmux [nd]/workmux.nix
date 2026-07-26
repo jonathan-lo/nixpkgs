@@ -13,6 +13,11 @@
         merge_strategy: rebase
         agent: claude
         mode: session
+        post_create:
+        - direnv allow
+        files:
+          symlink:
+          - .envrc
         windows:
         - name: agent
           panes:
