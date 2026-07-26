@@ -14,7 +14,7 @@
         agent: claude
         mode: session
         post_create:
-        - direnv allow
+        - '[ -f .envrc ] && direnv allow || true'
         files:
           symlink:
           - .envrc
