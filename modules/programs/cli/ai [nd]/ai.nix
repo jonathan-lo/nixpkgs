@@ -21,6 +21,24 @@
       privateSettings = "${nixpkgsDir}/modules/private/claude/settings.private.json";
       liveSettings = "${config.home.homeDirectory}/.claude/settings.json";
       lastRendered = "${config.home.homeDirectory}/.cache/nixpkgs/claude-settings.last.json";
+
+      specKit = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.spec-kit;
+
+      # The Claude integration of spec-kit ships as skills (.claude/skills/speckit-*).
+      # `specify init` scaffolds them offline from assets bundled in the pinned CLI, so
+      # the generated skills always match the packaged spec-kit version. Bumping the
+      # llm-agents input (via `just update`) regenerates them on the next `just apply` —
+      # no static copies to rot.
+      speckitSkills = pkgs.runCommand "speckit-claude-skills" { nativeBuildInputs = [ specKit ]; } ''
+        export HOME="$TMPDIR/home"
+        mkdir -p "$HOME" proj
+        cd proj
+        specify init --here --integration claude --script sh --ignore-agent-tools --force
+        mkdir -p "$out"
+        cp -R .claude/skills/. "$out/"
+      '';
+
+      claudeSkillsDir = "${config.home.homeDirectory}/.claude/skills";
     in
     {
       home.packages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
@@ -68,6 +86,26 @@
         fi
 
         printf '%s\n' "$merged" | $DRY_RUN_CMD tee "$liveFile" "$lastRendered" >/dev/null
+      '';
+
+      home.activation.linkSpeckitSkills = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        set -euo pipefail
+
+        skillsDir=${lib.escapeShellArg claudeSkillsDir}
+        src=${lib.escapeShellArg "${speckitSkills}"}
+
+        $DRY_RUN_CMD mkdir -p "$skillsDir"
+
+        # Drop skills from a previous generation before relinking the current one.
+        for existing in "$skillsDir"/speckit-*; do
+          if [ -L "$existing" ]; then
+            $DRY_RUN_CMD rm -f "$existing"
+          fi
+        done
+
+        for skill in "$src"/*; do
+          $DRY_RUN_CMD ln -sfn "$skill" "$skillsDir/$(basename "$skill")"
+        done
       '';
     };
 }
