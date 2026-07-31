@@ -54,6 +54,9 @@
 
         # coordination
         agent-deck
+
+        # review
+        plannotator
       ];
 
       home.activation.mergeClaudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
