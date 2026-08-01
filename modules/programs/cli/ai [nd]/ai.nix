@@ -38,7 +38,42 @@
         cp -R .claude/skills/. "$out/"
       '';
 
+      plannotator = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.plannotator;
+
+      # Plannotator's slash commands ship as skills in its repo, normally installed by the
+      # upstream curl installer; the Nix package carries only the binary. Taking them from
+      # the package's own source keeps the skills in lockstep with the packaged CLI, and
+      # copying them out drops the 40M+ repo checkout from the generation's closure.
+      plannotatorSkills = pkgs.runCommand "plannotator-claude-skills" { } ''
+        mkdir -p "$out"
+        cp -R ${plannotator.src}/apps/skills/core/. "$out/"
+      '';
+
       claudeSkillsDir = "${config.home.homeDirectory}/.claude/skills";
+
+      # Symlinks every skill in `src` into ~/.claude/skills. Skills linked by a previous
+      # generation are matched by `globPrefix` and dropped first, so ones that upstream
+      # renamed or removed do not linger.
+      linkSkills =
+        { src, globPrefix }:
+        lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          set -euo pipefail
+
+          skillsDir=${lib.escapeShellArg claudeSkillsDir}
+          src=${lib.escapeShellArg "${src}"}
+
+          $DRY_RUN_CMD mkdir -p "$skillsDir"
+
+          for existing in "$skillsDir"/${globPrefix}*; do
+            if [ -L "$existing" ]; then
+              $DRY_RUN_CMD rm -f "$existing"
+            fi
+          done
+
+          for skill in "$src"/*; do
+            $DRY_RUN_CMD ln -sfn "$skill" "$skillsDir/$(basename "$skill")"
+          done
+        '';
     in
     {
       home.packages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
@@ -91,24 +126,14 @@
         printf '%s\n' "$merged" | $DRY_RUN_CMD tee "$liveFile" "$lastRendered" >/dev/null
       '';
 
-      home.activation.linkSpeckitSkills = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        set -euo pipefail
+      home.activation.linkSpeckitSkills = linkSkills {
+        src = speckitSkills;
+        globPrefix = "speckit-";
+      };
 
-        skillsDir=${lib.escapeShellArg claudeSkillsDir}
-        src=${lib.escapeShellArg "${speckitSkills}"}
-
-        $DRY_RUN_CMD mkdir -p "$skillsDir"
-
-        # Drop skills from a previous generation before relinking the current one.
-        for existing in "$skillsDir"/speckit-*; do
-          if [ -L "$existing" ]; then
-            $DRY_RUN_CMD rm -f "$existing"
-          fi
-        done
-
-        for skill in "$src"/*; do
-          $DRY_RUN_CMD ln -sfn "$skill" "$skillsDir/$(basename "$skill")"
-        done
-      '';
+      home.activation.linkPlannotatorSkills = linkSkills {
+        src = plannotatorSkills;
+        globPrefix = "plannotator-";
+      };
     };
 }
