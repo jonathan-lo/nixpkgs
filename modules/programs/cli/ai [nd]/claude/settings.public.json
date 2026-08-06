@@ -13,6 +13,20 @@
       "Bash(javap *)",
       "Bash(mkdir *)",
       "Bash(which *)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(rm -fr:*)",
+      "Bash(rm -Rf:*)",
+      "Bash(rm -fR:*)",
+      "Bash(rm -r -f:*)",
+      "Bash(rm -f -r:*)",
+      "Bash(sudo rm -rf:*)",
+      "Bash(sudo rm -fr:*)",
+      "Bash(sudo rm -Rf:*)",
+      "Bash(sudo rm -fR:*)",
+      "Bash(sudo rm -r -f:*)",
+      "Bash(sudo rm -f -r:*)"
     ]
   },
   "hooks": {
