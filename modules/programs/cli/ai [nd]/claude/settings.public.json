@@ -40,7 +40,11 @@
       "Bash(sudo rm -Rf:*)",
       "Bash(sudo rm -fR:*)",
       "Bash(sudo rm -r -f:*)",
-      "Bash(sudo rm -f -r:*)"
+      "Bash(sudo rm -f -r:*)",
+      "Bash(perl)",
+      "Bash(perl:*)",
+      "Bash(sudo perl)",
+      "Bash(sudo perl:*)"
     ]
   },
   "hooks": {
