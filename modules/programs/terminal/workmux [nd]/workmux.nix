@@ -13,11 +13,21 @@
         merge_strategy: rebase
         agent: claude
         mode: session
+        agents:
+          cc-concise:
+            type: claude
+            command: claude
+            args:
+            - --model
+            - claude-opus-4-8
+            - --append-system-prompt
+            - 'You are a concise software engineering assistant. Write tight, professional code without conversational filler or unsolicited explanations.'
         post_create:
         - '[ -f .envrc ] && direnv allow || true'
         files:
           symlink:
           - .envrc
+          - .scratch
         windows:
         - name: agent
           panes:
