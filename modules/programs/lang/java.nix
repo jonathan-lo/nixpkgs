@@ -21,7 +21,7 @@
 
       programs.java = {
         enable = true;
-        package = pkgs.zulu21;
+        package = pkgs.zulu25;
       };
 
       home.file.".ideavimrc".source =
