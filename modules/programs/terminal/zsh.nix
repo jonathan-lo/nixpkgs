@@ -17,7 +17,8 @@
         l = "ls";
         ll = "ls -l";
         ls = "ls --color=tty";
-        ssh = "TERM=xterm-256color ssh";
+        # no ssh alias: it would shadow the wrapper function ghostty's ssh-terminfo
+        # shell integration installs (zsh expands aliases before function lookup)
         tf = "terraform";
       };
     in

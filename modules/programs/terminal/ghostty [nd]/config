@@ -15,5 +15,10 @@ cursor-color = #eba0ac
 #cursor-color = #8caaee
 cursor-style = block
 cursor-style-blink = false
-# shell integration sends DECSCUSR sequences that override cursor-style/blink; disable it
-shell-integration-features = no-cursor
+# shell integration sends DECSCUSR sequences that override cursor-style/blink; disable it.
+# ssh-terminfo installs xterm-ghostty on remote hosts; ssh-env is its fallback. these
+# merge with the defaults (no-sudo,title,path) rather than replacing them.
+shell-integration-features = no-cursor,ssh-env,ssh-terminfo
+
+# the nix store is read-only, so in-app updates can't apply; update via `just update`
+auto-update = off
