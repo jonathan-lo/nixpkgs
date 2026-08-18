@@ -32,9 +32,23 @@
 
         download-buffer-size = 1024 * 1024 * 1024;
 
+        # Collect unreachable paths during builds once free space runs low; the
+        # weekly nix.gc below is what expires old generations.
+        min-free = 10 * 1024 * 1024 * 1024;
+        max-free = 50 * 1024 * 1024 * 1024;
+
+        # Hardlink identical files as they land in the store
+        auto-optimise-store = true;
+
         trusted-users = [
           "root"
         ];
+      };
+
+      nix.gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 30d";
       };
 
       nix.extraOptions = ''

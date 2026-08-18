@@ -14,6 +14,10 @@
       nix.enable = false;
       determinateNix.enable = true;
 
+      # nix-darwin's nix.gc.* lives in the module disabled by nix.enable = false,
+      # so scheduled collection is determinate-nixd's job instead
+      determinateNix.determinateNixd.garbageCollector.strategy = "automatic";
+
       # Custom settings written to /etc/nix/nix.custom.conf
       determinateNix.customSettings = {
         # Enables parallel evaluation (remove this setting or set the value to 1 to disable)
@@ -24,6 +28,14 @@
 
         lazy-trees = true;
         warn-dirty = false;
+
+        # Collect unreachable paths during builds once free space runs low, rather
+        # than on a timer. Profile generations are never touched by this.
+        min-free = 10 * 1024 * 1024 * 1024;
+        max-free = 50 * 1024 * 1024 * 1024;
+
+        # Hardlink identical files as they land in the store
+        auto-optimise-store = true;
 
         experimental-features = [
           "nix-command"
