@@ -45,6 +45,16 @@ update:
 lint:
   nixfmt .
 
+# expire generations older than AGE, then collect what that unroots
+gc age="30d":
+  #!/usr/bin/env bash
+  set -euo pipefail
+  # two passes: user profiles (home-manager, nix profile) live under
+  # ~/.local/state/nix and are invisible to root's run, which covers the
+  # system profile and its 150-odd rebuild generations
+  nix-collect-garbage --delete-older-than {{ age }}
+  sudo nix-collect-garbage --delete-older-than {{ age }}
+
 # setup claude LSP plugins
 # declarative approach not currently supported
 # https://github.com/anthropics/claude-code/issues/21340
