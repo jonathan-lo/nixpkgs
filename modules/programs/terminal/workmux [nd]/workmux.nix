@@ -11,7 +11,7 @@
       xdg.configFile."workmux/config.yaml".text = ''
         nerdfont: true
         merge_strategy: rebase
-        agent: claude
+        agent: cc-concise
         mode: session
         agents:
           cc-concise:
