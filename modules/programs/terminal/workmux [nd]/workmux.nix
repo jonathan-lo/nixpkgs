@@ -22,6 +22,9 @@
             - claude-opus-4-8
             - --append-system-prompt
             - 'You are a concise software engineering assistant. Write tight, professional code without conversational filler or unsolicited explanations.'
+          pi:
+            type: pi
+            command: pi
         post_create:
         - '[ -f .envrc ] && direnv allow || true'
         files:
