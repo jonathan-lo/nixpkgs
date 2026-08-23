@@ -26,6 +26,7 @@
 
         # coordination
         agent-deck
+        herdr
       ];
     };
 }
