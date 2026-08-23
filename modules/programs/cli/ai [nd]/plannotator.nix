@@ -18,11 +18,14 @@
     {
       home.packages = [ plannotator ];
 
-      # These skills are harness-neutral, so `pi` can be added to `targets` as-is.
+      # These skills are harness-neutral, so both harnesses take them as-is.
       settings.agentSkills.sources.plannotator = {
         src = plannotatorSkills;
         globPrefix = "plannotator-";
-        targets = [ "claude" ];
+        targets = [
+          "claude"
+          "pi"
+        ];
       };
     };
 }
