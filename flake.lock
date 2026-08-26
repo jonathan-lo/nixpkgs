@@ -495,6 +495,26 @@
         "type": "github"
       }
     },
+    "pi-catppuccin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782296443,
+        "narHash": "sha256-vGLVjYeLeySjNFD6yfpog9Z8YEe5amg8ZngEPBRGs00=",
+        "owner": "otahontas",
+        "repo": "pi-coding-agent-catppuccin",
+        "rev": "9a716a630c911a4d29d9520a8d5f87e3b8867f93",
+        "type": "github"
+      },
+      "original": {
+        "owner": "otahontas",
+        "repo": "pi-coding-agent-catppuccin",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
@@ -509,6 +529,7 @@
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-firefox-devedition": "nixpkgs-firefox-devedition",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "pi-catppuccin": "pi-catppuccin",
         "workmux": "workmux"
       }
     },
