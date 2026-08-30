@@ -24,6 +24,9 @@
         # usage
         ccusage
 
+        # guardrails
+        nono
+
         # coordination
         agent-deck
         herdr
