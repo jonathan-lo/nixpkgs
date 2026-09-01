@@ -31,6 +31,7 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
     nixpkgs-firefox-devedition.url = "github:nixos/nixpkgs/ea1d480338c301fb20b067a155d6cba71a65b406";
+    nixpkgs-golangci.url = "github:nixos/nixpkgs/4951e020b824ae716cbb07d0a8f771d13a2e70e1";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     pi-catppuccin = {
       url = "github:otahontas/pi-coding-agent-catppuccin";

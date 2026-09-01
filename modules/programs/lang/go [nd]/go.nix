@@ -7,11 +7,18 @@
       pkgs,
       ...
     }:
+    let
+      # golangci-lint pinned via inputs.nixpkgs-golangci — see the colocated
+      # flake-parts.nix for why.
+      golangciPinned = import inputs.nixpkgs-golangci {
+        inherit (pkgs.stdenv.hostPlatform) system;
+      };
+    in
     {
-      home.packages = with pkgs; [
-        unstable.gofumpt
-        unstable.gopls
-        golangci-lint
+      home.packages = [
+        pkgs.unstable.gofumpt
+        pkgs.unstable.gopls
+        golangciPinned.golangci-lint
       ];
 
       home.sessionPath = [

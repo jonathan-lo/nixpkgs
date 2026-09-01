@@ -386,6 +386,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-golangci": {
+      "locked": {
+        "lastModified": 1788227581,
+        "narHash": "sha256-/ijjX74ZCe+RPnaFwCCc50B/oqLhY8JLzQ8DnbZ/8m8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "4951e020b824ae716cbb07d0a8f771d13a2e70e1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "4951e020b824ae716cbb07d0a8f771d13a2e70e1",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1785031560,
@@ -528,6 +544,7 @@
         "mattpocock-skills": "mattpocock-skills",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-firefox-devedition": "nixpkgs-firefox-devedition",
+        "nixpkgs-golangci": "nixpkgs-golangci",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "pi-catppuccin": "pi-catppuccin",
         "workmux": "workmux"
