@@ -100,7 +100,8 @@ in
         ''
         + builtins.concatStringsSep "\n" (map (f: builtins.readFile (configDir + "/${f}")) configFiles);
 
-        # theme is set by catppuccin module in theming.nix
+        # theme is set by catppuccin module in theming.nix, which also makes the
+        # status bar show #W so automatic-rename-format below is what's displayed
         plugins = with pkgs.tmuxPlugins; [
           {
             plugin = tmux-thumbs;
