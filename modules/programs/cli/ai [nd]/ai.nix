@@ -18,7 +18,7 @@
       home.packages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
         # harnesses
         claude-code
-        # codex
+        codex
         pi
 
         # usage
