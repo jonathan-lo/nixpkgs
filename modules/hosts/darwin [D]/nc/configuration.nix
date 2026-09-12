@@ -11,7 +11,6 @@
       cli
       homebrew
       iwe
-      gortex
       karabiner
       ai
     ];

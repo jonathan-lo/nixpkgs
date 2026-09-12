@@ -42,6 +42,24 @@ system-info:
 update:
   nix flake update
 
+# pin gortex to a release (default: latest) by regenerating its version and tarball hashes
+update-gortex version="":
+  #!/usr/bin/env bash
+  set -euo pipefail
+  version="{{ version }}"
+  if [ -z "$version" ]; then
+    version=$(gh release view --repo zzet/gortex --json tagName --jq .tagName)
+  fi
+  version="${version#v}"
+  gh release download "v$version" --repo zzet/gortex --pattern checksums.txt --output - \
+    | awk '$2 ~ /\.tar\.gz$/ { print $2, $1 }' \
+    | sort \
+    | while read -r file hex; do
+        jq -n --arg file "$file" --arg hash "$(nix hash convert --hash-algo sha256 --to sri "$hex")" '{ ($file): $hash }'
+      done \
+    | jq -s --arg version "$version" '{ version: $version, hashes: add }' \
+    > "modules/programs/cli/ai [nd]/gortex.json"
+
 lint:
   nixfmt .
 

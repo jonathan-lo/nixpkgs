@@ -1,0 +1,9 @@
+{
+  "version": "0.64.3",
+  "hashes": {
+    "gortex_darwin_amd64.tar.gz": "sha256-eilpx8ULUdJgBVpftGxCfn/27xs/FE/s+MgyhnWCogY=",
+    "gortex_darwin_arm64.tar.gz": "sha256-egtBiro/MzNpU6xCijSKfDuS3Uq5+dNvVlFetHkj/lg=",
+    "gortex_linux_amd64.tar.gz": "sha256-DGim8HAtJVUWlwdSilC7Z/x1vAWEk98wsCq/HatUuF4=",
+    "gortex_linux_arm64.tar.gz": "sha256-2+Qm4kLs6koL21yi7rHiTswDWq93Ll0wdItigWlFYlQ="
+  }
+}
