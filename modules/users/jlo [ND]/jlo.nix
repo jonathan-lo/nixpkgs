@@ -36,6 +36,7 @@
             kubernetes
             lazyvim
             node
+            niri
             ops
             postman
             platform
