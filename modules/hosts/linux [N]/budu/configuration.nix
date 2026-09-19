@@ -12,6 +12,7 @@
         cli
         keyd
         gnome
+        niri
         pipewire
         printing
         gpu
