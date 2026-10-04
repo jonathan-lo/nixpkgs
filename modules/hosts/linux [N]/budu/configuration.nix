@@ -19,6 +19,7 @@
         steam
         libreoffice
         protonvpn
+        proton-drive
         powerkey
       ];
 
