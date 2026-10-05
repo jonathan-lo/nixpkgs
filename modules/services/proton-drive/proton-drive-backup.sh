@@ -30,6 +30,15 @@ if [[ ! -d "$source_dir" || ! -r "$source_dir" ]]; then
   exit 1
 fi
 
+# Cron does not inherit the graphical session's D-Bus address. Proton Drive
+# retrieves its saved login from the user's Secret Service over this bus.
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=$XDG_RUNTIME_DIR/bus}"
+if [[ ! -S "$XDG_RUNTIME_DIR/bus" ]]; then
+  log "User D-Bus socket unavailable: $XDG_RUNTIME_DIR/bus"
+  exit 1
+fi
+
 host=$(uname -n)
 user=$(id -un)
 parent='/my-files'
