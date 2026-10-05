@@ -21,12 +21,26 @@
       # LaunchServices addresses the GURL Apple Event to a bundle identity no
       # running process claims: the browser focuses but the URL is dropped.
       # Passing the URL as argv to the binary is the handoff that does work, so
-      # expose it as a launcher and point $BROWSER at it. Backgrounding keeps
-      # callers that wait on the command (plannotator does) from blocking until
-      # Firefox exits, which would otherwise hang them whenever it was not
-      # already running.
+      # expose it as a launcher and point $BROWSER at it.
+      #
+      # When Firefox is already running, that argv is forwarded verbatim to the
+      # running instance: nsMacRemoteClient sends only the arguments, not the
+      # caller's working directory, so the instance resolves relative paths
+      # against its own cwd of `/`. Absolutise any argument naming a local path
+      # before handing it over.
+      #
+      # Backgrounding keeps callers that wait on the command (plannotator does)
+      # from blocking until Firefox exits, which would otherwise hang them
+      # whenever it was not already running.
       firefox-open = pkgs.writeShellScriptBin "firefox-open" ''
-        "${config.programs.firefox.finalPackage}/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-devedition" "$@" >/dev/null 2>&1 &
+        args=()
+        for arg in "$@"; do
+          if [[ -e "$arg" ]]; then
+            arg=$(${lib.getExe' pkgs.coreutils "realpath"} --no-symlinks -- "$arg")
+          fi
+          args+=("$arg")
+        done
+        "${config.programs.firefox.finalPackage}/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-devedition" "''${args[@]}" >/dev/null 2>&1 &
       '';
 
       isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
