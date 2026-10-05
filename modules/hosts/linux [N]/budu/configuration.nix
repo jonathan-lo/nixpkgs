@@ -28,6 +28,8 @@
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
+      services.protonDriveBackup.user = "jlo";
+
       networking.hostName = "budu";
       networking.networkmanager.enable = true;
 

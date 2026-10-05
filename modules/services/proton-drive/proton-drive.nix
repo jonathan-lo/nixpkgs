@@ -43,7 +43,7 @@ in
     };
 
   flake.modules.nixos.proton-drive-backup =
-    { lib, pkgs, ... }:
+    { config, lib, pkgs, ... }:
     let
       backup = pkgs.writeShellApplication {
         name = "proton-drive-backup";
@@ -52,7 +52,12 @@ in
       };
     in
     {
-      services.cron.enable = true;
-      services.cron.systemCronJobs = [ "0 2 * * * jlo ${lib.getExe backup}" ];
+      options.services.protonDriveBackup.user = lib.mkOption {
+        type = lib.types.str;
+        description = "User account running the daily Proton Drive backup.";
+      };
+
+      config.services.cron.enable = true;
+      config.services.cron.systemCronJobs = [ "0 2 * * * ${config.services.protonDriveBackup.user} ${lib.getExe backup}" ];
     };
 }
