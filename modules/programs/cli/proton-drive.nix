@@ -1,12 +1,8 @@
 { ... }:
-{
+let
   # https://proton.me/download/drive/cli/index.html
-  flake.allowedUnfreePackages = [ "proton-drive" ];
-
-  flake.modules.nixos.proton-drive =
-    { lib, pkgs, ... }:
-    let
-      proton-drive = pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
+  mkProtonDrive = lib: pkgs:
+    pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
         pname = "proton-drive";
         version = "0.8.0";
 
@@ -22,7 +18,7 @@
           runHook preInstall
           install -Dm755 $src $out/libexec/proton-drive
           makeWrapper ${pkgs.stdenv.cc.bintools.dynamicLinker} $out/bin/proton-drive \
-            --add-flags "--library-path ${lib.makeLibraryPath [ pkgs.stdenv.cc.cc.lib ]}" \
+            --add-flags "--library-path ${lib.makeLibraryPath [ pkgs.stdenv.cc.cc.lib pkgs.glib pkgs.libsecret ]}" \
             --add-flags "$out/libexec/proton-drive"
           runHook postInstall
         '';
@@ -35,9 +31,28 @@
           platforms = [ "x86_64-linux" ];
           mainProgram = "proton-drive";
         };
-      });
+    });
+in
+{
+  flake.allowedUnfreePackages = [ "proton-drive" ];
+
+  flake.modules.nixos.proton-drive =
+    { lib, pkgs, ... }:
+    {
+      environment.systemPackages = [ (mkProtonDrive lib pkgs) ];
+    };
+
+  flake.modules.nixos.proton-drive-backup =
+    { lib, pkgs, ... }:
+    let
+      backup = pkgs.writeShellApplication {
+        name = "proton-drive-backup";
+        runtimeInputs = [ (mkProtonDrive lib pkgs) pkgs.coreutils pkgs.util-linux ];
+        text = builtins.readFile ./proton-drive-backup.sh;
+      };
     in
     {
-      environment.systemPackages = [ proton-drive ];
+      services.cron.enable = true;
+      services.cron.systemCronJobs = [ "0 2 * * * jlo ${lib.getExe backup}" ];
     };
 }

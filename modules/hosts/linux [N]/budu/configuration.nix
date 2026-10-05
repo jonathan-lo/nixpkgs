@@ -20,6 +20,7 @@
         libreoffice
         protonvpn
         proton-drive
+        proton-drive-backup
         powerkey
       ];
 
