@@ -6,13 +6,13 @@
     {
 
       home = {
-        packages = with pkgs; [
-          maven
-
-          # language servers
-          jdt-language-server
-          kotlin-language-server
-        ];
+        packages =
+          with pkgs;
+          [
+            maven
+            jdt-language-server
+          ]
+          ++ lib.optionals (!pkgs.stdenv.isDarwin) [ kotlin-language-server ];
 
         sessionPath = lib.mkBefore [
           "/Applications/IntelliJ IDEA.app/Contents/MacOS"
