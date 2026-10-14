@@ -36,8 +36,6 @@
           # via extraFlags until nix-darwin catches up. Equivalent to cleanup = "zap".
           cleanup = "none";
           extraFlags = [
-            "--cleanup"
-            "--zap"
           ];
           upgrade = false;
         };
