@@ -8,6 +8,11 @@ in
   flake.modules.homeManager.tmux =
     { pkgs, lib, ... }:
     let
+      # Upstream sesh targets Go 1.26; mockery cannot read Go 1.27 export data.
+      sesh = pkgs.unstable.sesh.override {
+        buildGo127Module = pkgs.unstable.buildGo126Module;
+      };
+
       # Every workmux worktree on the machine, open or closed. Backs the picker's
       # ctrl-o view and the open-worktree section of its default view. Does not
       # call workmux -- see the script for why it can't.
@@ -29,7 +34,7 @@ in
         name = "sesh-default-list";
         runtimeInputs = with pkgs; [
           workmux-worktrees
-          unstable.sesh
+          sesh
           gnugrep
           coreutils
         ];
@@ -45,7 +50,7 @@ in
       sesh-connect = pkgs.writeShellApplication {
         name = "sesh-connect";
         runtimeInputs = with pkgs; [
-          unstable.sesh
+          sesh
           tmux
           gh
           git
@@ -72,7 +77,7 @@ in
         packages =
           with pkgs;
           [
-            unstable.sesh # tmux session switcher
+            sesh # tmux session switcher
             sesh-connect # picker glue: clone + connect gh-repos entries
             sesh-default-list # picker's opening view
             workmux-worktrees # every workmux worktree, open or closed

@@ -28,7 +28,7 @@
         nono
 
         # coordination
-        agent-deck
+        # agent-deck
         herdr
       ];
     };
