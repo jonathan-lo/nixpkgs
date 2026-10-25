@@ -57,7 +57,22 @@ in
         description = "User account running the daily Proton Drive backup.";
       };
 
-      config.services.cron.enable = true;
-      config.services.cron.systemCronJobs = [ "0 2 * * * ${config.services.protonDriveBackup.user} ${lib.getExe backup}" ];
+      # Run in the user's systemd session so the D-Bus Secret Service used by
+      # Proton Drive is available. A missed run is retried when the user logs in.
+      config.systemd.user.services.proton-drive-backup = {
+        unitConfig.ConditionUser = config.services.protonDriveBackup.user;
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = lib.getExe backup;
+        };
+      };
+      config.systemd.user.timers.proton-drive-backup = {
+        wantedBy = [ "timers.target" ];
+        unitConfig.ConditionUser = config.services.protonDriveBackup.user;
+        timerConfig = {
+          OnCalendar = "*-*-* 12:00:00";
+          Persistent = true;
+        };
+      };
     };
 }
