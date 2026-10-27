@@ -12,6 +12,7 @@
         unstable.gofumpt
         unstable.gopls
         unstable.golangci-lint
+        unstable.ko
       ];
 
       home.sessionPath = [
