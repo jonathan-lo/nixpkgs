@@ -4,7 +4,7 @@
   # Merges into the `ai` module. Upstream's release tarballs are used rather than a source
   # build: nixpkgs doesn't package it, and its ~250 CGO tree-sitter grammars would compile
   # on every host for a release cadence of days. Bump the pin with `just update-gortex`.
-  flake.modules.homeManager.ai =
+  flake.modules.homeManager.disabled =
     {
       config,
       lib,
