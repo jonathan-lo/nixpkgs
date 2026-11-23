@@ -30,6 +30,7 @@
         # coordination
         # agent-deck
         herdr
+        orca
       ];
     };
 }
